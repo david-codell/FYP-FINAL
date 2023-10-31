@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="CREATE EVENT">
+  <meta name="description" content="">
+  <title>eoCreateEvent</title>
+  <link rel="stylesheet" href="nicepage.css" media="screen">
+  <link rel="stylesheet" href="eoCreateEvent.css" media="screen">
+  <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+  <meta name="generator" content="Nicepage 5.20.7, nicepage.com">
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+
+
+
+
+  <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"logo": "images/logo-svg.svg"
+}</script>
+  <meta name="theme-color" content="#478ac9">
+  <meta property="og:title" content="eoCreateEvent">
+  <meta property="og:type" content="website">
+  <meta data-intl-tel-input-cdn-path="intlTelInput/">
+</head>
+
+<body data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="en">
+  <header class="u-clearfix u-header u-header" id="sec-f0f4">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="150" data-image-height="150">
+        <img src="images/logo-svg.svg" class="u-logo-image u-logo-image-1">
+      </a>
+      <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
+        <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+          <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+            href="#">
+            <svg class="u-svg-link" viewBox="0 0 24 24">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
+            </svg>
+            <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px"
+              xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <rect y="1" width="16" height="2"></rect>
+                <rect y="7" width="16" height="2"></rect>
+                <rect y="13" width="16" height="2"></rect>
+              </g>
+            </svg>
+          </a>
+        </div>
+        <div class="u-custom-menu u-nav-container">
+          <ul class="u-nav u-unstyled u-nav-1">
+            <li class="u-nav-item"><a
+                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                href="eoDashboard.html" style="padding: 10px 20px;">Home</a>
+            </li>
+            <li class="u-nav-item"><a
+              class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+              style="padding: 10px 20px;" href="eoViewAllEvents.html">Events</a>
+            <div class="u-nav-popup">
+              <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
+                <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoCreateEvent.html">Create Events</a>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoViewAllEvents.html">View All Events</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+            <li class="u-nav-item"><a
+                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                href="eoViewAllMarketing.html" style="padding: 10px 20px;">Marketing</a>
+            </li>
+            
+            <li class="u-nav-item"><a
+                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                style="padding: 10px 20px;">Logout</a>
+            </li>
+          </ul>
+        </div>
+        <div class="u-custom-menu u-nav-container-collapse">
+          <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+            <div class="u-inner-container-layout u-sidenav-overflow">
+              <div class="u-menu-close"></div>
+              <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="eoDashboard.html">Home</a>
+                </li>
+                <li class="u-nav-item"><a
+                  class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                  style="padding: 10px 20px;" href="eoViewAllEvents.html">Events</a>
+                <div class="u-nav-popup">
+                  <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoCreateEvent.html">Create Events</a>
+                    </li>
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoViewAllEvents.html">View All Events</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="eoViewAllMarketing.html">Marketing</a>
+                </li>
+               
+                <li class="u-nav-item"><a class="u-button-style u-nav-link">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <section class="u-align-center u-clearfix u-section-1" id="sec-7a10">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <h2 class="u-text u-text-default u-text-1">CREATE EVENT</h2>
+      <p class="u-text u-text-2">FILL IN THE DETAILS FOR YOUR EVENT</p>
+      <p class="u-align-left u-text u-text-3">Event Details</p>
+      <div class="u-clearfix u-custom-html u-expanded-width u-custom-html-1">
+        <style></style>
+        <form id="createEventForm">
+          
+          
+          <label for="eventName">Event Name:</label>
+          <input type="text" id="eventName" name="eventName" required><br><br>
+
+          <label for="eventDateTime">Event Date and Time:</label>
+          <input type="datetime-local" id="eventDateTime" name="eventDateTime" required><br><br>
+
+          <label for="eventDescription">Event Description:</label>
+          <input type="text" id="eventDescription" name="eventDescription" required><br><br>
+
+          <label for="eventLaunchedDate">Event Launch Date:</label>
+          <input type="datetime-local" id="eventLaunchedDate" name="eventLaunchedDate" required><br><br>
+
+
+          <p class="u-align-left u-text u-text-4">Select Venue</p>
+
+          <label for="venueId">Venue Name:</label>
+          <select id="venueIdDropdown" name="venueId" required>
+            <option value="">Select Venue Id</option>
+
+            <!-- Add more venue options as needed -->
+          </select>
+
+          <input type="text" id="venueName" name="venueName" hidden readonly><br><br>
+
+          <label for="capacity">Capacity:</label>
+          <input type="text" id="capacity" name="capacity" readonly><br><br>
+
+          <label for="postalcode">Postal Code:</label>
+          <input type="text" id="postalcode" name="postalcode" readonly><br><br>
+
+          <label for="address1">Address1:</label>
+          <input type="text" id="address1" name="address1" readonly><br><br>
+
+          <label for="address2">Address2:</label>
+          <input type="text" id="address2" name="address2" readonly><br><br>
+
+          <p class="u-align-left u-text u-text-5">Upload Event Poster</p>
+          <label for="img">Upload Image</label>
+          <input type="file" id="img" name="img" accept="image/*" required><br><br>
+          <div id="imagePreviewContainer">
+            <label for="imagePreview">Image Preview:</label>
+            <img id="imagePreview" src="" alt="Image Preview" style="max-width: 400px; max-height: 400px;">
+          </div>
+
+          <p class="u-align-left u-text u-text-5">Select Category</p>
+          <input type="text" id="categoryIdInput" name="categoryId" hidden><br><br>
+          <label for="categoryId">Category Type:</label>
+          <select id="categoryIdDropdown" name="categoryId" required>
+            <option value="">Select Category Type</option>
+          </select>
+          <br>
+
+          <label for="categoryName">Category Name:</label>
+          <select id="categoryIdDropdown1" name="categoryName" required>
+            <option value="">Select Category Name</option>
+          </select>
+          <br>
+          
+          
+          <input type="text" id="emailtext" name="email" required hidden><br><br>
+
+
+
+
+
+          <br>
+      </div>
+      <input class="u-btn u-button-style u-btn-1" type="submit" value="Next">
+
+    </div>
+    </form>
+  </section>
+
+
+
+
+  <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-209f">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
+    </div>
+  </footer>
+  <section class="u-backlink u-clearfix u-grey-80">
+    <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
+      <span>HTML Website Templates</span>
+    </a>
+    <p class="u-text">
+      <span>created with</span>
+    </p>
+    <a class="u-link" href="" target="_blank">
+      <span>Web Design Software</span>
+    </a>.
+  </section>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="config.js"></script>
+  <script>
+    // Get the email parameter from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const email = sessionStorage.getItem("email")
+    console.log("Email retrieved from URL:", email);
+
+    // Set the input field's value to the captured email
+    if (email) {
+
+      $("#emailtext").val(email);
+    }
+
+    async function loadVenuesAndCategories() {
+      try {
+        const response = await $.ajax({
+          type: "GET",
+          url: categoryUrls[currentEnvironment]["venue"] + "getAll",
+          dataType: "json",
+        });
+
+        if (response.code === 200) {
+          var venues = response.data;
+
+          // Populate the venueId dropdown with options based on available venues
+          var venueDropdown = $("#venueIdDropdown");
+          venues.forEach(function (venue) {
+            venueDropdown.append(
+              $("<option></option>")
+                .attr("value", venue.venueId)
+                .text(venue.venueName)
+            );
+          });
+
+
+          // When the venueId dropdown selection changes
+          venueDropdown.on("change", function () {
+            // Capture the selected venueId from the dropdown
+            var updatedVenueId = $(this).val();
+
+            // Fetch venue data and populate the form based on the selected venueId
+            var urllink = categoryUrls[currentEnvironment]["venue"] + "getVenueById?venueId=" + updatedVenueId;
+            //var urllink = "/fyp/venue/getVenueById?venueId=" + updatedVenueId;
+            $.ajax({
+              type: "GET",
+              url: urllink,
+              dataType: "json",
+              success: function (response) {
+                if (response.code === 200) {
+                  var venue = response.data[0]; // Assuming there is only one venue in the response
+
+                  // Populate the form fields with venue data
+                  $("#venueId").val(venue.venueId);
+                  $("#venueName").val(venue.venueName);
+                  $("#capacity").val(venue.capacity);
+                  $("#postalcode").val(venue.postalcode);
+                  $("#address1").val(venue.address1);
+                  $("#address2").val(venue.address2);
+                }
+              }
+            });
+          });
+
+
+          const categoriesResponse = await $.ajax({
+            type: "GET",
+            url: categoryUrls[currentEnvironment]["category"] + "getAll",
+            dataType: "json",
+          });
+
+          if (categoriesResponse.code === 200) {
+            var categories = categoriesResponse.data;
+            // Rest of your code to populate category dropdowns
+            var uniqueCategoryTypes = [];
+
+
+            // Clear and populate the categoryType dropdown
+            var categoryTypeDropdown = $("#categoryIdDropdown");
+            console.log(categories);
+            categoryTypeDropdown.empty();
+            categoryTypeDropdown.append(
+              $("<option></option>")
+                .attr("value", "")
+                .text("Select Category Type")
+            );
+
+            // Use Array.filter to filter out duplicate category types
+            categories = categories.filter(function (category) {
+              if (!uniqueCategoryTypes.includes(category.categoryType)) {
+                uniqueCategoryTypes.push(category.categoryType);
+                return true;
+              }
+              return false;
+            });
+
+            categories.forEach(function (category) {
+              categoryTypeDropdown.append(
+                $("<option></option>")
+                  .attr("value", category.categoryType)
+                  .text(category.categoryType)
+              );
+            });
+
+            categoryTypeDropdown.on("change", function () {
+              var updatedCategoryId = $(this).val();
+            });
+
+            $("#categoryIdDropdown").on("change", function () {
+              var selectedCategoryType = $(this).val();
+
+              // Fetch category names based on the selected categoryType
+              var urllink = categoryUrls[currentEnvironment]["category"] + "getCategoryNamesByType?categoryType=" + selectedCategoryType;
+              //var urllink = "/fyp/category/getCategoryNamesByType?categoryType=" + selectedCategoryType;
+
+              $.ajax({
+                type: "GET",
+                url: urllink,
+                dataType: "json",
+                success: function (response) {
+                  if (response.code === 200) {
+                    var categoryNames = response.data;
+
+                    console.log(categoryNames);
+                    // Clear and populate the categoryName dropdown
+                    var categoryNameDropdown = $("#categoryIdDropdown1");
+                    categoryNameDropdown.empty();
+                    categoryNameDropdown.append(
+                      $("<option></option>")
+                        .attr("value", "")
+                        .text("Select Category Name")
+                    );
+
+                    categoryNames.forEach(function (categoryName) {
+                      categoryNameDropdown.append(
+                        $("<option></option>")
+                          .attr("value", categoryName) // Use categoryName
+                          .text(categoryName) // Use categoryName
+                      );
+                      console.log("Category Name: " + categoryName); // Log each category name
+                    });
+
+                  }
+                }
+              });
+            });
+
+
+            $("#categoryIdDropdown1").on("change", function () {
+              var selectedCategoryName = $(this).val();
+
+              if (selectedCategoryName) {
+                // Make an AJAX request to fetch details for the selected category name
+                var urllink = categoryUrls[currentEnvironment]["category"] + "getCategoryDetailsByName?categoryName=" + selectedCategoryName;
+                //var urllink = "/fyp/category/getCategoryDetailsByName?categoryName=" + selectedCategoryName;
+
+                $.ajax({
+                  type: "GET",
+                  url: urllink,
+                  dataType: "json",
+                  success: function (response) {
+                    if (response.code === 200) {
+                      var categoryDetails = response.data;
+                      displayCategoryDetails(categoryDetails);
+                    }
+                  }
+                });
+              }
+            });
+            function displayCategoryDetails(details) {
+              // Display the category details in the input element
+              if (details) {
+                $("#categoryIdInput").val(details.categoryId);
+              }
+            }
+          }
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+
+
+
+
+
+    $(document).ready(function () {
+      // Fetch the list of venues and populate the venue dropdown
+      loadVenuesAndCategories();
+
+
+
+      //----------------------------------------- CATEGORY ------------------------------------
+      function readImage(input) {
+        return new Promise((resolve, reject) => {
+          if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              resolve(e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+          } else {
+            resolve(""); // If no image is selected
+          }
+        });
+      }
+
+      // Usage
+      $("#img").change(async function () {
+        const imagePreviewSrc = await readImage(this);
+        $("#imagePreview").attr("src", imagePreviewSrc);
+        $("#imagePreviewContainer").show();
+      });
+
+
+
+
+
+
+
+
+      // Handle form submission
+      $("#createEventForm").submit(async function (e) {
+        e.preventDefault();
+
+
+        var formData = new FormData(this);
+
+        // Send the AJAX POST request with JSON data to your create endpoint
+        try {
+          const response = await $.ajax({
+            type: "POST",
+            url: categoryUrls[currentEnvironment]["event"] + "create",
+            data: formData,
+            contentType: false,
+            processData: false,
+          });
+
+          if (response) {
+            // Handle success response
+            console.log(response);
+            $("#successAlert").show();
+            window.location.href = "eoViewAllEventAfterCreate.html"
+          }
+        } catch (error) {
+          // Handle error response
+          console.error(error);
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

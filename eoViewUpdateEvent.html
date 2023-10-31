@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="CREATE EVENT">
+  <meta name="description" content="">
+  <title>eoViewUpdateEvent</title>
+  <link rel="stylesheet" href="nicepage.css" media="screen">
+  <link rel="stylesheet" href="eoViewUpdateEvent.css" media="screen">
+  <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+  <meta name="generator" content="Nicepage 5.20.7, nicepage.com">
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+
+
+
+
+  <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"logo": "images/logo-svg.svg"
+}</script>
+  <meta name="theme-color" content="#478ac9">
+  <meta property="og:title" content="eoViewUpdateEvent">
+  <meta property="og:type" content="website">
+  <meta data-intl-tel-input-cdn-path="intlTelInput/">
+</head>
+
+<body data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="en">
+  <header class="u-clearfix u-header u-header" id="sec-f0f4">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="150" data-image-height="150">
+        <img src="images/logo-svg.svg" class="u-logo-image u-logo-image-1">
+      </a>
+      <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
+        <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+          <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+            href="#">
+            <svg class="u-svg-link" viewBox="0 0 24 24">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
+            </svg>
+            <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px"
+              xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <rect y="1" width="16" height="2"></rect>
+                <rect y="7" width="16" height="2"></rect>
+                <rect y="13" width="16" height="2"></rect>
+              </g>
+            </svg>
+          </a>
+        </div>
+        <div class="u-custom-menu u-nav-container">
+          <ul class="u-nav u-unstyled u-nav-1">
+            <li class="u-nav-item"><a
+                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                href="eoDashboard.html" style="padding: 10px 20px;">Home</a>
+            </li>
+            <li class="u-nav-item"><a
+              class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+              style="padding: 10px 20px;" href="eoViewAllEvents.html">Events</a>
+            <div class="u-nav-popup">
+              <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
+                <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoCreateEvent.html">Create Events</a>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoViewAllEvents.html">View All Events</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+            <li class="u-nav-item"><a
+                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                href="eoViewAllMarketing.html" style="padding: 10px 20px;">Marketing</a>
+            </li>
+            
+            <li class="u-nav-item"><a
+                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                style="padding: 10px 20px;">Logout</a>
+            </li>
+          </ul>
+        </div>
+        <div class="u-custom-menu u-nav-container-collapse">
+          <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+            <div class="u-inner-container-layout u-sidenav-overflow">
+              <div class="u-menu-close"></div>
+              <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="eoDashboard.html">Home</a>
+                </li>
+                <li class="u-nav-item"><a
+                  class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                  style="padding: 10px 20px;" href="eoViewAllEvents.html">Events</a>
+                <div class="u-nav-popup">
+                  <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoCreateEvent.html">Create Events</a>
+                    </li>
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoViewAllEvents.html">View All Events</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="eoViewAllMarketing.html">Marketing</a>
+                </li>
+               
+                <li class="u-nav-item"><a class="u-button-style u-nav-link">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <section class="u-align-center u-clearfix u-section-1" id="sec-7a10">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <h2 class="u-text u-text-default u-text-1">View / UPDATE EVENT</h2>
+      <p class="u-text u-text-2">UPDATE THE DETAILS FOR YOUR EVENT</p>
+      <p class="u-align-left u-text u-text-3">Event Details</p>
+      <div class="u-clearfix u-custom-html u-expanded-width u-custom-html-1">
+        <style></style>
+        <form id="eventForm" enctype="multipart/form-data">
+            
+
+            <label for="eventId">Event Id:</label>
+            <input type="text" id="eventId" name="eventId" readonly><br><br>
+
+            <label for="eventName">Event Name:</label>
+            <input type="text" id="eventName" name="eventName"><br><br>
+
+            <label for="eventDateTime">Event Date Time:</label>
+            <input type="dateTime-local" id="eventDateTime" name="eventDateTime"><br><br>
+
+            <label for="eventDescription">Event Description:</label>
+            <input type="text" id="eventDescription" name="eventDescription"><br><br>
+
+            <label for="eventLaunchedDate">Event Launched Date:</label>
+            <input type="dateTime-local" id="eventLaunchedDate" name="eventLaunchedDate"><br><br>
+        
+
+        <p class="u-align-left u-text u-text-4">Select Venue</p>
+
+
+        <label for="venueId">Venue ID NAME:</label>
+            <select id="venueIdDropdown" name="venueIdd" required>
+                <option value="">Select Venue Id</option>
+
+            </select>
+            <br><br>
+            <label for="venueId">Venue Id:</label>
+            <input type="text" id="venueId" name="venueId" readonly><br><br>
+
+
+            <label for="venueName">Venue Name:</label>
+            <input type="text" id="venueName" name="venueName"><br><br>
+
+            <label for="capacity">Capacity:</label>
+            <input type="text" id="capacity" name="capacity"><br><br>
+
+            <label for="postalcode">Postal Code:</label>
+            <input type="text" id="postalcode" name="postalcode"><br><br>
+
+            <label for="address1">Address1:</label>
+            <input type="text" id="address1" name="address1"><br><br>
+
+            <label for="address2">Address2:</label>
+            <input type="text" id="address2" name="address2"><br><br>
+
+        <p class="u-align-left u-text u-text-5">Select Category</p>
+
+
+        <label for="categoryId">Category Id:</label>
+            <input type="text" id="categoryIdInput" name="categoryId" readonly><br><br>
+
+
+            <label for="categoryType">Category Type:</label>
+            <input type="text" id="categoryTypeInput" name="categoryType">
+
+            <select id="categoryIdDropdown" name="categoryTypee" required>
+                <option value="">Select Category Type</option>
+            </select>
+            <br><br>
+
+
+            <label for="categoryName">Category Name:</label>
+            <input type="text" id="categoryNameInput" name="categoryName">
+
+            <select id="categoryIdDropdown1" name="categoryNamee" required>
+                <option value="">Select Category Name</option>
+            </select><br><br>
+
+            <label for="img">Upload New Image:</label>
+            <input type="file" id="img" name="img" accept="image/*"><br><br>
+            
+
+            <!-- Display the current image -->
+            <img id="currentImg" src="" alt="Current Event Image" style="max-width: 400px; max-height: 400px;"><br><br>
+            <img id="newImgPreview" src="" alt="New Image Preview"style="max-width: 400px; max-height: 400px;"><br><br>
+            <br><br>
+
+      </form>
+      </div>
+      <button style="background-color: #478ac9;color: #ffffff; border: none;padding: 10px 30px;" id="update">Update</button>
+      <button style="background-color: #478ac9;color: #ffffff; border: none;padding: 10px 30px;" id="delete">Suspend</button>
+      <input type="text" id="emailtext" name="email" required hidden><br><br>
+    </div>
+  </section>
+
+
+
+
+  <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-209f">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
+    </div>
+  </footer>
+  <section class="u-backlink u-clearfix u-grey-80">
+    <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
+      <span>HTML Website Templates</span>
+    </a>
+    <p class="u-text">
+      <span>created with</span>
+    </p>
+    <a class="u-link" href="" target="_blank">
+      <span>Web Design Software</span>
+    </a>.
+  </section>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="config.js"></script>
+<script>
+  $("#homepage").on("click", function () {
+    window.location.href = "eventorganizerdashboard.html";
+  });
+
+  $(document).ready(function () {
+    // Fetch Event data and populate the form
+
+
+    const queryParams = new URLSearchParams(window.location.search);
+    const eventidfromURL = queryParams.get("eventId");
+    console.log(eventidfromURL);
+
+
+
+    const queryParams1 = new URLSearchParams(window.location.search);
+    const venueidfromURL = queryParams1.get("venueId");
+    console.log(venueidfromURL);
+
+
+
+    $.ajax({
+      type: "GET",
+      url: categoryUrls[currentEnvironment]["event"] + "getEventById?eventId=" + eventidfromURL,
+      dataType: "json",
+      success: function (response) {
+        if (response.code === 200) {
+          var event = response.data[0];
+
+          var eventDateTime = new Date(event.eventDateTime);
+          var formattedEventDateTime = eventDateTime.toISOString().slice(0, 19).replace('T', ' ');
+
+          // Parse and format the dateEnd
+          var launchedDateTime = new Date(event.eventLaunchedDate);
+          var formattedEventLaunchedDate = launchedDateTime.toISOString().slice(0, 19).replace('T', ' ');
+
+          // Populate the form fields with event data
+          $("#emailtext").val(event.email);
+          $("#eventId").val(event.eventId);
+          $("#venueId").val(event.venueId);
+          $("#categoryId").val(event.categoryId);
+          $("#eventName").val(event.eventName);
+          console.log("Event Name:", event.eventName);
+          $("#eventDateTime").val(formattedEventDateTime);
+          $("#eventDescription").val(event.eventDescription);
+          $("#eventLaunchedDate").val(formattedEventLaunchedDate);
+          const imageUrl = "/AWS_FYP_PYTHON/microservices/" + event.img;
+          $("#currentImg").attr("src", imageUrl);
+        } else {
+          console.error("Failed to fetch event data.", response.message);
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error("Error fetching event data:", error);
+      }
+    });
+    // Add a change event listener to the file input
+    $("#img").on("change", function () {
+      var file = this.files[0];
+      if (file) {
+        console.log("New image selected:", file);
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          // Update the src attribute of the preview image with the new image data
+          $("#newImgPreview").attr("src", e.target.result);
+        };
+
+        reader.readAsDataURL(file);
+      } else {
+        // Clear the preview image if no file is selected
+        $("#newImgPreview").attr("src", "");
+      }
+    });
+    //-------------------VENUE--------------------------------
+    var initialVenueId = parseInt(venueidfromURL) || sessionvenue;
+
+    // Populate venue fields with the initial venueId
+    populateVenueFields(initialVenueId);
+    // When the venueId dropdown selection changes
+    $("#venueIdDropdown").on("change", function () {
+      var updatedVenueId = $(this).val();
+      populateVenueFields(updatedVenueId);
+    });
+
+    function populateVenueFields(selectedVenueId) {
+      $.ajax({
+        type: "GET",
+        url: categoryUrls[currentEnvironment]["venue"] + "getVenueById?venueId=" + selectedVenueId,
+        dataType: "json",
+        success: function (selectedVenueResponse) {
+          if (selectedVenueResponse.code === 200) {
+            var selectedVenue = selectedVenueResponse.data[0];
+            $("#venueId").val(selectedVenue.venueId); // Populate the venueId field
+            $("#venueName").val(selectedVenue.venueName);
+            $("#capacity").val(selectedVenue.capacity);
+            $("#postalcode").val(selectedVenue.postalcode);
+            $("#address1").val(selectedVenue.address1);
+            $("#address2").val(selectedVenue.address2);
+          } else {
+            console.error("Failed to fetch selected venue data.", selectedVenueResponse.message);
+          }
+        },
+        error: function (xhr, status, error) {
+          console.error("Error fetching selected venue data:", error);
+        }
+      });
+    }
+
+    $.ajax({
+      type: "GET",
+      url: categoryUrls[currentEnvironment]["venue"] + "getAll",
+      dataType: "json",
+      success: function (response) {
+        if (response.code === 200) {
+          var venues = response.data;
+
+          var venueDropdown = $("#venueIdDropdown");
+          venueDropdown.empty(); // Clear existing options
+
+          // Populate the venueId dropdown with options based on available venues
+          venues.forEach(function (venue) {
+            venueDropdown.append(
+              $("<option></option>")
+                .attr("value", venue.venueId)
+                .text(venue.venueName)
+            );
+          });
+        } else {
+          console.error("Failed to fetch venue data.", response.message);
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error("Error fetching venue data:", error);
+      }
+    });
+
+    // When the venueId dropdown selection changes
+    $("#venueIdDropdown").on("change", function () {
+      var updatedVenueId = $(this).val();
+      populateVenueFields(updatedVenueId);
+    });
+
+    // Function to populate venue fields based on the selected venue
+    function populateVenueFields(selectedVenueId) {
+      $.ajax({
+        type: "GET",
+        url: categoryUrls[currentEnvironment]["venue"] + "getVenueById?venueId=" + selectedVenueId,
+        dataType: "json",
+        success: function (selectedVenueResponse) {
+          if (selectedVenueResponse.code === 200) {
+            var selectedVenue = selectedVenueResponse.data[0];
+            $("#venueId").val(selectedVenue.venueId);
+            $("#venueName").val(selectedVenue.venueName);
+            $("#capacity").val(selectedVenue.capacity);
+            $("#postalcode").val(selectedVenue.postalcode);
+            $("#address1").val(selectedVenue.address1);
+            $("#address2").val(selectedVenue.address2);
+          } else {
+            console.error("Failed to fetch selected venue data.", selectedVenueResponse.message);
+          }
+        },
+        error: function (xhr, status, error) {
+          console.error("Error fetching selected venue data:", error);
+        }
+      });
+    }
+
+    //-------------------CATEGORY--------------------------------
+    var sessioncategory = sessionStorage.getItem("categoryId");
+    //var categoryidLabel = document.getElementById("categoryId");
+    //categoryidLabel.textContent = sessioncategory;
+    // console.log(categoryidLabel.textContent);
+
+    const queryParams2 = new URLSearchParams(window.location.search);
+    const categoryidfromURL = queryParams2.get("categoryId");
+    console.log(categoryidfromURL);  // Set the category ID in the input field
+
+    $("#categoryIdInput").val(categoryidfromURL);
+    console.log("Category ID set in input field: " + $("#categoryIdInput").val());
+
+    $.ajax({
+      type: "GET",
+      url: categoryUrls[currentEnvironment]["category"] + "getCategoryById?categoryId=" + categoryidfromURL,
+      dataType: "json",
+      success: function (catIdResponse) {
+        if (catIdResponse.code === 200) {
+          var catIdResponse = catIdResponse.data[0];
+          $("#categoryId").val(catIdResponse.categoryId);
+          $("#categoryTypeInput").val(catIdResponse.categoryType);
+          $("#categoryNameInput").val(catIdResponse.categoryName);
+
+        }
+      }
+    });
+
+
+    var uniqueCategoryTypes = [];
+
+    $.ajax({
+      type: "GET",
+      url: categoryUrls[currentEnvironment]["category"] + "getAll", // Replace with the actual endpoint to fetch all category types
+      dataType: "json",
+      success: function (response) {
+        if (response.code === 200) {
+          var categories = response.data;
+
+          // Clear and populate the categoryType dropdown
+          var categoryTypeDropdown = $("#categoryIdDropdown");
+          console.log(categories);
+          categoryTypeDropdown.empty();
+          categoryTypeDropdown.append(
+            $("<option></option>")
+              .attr("value", "")
+              .text("Select Category Type")
+          );
+
+          // Use Array.filter to filter out duplicate category types
+          categories = categories.filter(function (category) {
+            if (!uniqueCategoryTypes.includes(category.categoryType)) {
+              uniqueCategoryTypes.push(category.categoryType);
+              return true;
+            }
+            return false;
+          });
+
+          categories.forEach(function (category) {
+            categoryTypeDropdown.append(
+              $("<option></option>")
+                .attr("value", category.categoryType)
+                .text(category.categoryType)
+            );
+          });
+
+
+        }
+      }
+    });
+
+
+
+    $("#categoryIdDropdown").on("change", function () {
+      var selectedCategoryType = $(this).val();
+
+      // Fetch category names based on the selected categoryType
+      var urllink = categoryUrls[currentEnvironment]["category"] + "getCategoryNamesByType?categoryType=" + selectedCategoryType;
+
+      $.ajax({
+        type: "GET",
+        url: urllink,
+        dataType: "json",
+        success: function (response) {
+          if (response.code === 200) {
+            var categoryNames = response.data;
+
+            console.log(categoryNames);
+            // Clear and populate the categoryName dropdown
+            var categoryNameDropdown = $("#categoryIdDropdown1");
+            categoryNameDropdown.empty();
+            categoryNameDropdown.append(
+              $("<option></option>")
+                .attr("value", "")
+                .text("Select Category Name")
+            );
+
+            categoryNames.forEach(function (categoryName) {
+              categoryNameDropdown.append(
+                $("<option></option>")
+                  .attr("value", categoryName) // Use categoryName
+                  .text(categoryName) // Use categoryName
+              );
+              console.log("Category Name: " + categoryName); // Log each category name
+            });
+
+          }
+        }
+      });
+    });
+
+
+    $("#categoryIdDropdown1").on("change", function () {
+      var selectedCategoryName = $(this).val();
+
+      if (selectedCategoryName) {
+        // Make an AJAX request to fetch details for the selected category name
+        var urllink = categoryUrls[currentEnvironment]["category"] + "getCategoryDetailsByName?categoryName=" + selectedCategoryName;
+
+        $.ajax({
+          type: "GET",
+          url: urllink,
+          dataType: "json",
+          success: function (response) {
+            if (response.code === 200) {
+              var categoryDetails = response.data;
+              displayCategoryDetails(categoryDetails);
+            }
+          }
+        });
+      }
+    });
+
+    function displayCategoryDetails(details) {
+      // Display the category details in the input element
+      if (details) {
+        $("#categoryIdInput").val(details.categoryId);
+        $("#categoryTypeInput").val(details.categoryType);
+        $("#categoryNameInput").val(details.categoryName);
+
+      }
+    }
+
+    //-------------------UPDATE--------------------------------
+    // Handle the "Update Event" button click
+    $("#update").on("click", function () {
+      var updatedEventId = $("#eventId").val();
+      var updatedEmail = $("#emailtext").val();
+      var updatedVenueId = $("#venueId").val();
+      var updatedCategoryId = $("#categoryIdInput").val();
+      var updatedEventName = $("#eventName").val();
+      var updatedEventDateTime = $("#eventDateTime").val();
+      var updatedEventDescription = $("#eventDescription").val();
+      var updatedEventLaunchedDate = $("#eventLaunchedDate").val();
+      var updatedImg = $("#img")[0].files[0];
+
+      var formattedEventDateTime = new Date(updatedEventDateTime).toISOString().slice(0, 19).replace('T', ' ');
+      var formattedEventLaunchedDate = new Date(updatedEventLaunchedDate).toISOString().slice(0, 19).replace('T', ' ');
+      console.log("Event ID:", updatedEventId);
+      console.log("Email:", updatedEmail);
+      console.log("Venue ID:", updatedVenueId);
+      console.log("Category ID:", updatedCategoryId);
+      console.log("Event Name:", updatedEventName);
+      console.log("Event Date Time:", updatedEventDateTime);
+      console.log("Event DEscription:", updatedEventDescription);
+      console.log("Event Lauched Date:", updatedEventLaunchedDate);
+      console.log("Updated Image:", updatedImg);
+      /*
+      var updatedData = {
+          eventId: updatedEventId,
+          email: updatedEmail,
+          venueId: updatedVenueId,
+          categoryId: updatedCategoryId,
+          eventName: updatedEventName,
+          eventDateTime: formattedEventDateTime,
+          eventDescription: updatedEventDescription,
+          eventLaunchedDate: formattedEventLaunchedDate
+      };*/
+
+      var formData = new FormData();
+      formData.append("eventId", updatedEventId);
+      formData.append("email", updatedEmail);
+      formData.append("venueId", updatedVenueId);
+      formData.append("categoryId", updatedCategoryId);
+      formData.append("eventName", updatedEventName);
+      formData.append("eventDateTime", formattedEventDateTime);
+      formData.append("eventDescription", updatedEventDescription);
+      formData.append("eventLaunchedDate", formattedEventLaunchedDate);
+      formData.append("img", updatedImg);
+
+      console.log(formData);
+      $.ajax({
+        type: "POST",
+        url: categoryUrls[currentEnvironment]["event"] + "updateEventById",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+          console.log(response.code);
+          if (response.code === 200) {
+            $("#message").text("Event data updated successfully.");
+          } else {
+            $("#message").text("Failed to update venue data.");
+          }
+        },
+        error: function (xhr, status, error) {
+          // Handle AJAX request failure
+          console.error("Error updating event data:", error);
+
+          // You can provide more detailed error messages based on the error status
+          if (xhr.status === 400) {
+            $("#message").text("Bad request: The server did not accept the data.");
+          } else if (xhr.status === 404) {
+            $("#message").text("Resource not found on the server.");
+          } else if (xhr.status === 500) {
+            $("#message").text("Internal server error. Please try again later.");
+          } else {
+            $("#message").text("An unknown error occurred: " + error);
+          }
+        }
+      });
+    });
+
+
+    $("#delete").on("click", function () {
+      if (confirm("Are you sure you want to delete this event?")) {
+        var eventid = $("#eventId").text(); // Use .text() to get the content
+        $.ajax({
+          type: "DELETE",
+          url: categoryUrls[currentEnvironment]["event"] + "suspend?eventId=" + eventidfromURL, // Use eventidLabel.textContent
+          dataType: "json",
+          success: function (deleteResponse) {
+            if (deleteResponse.code === 200) {
+              // Handle success - for example, redirect to a different page or show a success message
+              alert("Event deleted successfully!");
+              window.location.href = "eoViewAllEvent.html";
+            } else {
+              // Handle other status codes or errors
+              alert("Failed to delete event. " + deleteResponse.message);
+            }
+          },
+          error: function (error) {
+            // Handle Ajax error
+            alert("An error occurred while making the request: " + error.statusText);
+          }
+        });
+      }
+    });
+  });
+
+
+</script>
+
+</html>

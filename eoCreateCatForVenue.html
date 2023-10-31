@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="CREATE EVENT">
+  <meta name="description" content="">
+  <title>eoCreateCatForVenue</title>
+  <link rel="stylesheet" href="nicepage.css" media="screen">
+  <link rel="stylesheet" href="eoCreateCatForVenue.css" media="screen">
+  <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+  <meta name="generator" content="Nicepage 5.20.7, nicepage.com">
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+
+
+
+
+
+  <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"logo": "images/logo-svg.svg"
+}</script>
+  <meta name="theme-color" content="#478ac9">
+  <meta property="og:title" content="eoCreateCatForVenue">
+  <meta property="og:type" content="website">
+  <meta data-intl-tel-input-cdn-path="intlTelInput/">
+</head>
+
+<body data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="en">
+  <header class="u-clearfix u-header u-header" id="sec-f0f4">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="150" data-image-height="150">
+        <img src="images/logo-svg.svg" class="u-logo-image u-logo-image-1">
+      </a>
+      <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
+        <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+          <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+            href="#">
+            <svg class="u-svg-link" viewBox="0 0 24 24">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
+            </svg>
+            <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px"
+              xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <rect y="1" width="16" height="2"></rect>
+                <rect y="7" width="16" height="2"></rect>
+                <rect y="13" width="16" height="2"></rect>
+              </g>
+            </svg>
+          </a>
+        </div>
+        <div class="u-custom-menu u-nav-container">
+          <ul class="u-nav u-unstyled u-nav-1">
+            <li class="u-nav-item"><a
+                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                href="eoDashboard.html" style="padding: 10px 20px;">Home</a>
+            </li>
+            <li class="u-nav-item"><a
+              class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+              style="padding: 10px 20px;" href="eoViewAllEvents.html">Events</a>
+            <div class="u-nav-popup">
+              <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
+                <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoCreateEvent.html">Create Events</a>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoViewAllEvents.html">View All Events</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+            <li class="u-nav-item"><a
+                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                href="eoViewAllMarketing.html" style="padding: 10px 20px;">Marketing</a>
+            </li>
+            
+            <li class="u-nav-item"><a
+                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                style="padding: 10px 20px;">Logout</a>
+            </li>
+          </ul>
+        </div>
+        <div class="u-custom-menu u-nav-container-collapse">
+          <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+            <div class="u-inner-container-layout u-sidenav-overflow">
+              <div class="u-menu-close"></div>
+              <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="eoDashboard.html">Home</a>
+                </li>
+                <li class="u-nav-item"><a
+                  class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                  style="padding: 10px 20px;" href="eoViewAllEvents.html">Events</a>
+                <div class="u-nav-popup">
+                  <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoCreateEvent.html">Create Events</a>
+                    </li>
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoViewAllEvents.html">View All Events</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="eoViewAllMarketing.html">Marketing</a>
+                </li>
+               
+                <li class="u-nav-item"><a class="u-button-style u-nav-link">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <section class="u-align-center u-clearfix u-section-1" id="sec-7a10">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <h2 class="u-text u-text-default u-text-1">CREATE EVENT CATEGORIES</h2>
+      <p class="u-text u-text-2">CREATE YOUR CATEGORY PRICING FOR YOUR SELECTED VENUE</p>
+      <p class="u-align-left u-text u-text-3">Create Category For Selected Venue</p>
+      <div class="u-clearfix u-custom-html u-expanded-width u-custom-html-1">
+        <style></style>
+        <form id="createvenueCategory">
+          <label for="venueId">Venue: </label>
+          <input type="text" id="venueName" name="venueName" readonly>
+          <input type="text" id="venueId" name="venueId" required="" hidden>
+          <br>
+          <br>
+          <label for="eventId">Event:</label>
+          <input type="text" id="eventName" name="eventName" readonly>
+          <input type="text" id="eventId" name="eventId" required="" hidden>
+          <br>
+          <br>
+          <label for="cat">Category:</label>
+          <input type="cat" id="cat" name="cat" required="">
+          <br>
+          <br>
+          <label for="catPrice">Price:</label>
+          <input type="catPrice" id="catPrice" name="catPrice" required="">
+          <br>
+          <br>
+          <label for="capacity">Capacity For Category:</label>
+          <input type="capacity" id="capacity" name="capacity" required="">
+          <br>
+          <br><!-- Add an input field for user type (hidden) -->
+          <input type="hidden" id="status" name="status" value="Available">
+          <input class="u-btn u-button-style u-btn-1" type="submit" value="Create Category">
+          
+        </form>
+      </div>
+
+    </div>
+  </section>
+  <section class="u-align-center u-clearfix u-section-2" id="sec-fcf4">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <p class="u-align-left u-text u-text-1">Available Categories</p>
+      <div class="u-expanded-width u-table u-table-responsive u-table-1">
+        <table id="venuebookingTable" class="u-table-entity u-table-entity-1">
+          
+          <thead class="u-black u-table-header u-table-header-1">
+            <tr style="height: 21px;">
+              <th class="u-border-1 u-border-black u-table-cell">Category </th>
+              <th class="u-border-1 u-border-black u-table-cell">Price </th>
+              <th class="u-border-1 u-border-black u-table-cell">Capacity </th>
+              <th class="u-border-1 u-border-black u-table-cell">Status </th>
+            </tr>
+          </thead>
+          <tbody class="u-table-body">
+           
+          </tbody>
+        </table>
+        <div style="text-align: right; width: 100%;">
+          <a class="u-btn u-button-style u-btn-1" href="eoViewAllEvents.html"> Done</a>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-209f">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
+    </div>
+  </footer>
+  <section class="u-backlink u-clearfix u-grey-80">
+    <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
+      <span>HTML Website Templates</span>
+    </a>
+    <p class="u-text">
+      <span>created with</span>
+    </p>
+    <a class="u-link" href="" target="_blank">
+      <span>Web Design Software</span>
+    </a>.
+  </section>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="config.js"></script>
+  <script>
+    // JavaScript code to handle form submission
+
+    $(document).ready(function () {
+      const queryParams = new URLSearchParams(window.location.search);
+      const eventIdfromUrl = queryParams.get("eventId");
+      const venueIdfromUrl = queryParams.get("venueId");
+      var venueIdLabel = document.getElementById("venueId");
+      var eventIdLabel = document.getElementById("eventId");
+      $("#venueId").val(venueIdfromUrl);
+      $("#eventId").val(eventIdfromUrl);
+
+      $.ajax({
+        type: "GET",
+        url: categoryUrls[currentEnvironment]["event"] + "getEventById?eventId=" + eventIdfromUrl,
+        dataType: "json",
+        success: function (response) {
+          if (response.code === 200) {
+            var event = response.data[0];
+
+            // Populate the form fields with event data
+            $("#eventName").val(event.eventName);
+
+          } else {
+            console.error("Failed to fetch event data.", response.message);
+          }
+        },
+        error: function (xhr, status, error) {
+          console.error("Error fetching event data:", error);
+        }
+      });
+      $.ajax({
+        type: "GET",
+        url: categoryUrls[currentEnvironment]["venue"] + "getVenueById?venueId=" + venueIdfromUrl,
+        dataType: "json",
+        success: function (response) {
+          if (response.code === 200) {
+            var venue = response.data[0];
+
+            // Populate the form fields with event data
+            $("#venueName").val(venue.venueName);
+
+          } else {
+            console.error("Failed to fetch venue data.", response.message);
+          }
+        },
+        error: function (xhr, status, error) {
+          console.error("Error fetching venue data:", error);
+        }
+      });
+      $.ajax({
+          type: "GET",
+          url: categoryUrls[currentEnvironment]["booking"]+"venuebooking/getVenueCatByEventId?eventId=" + eventIdfromUrl,
+          dataType: "json",
+          success: function (response) {
+            if (response.code === 200) {
+              var venuebooking = response.data;
+
+              // Loop through the user data and populate the table rows
+              var tableBody = $("#venuebookingTable tbody");
+              for (var i = 0; i < venuebooking.length; i++) {
+                var venuebookingData = venuebooking[i];
+                var row = $("<tr>");
+                row.append($("<td>").text(venuebookingData.venuebookingId).hide());
+                row.append($("<td>").text(venuebookingData.cat));
+                row.append($("<td>").text(venuebookingData.catPrice));
+                row.append($("<td>").text(venuebookingData.capacity));
+                row.append($("<td>").text(venuebookingData.status));
+                
+                tableBody.append(row);
+              }
+            } else {
+              // Handle error or empty response
+              console.error("Failed to fetch user data.");
+            }
+          },
+          error: function (error) {
+            console.error("Error fetching user data:", error);
+          }
+        });
+
+      $("#createvenueCategory").submit(function (e) {
+        e.preventDefault();
+
+        // Get form data
+        var formData = {
+          venueId: $("#venueId").val(),
+          eventId: $("#eventId").val(),
+          cat: $("#cat").val(),
+          catPrice: $("#catPrice").val(),
+          capacity: $("#capacity").val(),
+          status: $("#status").val()
+        };
+
+        // Send AJAX POST request with JSON data
+        $.ajax({
+          type: "POST",
+          url: categoryUrls[currentEnvironment]["booking"]+"venuebooking/create",
+          contentType: "application/json", // Set Content-Type header
+          data: JSON.stringify(formData),
+          success: function (response) {
+            // Handle success response
+            console.log(response);
+
+          },
+          error: function (error) {
+            // Handle error response
+            console.error(error);
+          }
+        });
+        $.ajax({
+          type: "GET",
+          url: categoryUrls[currentEnvironment]["booking"]+"venuebooking/getVenueCatByEventId?eventId=" + eventIdfromUrl,
+          dataType: "json",
+          success: function (response) {
+            if (response.code === 200) {
+              var venuebooking = response.data;
+
+              // Loop through the user data and populate the table rows
+              var tableBody = $("#venuebookingTable tbody");
+              for (var i = 0; i < venuebooking.length; i++) {
+                var venuebookingData = venuebooking[i];
+                var row = $("<tr>");
+                row.append($("<td>").text(venuebookingData.venuebookingId).hide());
+                row.append($("<td>").text(venuebookingData.cat));
+                row.append($("<td>").text(venuebookingData.catPrice));
+                row.append($("<td>").text(venuebookingData.capacity));
+                row.append($("<td>").text(venuebookingData.status));
+                
+                tableBody.append(row);
+              }
+            } else {
+              // Handle error or empty response
+              console.error("Failed to fetch user data.");
+            }
+          },
+          error: function (error) {
+            console.error("Error fetching user data:", error);
+          }
+        });
+
+      });
+    });
+  </script>
+</body>
+
+</html>
