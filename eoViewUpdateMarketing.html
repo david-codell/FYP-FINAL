@@ -80,7 +80,7 @@
 
             <li class="u-nav-item"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                style="padding: 10px 20px;">Logout</a>
+                style="padding: 10px 20px;" href="Login.html">Logout</a>
             </li>
           </ul>
         </div>
@@ -108,7 +108,7 @@
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="eoViewAllMarketing.html">Marketing</a>
                 </li>
 
-                <li class="u-nav-item"><a class="u-button-style u-nav-link">Logout</a>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Login.html">Logout</a>
                 </li>
               </ul>
             </div>
@@ -333,7 +333,7 @@
     var updatedMarketingName = $("#marketingName").val();
     var updatedDateStart = $("#dateStart").val();
     var updatedDateEnd = $("#dateEnd").val();
-    var updatedImg = $("#img")[0].files[0] || currentImgFileName;
+    var updatedImg = $("#img")[0].files[0];
 
     var formattedDateStart = new Date(updatedDateStart).toISOString().slice(0, 10);
     var formattedDateEnd = new Date(updatedDateEnd).toISOString().slice(0, 10);
