@@ -7,9 +7,9 @@
   <meta name="keywords"
     content="Sign up and get fresh loot for popular games plus more, Our Story, Innovation in the gameindustry, Sign up and get fresh loot for popular games plus more, Game Gadgets, Download games and play free games every month.">
   <meta name="description" content="">
-  <title>adminCreateCategory</title>
+  <title>adminCreateVenue</title>
   <link rel="stylesheet" href="nicepage.css" media="screen">
-  <link rel="stylesheet" href="adminCreateCategory.css" media="screen">
+  <link rel="stylesheet" href="adminCreateVenue.css" media="screen">
   <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
   <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
   <meta name="generator" content="Nicepage 5.20.7, nicepage.com">
@@ -26,7 +26,7 @@
 		"logo": "images/logo-svg.svg"
 }</script>
   <meta name="theme-color" content="#478ac9">
-  <meta property="og:title" content="adminCreateCategory">
+  <meta property="og:title" content="adminCreateVenue">
   <meta property="og:type" content="website">
   <meta data-intl-tel-input-cdn-path="intlTelInput/">
 </head>
@@ -98,7 +98,7 @@
 
             <li class="u-nav-item"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                style="padding: 10px 20px;" href="Login.html ">Logout</a>
+                style="padding: 10px 20px;" href="Login.html">Logout</a>
             </li>
           </ul>
         </div>
@@ -140,7 +140,7 @@
 
                 </li>
                 
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Login.html">Logout</a>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Login.html ">Logout</a>
                 </li>
               </ul>
             </div>
@@ -159,19 +159,41 @@
               <div class="u-layout-col">
                 <div class="u-align-center u-container-style u-layout-cell u-size-60 u-layout-cell-1">
                   <div class="u-container-layout u-container-layout-1">
-                    <h2 style="color:white; " class="u-align-left u-text u-text-1">Create Category</h2>
+                    <h2 style="color:white; " class="u-align-left u-text u-text-1">Add A New Venue</h2>
                     <div class="u-clearfix u-custom-html u-custom-html-1">
                       <style></style>
-                      <form style="text-align: left;" id="categoryForm">
-                        <label style="color:white;" for="categoryType">Category Type:</label>
-                        <input type="text" id="categoryType" name="categoryType" required="">
+                      <form style="text-align:left;" action="/create" id="createVenueForm"
+                        enctype="multipart/form-data">
+                        <label style="color:white; " for="venueName">Venue Name:</label>
+                        <input type="text" id="venueName" name="venueName" required="">
                         <br>
                         <br>
-                        <label style="color:white; " for="categoryName">Category Name:</label>
-                        <input type="text" id="categoryName" name="categoryName" required="">
+                        <label style="color:white; " for="capacity">Capacity:</label>
+                        <input type="text" id="capacity" name="capacity" required="">
                         <br>
                         <br>
-                        <input class="u-btn u-button-style u-btn-1" type="submit" value="Add Category">
+                        <label style="color:white; " for="postalcode">Postal Code:</label>
+                        <input type="text" id="postalcode" name="postalcode" required="">
+                        <br>
+                        <br>
+                        <label style="color:white; " for="address1">Address1:</label>
+                        <input type="text" id="address1" name="address1" required="">
+                        <br>
+                        <br>
+                        <label style="color:white; " for="address2">Address2:</label>
+                        <input type="text" id="address2" name="address2" required="">
+                        <br>
+                        <br>
+                        <label style="color:white; " for="img">Upload Image</label>
+                        <input type="file" id="img" name="img" accept="image/*" required="">
+                        <br>
+                        <br>
+                        <div id="imagePreviewContainer">
+                          <label for="imagePreview">Image Preview:</label>
+                          <img id="imagePreview" src="" alt="Image Preview"
+                            style="max-width: 400px; max-height: 400px;">
+                        </div><!-- Add an input field for user type (hidden) -->
+                        <input type="submit" class="u-btn u-button-style u-btn-1" value="Create Venue">
                       </form>
                     </div>
                   </div>
@@ -206,38 +228,60 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
   // JavaScript code to handle form submission
-  $(document).ready(function() {
-      $("#categoryForm").submit(function(e) {
-          e.preventDefault();
-
-          // Get form data
-          var formData = {
-              categoryName: $("#categoryName").val(),
-              categoryType: $("#categoryType").val()
-          };
-
-          // Send AJAX POST request with JSON data
-          $.ajax({
-              type: "POST",
-              url: "https://lit-savannah-80061-5f9c3cd96ad3.herokuapp.com/create",
-              //url: "/fyp/category/create",
-              contentType: "application/json", // Set Content-Type header
-              data: JSON.stringify(formData),
-              success: function(response) {
-                  // Handle success response
-                  alert("Category Added");
-                  console.log(response);
-                  window.location.href = "adminViewAllCategory.html";
-                  
-              },
-              error: function(error) {
-                  // Handle error response
-                  console.error(error);
-              }
-          });
-      });
+  // Preview the selected image
+  $("#img").change(function () {
+    var input = this;
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $("#imagePreview").attr("src", e.target.result);
+        $("#imagePreviewContainer").show();
+      };
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      $("#imagePreview").attr("src", "");
+      $("#imagePreviewContainer").hide();
+    }
   });
+
+  $(document).ready(function () {
+    $("#createVenueForm").submit(function (e) {
+      e.preventDefault();
+
+      // Create a FormData object to handle file uploads
+      var formData = new FormData();
+      formData.append("venueName", $("#venueName").val());
+      formData.append("capacity", $("#capacity").val());
+      formData.append("postalcode", $("#postalcode").val());
+      formData.append("address1", $("#address1").val());
+      formData.append("address2", $("#address2").val());
+      formData.append("img", $("#img")[0].files[0]); // Get the first selected file
+      console.log("Form data:", formData);
+      // Send the formData with a POST request
+      $.ajax({
+        type: "POST",
+        url: "https://lit-fjord-36112-28d351dbba2f.herokuapp.com/create",
+        data: formData, // Use FormData, not JSON.stringify
+        contentType: false, // Let jQuery set the content type
+        processData: false, // Prevent jQuery from processing the data
+        success: function (response) {
+          // Handle success response
+
+          console.log(response);
+          alert("Venue Created successfully!");
+          window.location.href = "adminViewAllVenue.html"
+        },
+        error: function (error) {
+          // Handle error response
+          console.error(error);
+        }
+      });
+    });
+  });
+
 </script>
+
 </html>

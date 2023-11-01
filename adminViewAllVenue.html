@@ -7,9 +7,9 @@
   <meta name="keywords"
     content="Sign up and get fresh loot for popular games plus more, Our Story, Innovation in the gameindustry, Sign up and get fresh loot for popular games plus more, Game Gadgets, Download games and play free games every month.">
   <meta name="description" content="">
-  <title>adminCreateCategory</title>
+  <title>adminViewAllVenue</title>
   <link rel="stylesheet" href="nicepage.css" media="screen">
-  <link rel="stylesheet" href="adminCreateCategory.css" media="screen">
+  <link rel="stylesheet" href="adminViewAllVenue.css" media="screen">
   <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
   <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
   <meta name="generator" content="Nicepage 5.20.7, nicepage.com">
@@ -26,7 +26,7 @@
 		"logo": "images/logo-svg.svg"
 }</script>
   <meta name="theme-color" content="#478ac9">
-  <meta property="og:title" content="adminCreateCategory">
+  <meta property="og:title" content="adminViewAllVenue">
   <meta property="og:type" content="website">
   <meta data-intl-tel-input-cdn-path="intlTelInput/">
 </head>
@@ -98,7 +98,7 @@
 
             <li class="u-nav-item"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                style="padding: 10px 20px;" href="Login.html ">Logout</a>
+                style="padding: 10px 20px;" href="Login.html">Logout</a>
             </li>
           </ul>
         </div>
@@ -140,7 +140,7 @@
 
                 </li>
                 
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Login.html">Logout</a>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Login.html ">Logout</a>
                 </li>
               </ul>
             </div>
@@ -159,20 +159,26 @@
               <div class="u-layout-col">
                 <div class="u-align-center u-container-style u-layout-cell u-size-60 u-layout-cell-1">
                   <div class="u-container-layout u-container-layout-1">
-                    <h2 style="color:white; " class="u-align-left u-text u-text-1">Create Category</h2>
-                    <div class="u-clearfix u-custom-html u-custom-html-1">
-                      <style></style>
-                      <form style="text-align: left;" id="categoryForm">
-                        <label style="color:white;" for="categoryType">Category Type:</label>
-                        <input type="text" id="categoryType" name="categoryType" required="">
-                        <br>
-                        <br>
-                        <label style="color:white; " for="categoryName">Category Name:</label>
-                        <input type="text" id="categoryName" name="categoryName" required="">
-                        <br>
-                        <br>
-                        <input class="u-btn u-button-style u-btn-1" type="submit" value="Add Category">
-                      </form>
+                    <h2 style="color:white;" class="u-align-left u-text u-text-1">Current Venues</h2>
+                    <div class="u-expanded-width u-table u-table-responsive u-table-1">
+                      <table id="venueTable" class="u-table-entity">
+
+                        <thead style="background-color:#274cbd ; color:white;"
+                          class="u-custom-color-2 u-table-header u-table-header-1">
+                          <tr style="height: 46px;">
+                            <th class="u-border-2 u-border-custom-color-2 u-table-cell">Index</th>
+                            <th class="u-border-2 u-border-custom-color-2 u-table-cell">Venue Name</th>
+                            <th class="u-border-2 u-border-custom-color-2 u-table-cell">Capacity</th>
+                            <th class="u-border-2 u-border-custom-color-2 u-table-cell">Postal Code</th>
+                            <th class="u-border-2 u-border-custom-color-2 u-table-cell">Address 1</th>
+                            <th class="u-border-2 u-border-custom-color-2 u-table-cell">Address 2</th>
+                            <th class="u-border-2 u-border-custom-color-2 u-table-cell" colspan="2">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody class="u-grey-70 u-table-body u-table-body-1">
+
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
@@ -207,37 +213,48 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-  // JavaScript code to handle form submission
+  $("#createVenue").on("click", function() {
+      window.location.href = "adminCreateVenue.html";
+  })
   $(document).ready(function() {
-      $("#categoryForm").submit(function(e) {
-          e.preventDefault();
-
-          // Get form data
-          var formData = {
-              categoryName: $("#categoryName").val(),
-              categoryType: $("#categoryType").val()
-          };
-
-          // Send AJAX POST request with JSON data
-          $.ajax({
-              type: "POST",
-              url: "https://lit-savannah-80061-5f9c3cd96ad3.herokuapp.com/create",
-              //url: "/fyp/category/create",
-              contentType: "application/json", // Set Content-Type header
-              data: JSON.stringify(formData),
-              success: function(response) {
-                  // Handle success response
-                  alert("Category Added");
-                  console.log(response);
-                  window.location.href = "adminViewAllCategory.html";
-                  
-              },
-              error: function(error) {
-                  // Handle error response
-                  console.error(error);
+      $.ajax({
+          type: "GET",
+          url: "https://lit-fjord-36112-28d351dbba2f.herokuapp.com/getAll",
+          dataType: "json",
+          success: function(response) {
+              if (response.code === 200) {
+                  var venueData = response.data;
+                  var tableBody = $("#venueTable tbody");
+                  for (var i = 0; i < venueData.length; i++) {
+                      var venue = venueData[i];
+                      var row = $("<tr>");
+                      row.append($("<td>").text(venue.venueId));
+                      row.append($("<td>").text(venue.venueName));
+                      row.append($("<td>").text(venue.capacity));
+                      row.append($("<td>").text(venue.postal_Code));
+                      row.append($("<td>").text(venue.address1));
+                      row.append($("<td>").text(venue.address2));
+                      row.append($("<td>").text(venue.status));
+  
+                      var button = $("<button style='width:100%; background-color:black; color:white; border:0px;'>").text("View Venue");
+                      button.on("click", function() {
+                          var venuev = $(this).closest("tr").find("td:eq(0)").text();
+                          window.location.href = "adminViewVenue.html?venueId=" + venuev;
+                      });
+  
+                      row.append($("<td>").append(button));
+                      tableBody.append(row);
+                  }
+              } else {
+                  console.error("Failed to fetch venue data.");
+                  console.error(response); // Log the entire response for debugging
               }
-          });
+          },
+          error: function(error) {
+              console.error("Error fetching venue data", error);
+          }
       });
   });
+  
 </script>
 </html>
