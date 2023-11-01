@@ -60,22 +60,24 @@
                 href="eoDashboard.html" style="padding: 10px 20px;">Home</a>
             </li>
             <li class="u-nav-item"><a
-              class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-              style="padding: 10px 20px;" href="eoViewAllEvents.html">Events</a>
-            <div class="u-nav-popup">
-              <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
-                <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoCreateEvent.html">Create Events</a>
-                </li>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoViewAllEvents.html">View All Events</a>
-                </li>
-              </ul>
-            </div>
-          </li>
+                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                style="padding: 10px 20px;" href="eoViewAllEvents.html">Events</a>
+              <div class="u-nav-popup">
+                <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoCreateEvent.html">Create
+                      Events</a>
+                  </li>
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoViewAllEvents.html">View
+                      All Events</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
             <li class="u-nav-item"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
                 href="eoViewAllMarketing.html" style="padding: 10px 20px;">Marketing</a>
             </li>
-            
+
             <li class="u-nav-item"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
                 style="padding: 10px 20px;">Logout</a>
@@ -90,20 +92,22 @@
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="eoDashboard.html">Home</a>
                 </li>
                 <li class="u-nav-item"><a
-                  class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                  style="padding: 10px 20px;" href="eoViewAllEvents.html">Events</a>
-                <div class="u-nav-popup">
-                  <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
-                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoCreateEvent.html">Create Events</a>
-                    </li>
-                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoViewAllEvents.html">View All Events</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
+                    class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                    style="padding: 10px 20px;" href="eoViewAllEvents.html">Events</a>
+                  <div class="u-nav-popup">
+                    <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
+                      <li class="u-nav-item"><a class="u-button-style u-nav-link u-white"
+                          href="eoCreateEvent.html">Create Events</a>
+                      </li>
+                      <li class="u-nav-item"><a class="u-button-style u-nav-link u-white"
+                          href="eoViewAllEvents.html">View All Events</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="eoViewAllMarketing.html">Marketing</a>
                 </li>
-               
+
                 <li class="u-nav-item"><a class="u-button-style u-nav-link">Logout</a>
                 </li>
               </ul>
@@ -122,88 +126,90 @@
       <div class="u-clearfix u-custom-html u-expanded-width u-custom-html-1">
         <style></style>
         <form id="eventForm" enctype="multipart/form-data">
-            
-
-            <label for="eventId">Event Id:</label>
-            <input type="text" id="eventId" name="eventId" readonly><br><br>
-
-            <label for="eventName">Event Name:</label>
-            <input type="text" id="eventName" name="eventName"><br><br>
-
-            <label for="eventDateTime">Event Date Time:</label>
-            <input type="dateTime-local" id="eventDateTime" name="eventDateTime"><br><br>
-
-            <label for="eventDescription">Event Description:</label>
-            <input type="text" id="eventDescription" name="eventDescription"><br><br>
-
-            <label for="eventLaunchedDate">Event Launched Date:</label>
-            <input type="dateTime-local" id="eventLaunchedDate" name="eventLaunchedDate"><br><br>
-        
-
-        <p class="u-align-left u-text u-text-4">Select Venue</p>
 
 
-        <label for="venueId">Venue ID NAME:</label>
-            <select id="venueIdDropdown" name="venueIdd" required>
-                <option value="">Select Venue Id</option>
+          <label for="eventId">Event Id:</label>
+          <input type="text" id="eventId" name="eventId" readonly><br><br>
 
-            </select>
-            <br><br>
-            <label for="venueId">Venue Id:</label>
-            <input type="text" id="venueId" name="venueId" readonly><br><br>
+          <label for="eventName">Event Name:</label>
+          <input type="text" id="eventName" name="eventName"><br><br>
 
+          <label for="eventDateTime">Event Date Time:</label>
+          <input type="dateTime-local" id="eventDateTime" name="eventDateTime"><br><br>
 
-            <label for="venueName">Venue Name:</label>
-            <input type="text" id="venueName" name="venueName"><br><br>
+          <label for="eventDescription">Event Description:</label>
+          <input type="text" id="eventDescription" name="eventDescription"><br><br>
 
-            <label for="capacity">Capacity:</label>
-            <input type="text" id="capacity" name="capacity"><br><br>
-
-            <label for="postalcode">Postal Code:</label>
-            <input type="text" id="postalcode" name="postalcode"><br><br>
-
-            <label for="address1">Address1:</label>
-            <input type="text" id="address1" name="address1"><br><br>
-
-            <label for="address2">Address2:</label>
-            <input type="text" id="address2" name="address2"><br><br>
-
-        <p class="u-align-left u-text u-text-5">Select Category</p>
+          <label for="eventLaunchedDate">Event Launched Date:</label>
+          <input type="dateTime-local" id="eventLaunchedDate" name="eventLaunchedDate"><br><br>
 
 
-        <label for="categoryId">Category Id:</label>
-            <input type="text" id="categoryIdInput" name="categoryId" readonly><br><br>
+          <p class="u-align-left u-text u-text-4">Select Venue</p>
 
 
-            <label for="categoryType">Category Type:</label>
-            <input type="text" id="categoryTypeInput" name="categoryType">
+          <label for="venueId">Venue ID NAME:</label>
+          <select id="venueIdDropdown" name="venueIdd" required>
+            <option value="">Select Venue Id</option>
 
-            <select id="categoryIdDropdown" name="categoryTypee" required>
-                <option value="">Select Category Type</option>
-            </select>
-            <br><br>
+          </select>
+          <br><br>
+          <label for="venueId">Venue Id:</label>
+          <input type="text" id="venueId" name="venueId" readonly><br><br>
 
 
-            <label for="categoryName">Category Name:</label>
-            <input type="text" id="categoryNameInput" name="categoryName">
+          <label for="venueName">Venue Name:</label>
+          <input type="text" id="venueName" name="venueName"><br><br>
 
-            <select id="categoryIdDropdown1" name="categoryNamee" required>
-                <option value="">Select Category Name</option>
-            </select><br><br>
+          <label for="capacity">Capacity:</label>
+          <input type="text" id="capacity" name="capacity"><br><br>
 
-            <label for="img">Upload New Image:</label>
-            <input type="file" id="img" name="img" accept="image/*"><br><br>
-            
+          <label for="postalcode">Postal Code:</label>
+          <input type="text" id="postalcode" name="postalcode"><br><br>
 
-            <!-- Display the current image -->
-            <img id="currentImg" src="" alt="Current Event Image" style="max-width: 400px; max-height: 400px;"><br><br>
-            <img id="newImgPreview" src="" alt="New Image Preview"style="max-width: 400px; max-height: 400px;"><br><br>
-            <br><br>
+          <label for="address1">Address1:</label>
+          <input type="text" id="address1" name="address1"><br><br>
 
-      </form>
+          <label for="address2">Address2:</label>
+          <input type="text" id="address2" name="address2"><br><br>
+
+          <p class="u-align-left u-text u-text-5">Select Category</p>
+
+
+          <label for="categoryId">Category Id:</label>
+          <input type="text" id="categoryIdInput" name="categoryId" readonly><br><br>
+
+
+          <label for="categoryType">Category Type:</label>
+          <input type="text" id="categoryTypeInput" name="categoryType">
+
+          <select id="categoryIdDropdown" name="categoryTypee" required>
+            <option value="">Select Category Type</option>
+          </select>
+          <br><br>
+
+
+          <label for="categoryName">Category Name:</label>
+          <input type="text" id="categoryNameInput" name="categoryName">
+
+          <select id="categoryIdDropdown1" name="categoryNamee" required>
+            <option value="">Select Category Name</option>
+          </select><br><br>
+
+          <label for="img">Upload New Image:</label>
+          <input type="file" id="img" name="img" accept="image/*"><br><br>
+
+
+          <!-- Display the current image -->
+          <img id="currentImg" src="" alt="Current Event Image" style="max-width: 400px; max-height: 400px;"><br><br>
+          <img id="newImgPreview" src="" alt="New Image Preview" style="max-width: 400px; max-height: 400px;"><br><br>
+          <br><br>
+
+        </form>
       </div>
-      <button style="background-color: #478ac9;color: #ffffff; border: none;padding: 10px 30px;" id="update">Update</button>
-      <button style="background-color: #478ac9;color: #ffffff; border: none;padding: 10px 30px;" id="delete">Suspend</button>
+      <button style="background-color: #478ac9;color: #ffffff; border: none;padding: 10px 30px;"
+        id="update">Update</button>
+      <button style="background-color: #478ac9;color: #ffffff; border: none;padding: 10px 30px;"
+        id="delete">Suspend</button>
       <input type="text" id="emailtext" name="email" required hidden><br><br>
     </div>
   </section>
@@ -250,7 +256,23 @@
     const venueidfromURL = queryParams1.get("venueId");
     console.log(venueidfromURL);
 
+    $("#img").on("change", function () {
+      var file = this.files[0];
+      if (file) {
+        console.log("New image selected:", file);
+        var reader = new FileReader();
 
+        reader.onload = function (e) {
+          // Update the src attribute of the preview image with the new image data
+          $("#newImgPreview").attr("src", e.target.result);
+        };
+
+        reader.readAsDataURL(file);
+      } else {
+        // Clear the preview image if no file is selected
+        $("#newImgPreview").attr("src", "");
+      }
+    });
 
     $.ajax({
       type: "GET",
@@ -277,8 +299,10 @@
           $("#eventDateTime").val(formattedEventDateTime);
           $("#eventDescription").val(event.eventDescription);
           $("#eventLaunchedDate").val(formattedEventLaunchedDate);
-          const imageUrl = "/AWS_FYP_PYTHON/microservices/" + event.img;
+          var currentImgFileName = event.img;
+          const imageUrl =  "https://firebasestorage.googleapis.com/v0/b/fyp2023-s3-03.appspot.com/o/events%2F" + currentImgFileName +"?alt=media";
           $("#currentImg").attr("src", imageUrl);
+          console.log("currentImg:", imageUrl);
         } else {
           console.error("Failed to fetch event data.", response.message);
         }
@@ -553,7 +577,7 @@
       var updatedEventDateTime = $("#eventDateTime").val();
       var updatedEventDescription = $("#eventDescription").val();
       var updatedEventLaunchedDate = $("#eventLaunchedDate").val();
-      var updatedImg = $("#img")[0].files[0];
+      var updatedImg = $("#img")[0].files[0] || currentImgFileName;
 
       var formattedEventDateTime = new Date(updatedEventDateTime).toISOString().slice(0, 19).replace('T', ' ');
       var formattedEventLaunchedDate = new Date(updatedEventLaunchedDate).toISOString().slice(0, 19).replace('T', ' ');
