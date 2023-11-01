@@ -333,14 +333,16 @@
     function populateEvents(eventsData) {
       // Get the event container element
       var eventContainer = document.getElementById("event-container");
-
+      
       // Iterate through the first 4 events in the data and populate them
       for (let i = 0; i < Math.min(4, eventsData.length); i++) {
         var event = eventsData[i];
+        const imageUrl = "https://firebasestorage.googleapis.com/v0/b/fyp2023-s3-03.appspot.com/o/events%2F" + event.img + "?alt=media";
+
         var eventHtml = `
     <div class="u-container-style u-list-item u-repeater-item">
         <div class="u-container-layout u-similar-container u-container-layout-1">
-          <img src="${event.img}" alt="" class="u-image u-image-default u-preserve-proportions u-image-1">
+          <img src="${imageUrl}" alt="" class="u-image u-image-default u-preserve-proportions u-image-1">
           <h2 class="u-custom-font u-text u-text-2">${event.eventName}</h2>
           <h5 class="u-custom-font u-font-pt-sans u-text u-text-3">${event.eventDateTime}</h5>
           <a href="${event.link}" class="u-active-white u-border-none u-btn u-button-style u-hover-white u-palette-1-base u-text-active-palette-5-dark-3 u-text-body-alt-color u-text-hover-palette-5-dark-3 u-btn-1">more</a>
