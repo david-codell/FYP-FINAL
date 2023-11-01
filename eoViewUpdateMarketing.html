@@ -127,12 +127,12 @@
         <form id="viewmarketingform">
           <div class="formcontainer">
             <div class="container">
-              
+
               <div class="form-group">
                 <label for="eventName"><strong>Event Name:</strong></label>
                 <input type="text" name="eventName" required id="eventName" />
               </div>
-              
+
               <div class="form-group">
                 <label for="text"><strong>Marketing Name:</strong></label>
                 <input type="text" name="marketingName" required id="marketingName" />
@@ -161,17 +161,22 @@
               <input type="text" name="marketingId" required id="marketingId" readonly hidden />
             </div>
             <div class="form-group">
-                
-              <input type="text" name="eventId" required id="eventId" readonly hidden/>
-            </div>
-        </form>
 
-      </div>
-      <button style="background-color: #478ac9;color: #ffffff; border: none;padding: 10px 30px;" id="update" >Edit Details</button>
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      <button style="background-color: #478ac9;color: #ffffff; border: none;padding: 10px 30px;" id="delete">Suspend Campaign</button>
+              <input type="text" name="eventId" required id="eventId" readonly hidden />
+            </div>
+            
+            <button style="background-color: #478ac9;color: #ffffff; border: none;padding: 10px 30px;" id="update">Edit
+              Details</button>
+              
+              
+        </form>
+        
+      </div><br>
+      <button style="background-color: #478ac9;color: #ffffff; border: none;padding: 10px 30px;" id="delete">Suspend
+        Campaign</button>
+      
     </div>
-     
+
     </div>
   </section>
 
@@ -198,159 +203,205 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="config.js"></script>
-        <script>
-          $("#homepage").on("click", function () {
-            window.location.href = "viewAllMarketing.html";
-          });
+<script>
+  $("#homepage").on("click", function () {
+    window.location.href = "viewAllMarketing.html";
+  });
 
-          $(document).ready(function () {
-            // Fetch Event data and populate the form
-            var sessionmarketing = sessionStorage.getItem("marketingId");
-            var marketingidLabel = document.getElementById("marketingId");
-            marketingidLabel.textContent = sessionmarketing;
+  $(document).ready(function () {
+    // Fetch Event data and populate the form
+    var sessionmarketing = sessionStorage.getItem("marketingId");
+    var marketingidLabel = document.getElementById("marketingId");
+    marketingidLabel.textContent = sessionmarketing;
 
-            const queryParams = new URLSearchParams(window.location.search);
-            const marketingidfromURL = queryParams.get("marketingId");
-            console.log(marketingidfromURL);
+    const queryParams = new URLSearchParams(window.location.search);
+    const marketingidfromURL = queryParams.get("marketingId");
+    console.log(marketingidfromURL);
 
-            $.ajax({
-              type: "GET",
-              url: categoryUrls[currentEnvironment]["marketing"] + "getMarketingById?marketingId=" + marketingidfromURL,
-              dataType: "json",
-              success: function (response) {
-                if (response.code === 200) {
-                  
-                  var marketing = response.data[0];
+    // Add a change event listener to the file input
+    $("#img").on("change", function () {
+      var file = this.files[0];
+      if (file) {
+        console.log("New image selected:", file);
+        var reader = new FileReader();
 
-                  // Parse and format the dateStart
-                  var dateStart = new Date(marketing.dateStart);
-                  var formattedDateStart = dateStart.toISOString().slice(0, 10); // Convert to "yyyy-MM-dd" format
+        reader.onload = function (e) {
+          // Update the src attribute of the preview image with the new image data
+          $("#newImgPreview").attr("src", e.target.result);
+        };
 
-                  // Parse and format the dateEnd
-                  var dateEnd = new Date(marketing.dateEnd);
-                  var formattedDateEnd = dateEnd.toISOString().slice(0, 10); // Convert to "yyyy-MM-dd" format
-                  // Populate the form fields with event data
-                  $("#eventId").val(marketing.eventId);
-                  $("#eventName").val(marketing.eventName);
-                  $("#marketingId").val(marketing.marketingId);
-                  $("#marketingName").val(marketing.marketingName);
-                  $("#dateStart").val(formattedDateStart);
-                  $("#dateEnd").val(formattedDateEnd);
-                  const imageUrl = "/AWS_FYP_PYTHON/microservices/" + marketing.img;
-                  $("#currentImg").attr("src", imageUrl);
-                } else {
-                  // Handle error or empty response
-                  console.error("Failed to fetch marketing data.", response.message);
-                }
-              },
-              error: function (xhr, status, error) {
-                console.error("Error fetching marketing data:", error);
-              }
+        reader.readAsDataURL(file);
+      } else {
+        // Clear the preview image if no file is selected
+        $("#newImgPreview").attr("src", "");
+      }
+    });
 
-            });
-             // Add a change event listener to the file input
-             $("#img").on("change", function() {
-              var file = this.files[0];
-              if (file) {
-                  console.log("New image selected:", file);
-                  var reader = new FileReader();
+    $.ajax({
+      type: "GET",
+      url: categoryUrls[currentEnvironment]["marketing"] + "getMarketingById?marketingId=" + marketingidfromURL,
+      dataType: "json",
+      success: function (response) {
+        if (response.code === 200) {
 
-                  reader.onload = function(e) {
-                      // Update the src attribute of the preview image with the new image data
-                      $("#newImgPreview").attr("src", e.target.result);
-                  };
+          var marketing = response.data[0];
 
-                  reader.readAsDataURL(file);
-              } else {
-                  // Clear the preview image if no file is selected
-                  $("#newImgPreview").attr("src", "");
-              }
-          });
+          // Parse and format the dateStart
+          var dateStart = new Date(marketing.dateStart);
+          var formattedDateStart = dateStart.toISOString().slice(0, 10); // Convert to "yyyy-MM-dd" format
 
-          $("#update").on("click", function () {
-            var updatedMarketingId = $("#marketingId").val();
-            var updatedEventId = $("#eventId").val();
-            var updatedEventName = $("#eventName").val();
-            var updatedMarketingName = $("#marketingName").val();
-            var updatedDateStart = $("#dateStart").val();
-            var updatedDateEnd = $("#dateEnd").val();
-            var updatedImg = $("#img")[0].files[0];
+          // Parse and format the dateEnd
+          var dateEnd = new Date(marketing.dateEnd);
+          var formattedDateEnd = dateEnd.toISOString().slice(0, 10); // Convert to "yyyy-MM-dd" format
+          // Populate the form fields with event data
+          $("#eventId").val(marketing.eventId);
+          $("#eventName").val(marketing.eventName);
+          $("#marketingId").val(marketing.marketingId);
+          $("#marketingName").val(marketing.marketingName);
+          $("#dateStart").val(formattedDateStart);
+          $("#dateEnd").val(formattedDateEnd);
+          var currentImgFileName = marketing.img;
+          const imageUrl = "https://firebasestorage.googleapis.com/v0/b/fyp2023-s3-03.appspot.com/o/marketing%2F" + currentImgFileName + "?alt=media";
+          $("#currentImg").attr("src", imageUrl);
+          console.log("currentImg:", imageUrl);
+        } else {
+          // Handle error or empty response
+          console.error("Failed to fetch marketing data.", response.message);
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error("Error fetching marketing data:", error);
+      }
 
-            var formattedDateStart = new Date(updatedDateStart).toISOString().slice(0, 10);
-            var formattedDateEnd = new Date(updatedDateEnd).toISOString().slice(0, 10);
-         
-            console.log("Updated Image:", updatedImg);
+    });
+    // Add a change event listener to the file input
+    $("#img").on("change", function () {
+      var file = this.files[0];
+      if (file) {
+        console.log("New image selected:", file);
+        var reader = new FileReader();
 
-            var formData = new FormData();
-            formData.append("marketingId", updatedMarketingId);
-            formData.append("eventId", updatedEventId);
-            formData.append("eventName", updatedEventName);
-            formData.append("marketingName", updatedMarketingName);
-            formData.append("dateStart", formattedDateStart);
-            formData.append("dateEnd", formattedDateEnd);
-            formData.append("img", updatedImg);
-            
-            console.log(formData);
-            $.ajax({
-                type: "POST",
-                url: categoryUrls[currentEnvironment]["marketing"] + "updateMarketingById",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    console.log(response.code);
-                    if (response.code === 200) {
-                        alert("Marketing Updated successfully!");
-                        window.location.href = "eoViewAllMarketing.html";
-                        $("#message").text("Marketing data updated successfully.");
-                    } else {
-                        $("#message").text("Failed to update marketing data.");
-                    }
-                },
-                error: function(xhr, status, error) {
-                    // Handle AJAX request failure
-                    console.error("Error updating marketing data:", error);
-    
-                    // You can provide more detailed error messages based on the error status
-                    if (xhr.status === 400) {
-                        $("#message").text("Bad request: The server did not accept the data.");
-                    } else if (xhr.status === 404) {
-                        $("#message").text("Resource not found on the server.");
-                    } else if (xhr.status === 500) {
-                        $("#message").text("Internal server error. Please try again later.");
-                    } else {
-                        $("#message").text("An unknown error occurred: " + error);
-                    }
-                }
-            });
-        });
+        reader.onload = function (e) {
+          // Update the src attribute of the preview image with the new image data
+          $("#newImgPreview").attr("src", e.target.result);
+        };
 
-        $("#delete").on("click", function () {
-          if (confirm("Are you sure you want to delete this event?")) {
-              var eventid = $("#eventId").text(); // Use .text() to get the content
-              $.ajax({
-                  type: "DELETE",
-                  url: categoryUrls[currentEnvironment]["marketing"] + "suspend?marketingId=" + marketingidfromURL, // Use eventidLabel.textContent
-                  dataType: "json",
-                  success: function (deleteResponse) {
-                      if (deleteResponse.code === 200) {
-                          // Handle success - for example, redirect to a different page or show a success message
-                          alert("Marketing deleted successfully!");
-                          window.location.href = "eoViewAllMarketing.html";
-                      } else {
-                          // Handle other status codes or errors
-                          alert("Failed to delete marketing. " + deleteResponse.message);
-                      }
-                  },
-                  error: function (error) {
-                      // Handle Ajax error
-                      alert("An error occurred while making the request: " + error.statusText);
-                  }
-              });
+        reader.readAsDataURL(file);
+      } else {
+        // Clear the preview image if no file is selected
+        $("#newImgPreview").attr("src", "");
+      }
+    });
+
+
+
+
+
+  });
+  $("#delete").on("click", function () {
+    const queryParams = new URLSearchParams(window.location.search);
+    const marketingidfromURL = queryParams.get("marketingId");
+    console.log(marketingidfromURL);
+    if (confirm("Are you sure you want to delete this event?")) {
+      var eventid = $("#eventId").text(); // Use .text() to get the content
+      $.ajax({
+        type: "DELETE",
+        url: categoryUrls[currentEnvironment]["marketing"] + "suspend?marketingId=" + marketingidfromURL, // Use eventidLabel.textContent
+        dataType: "json",
+        success: function (deleteResponse) {
+          if (deleteResponse.code === 200) {
+            // Handle success - for example, redirect to a different page or show a success message
+            alert("Marketing deleted successfully!");
+            window.location.href = "eoViewAllMarketing.html";
+          } else {
+            // Handle other status codes or errors
+            alert("Failed to delete marketing. " + deleteResponse.message);
           }
+        },
+        error: function (error) {
+          // Handle Ajax error
+          alert("An error occurred while making the request: " + error.statusText);
+        }
       });
+    }
+  });
+  $("#viewmarketingform").on("submit", async function (e) {
+    e.preventDefault();
+    var updatedMarketingId = $("#marketingId").val();
+    var updatedEventId = $("#eventId").val();
+    var updatedEventName = $("#eventName").val();
+    var updatedMarketingName = $("#marketingName").val();
+    var updatedDateStart = $("#dateStart").val();
+    var updatedDateEnd = $("#dateEnd").val();
+    var updatedImg = $("#img")[0].files[0] || currentImgFileName;
 
-        });
+    var formattedDateStart = new Date(updatedDateStart).toISOString().slice(0, 10);
+    var formattedDateEnd = new Date(updatedDateEnd).toISOString().slice(0, 10);
 
-        </script>
+    console.log("Updated Image:", updatedImg);
+
+    var formData = new FormData();
+    formData.append("marketingId", updatedMarketingId);
+    formData.append("eventId", updatedEventId);
+    formData.append("eventName", updatedEventName);
+    formData.append("marketingName", updatedMarketingName);
+    formData.append("dateStart", formattedDateStart);
+    formData.append("dateEnd", formattedDateEnd);
+    formData.append("img", updatedImg);
+
+    console.log(formData);
+    try {
+      const response = await $.ajax({
+        type: "POST",
+        url: categoryUrls[currentEnvironment]["marketing"] + "updateMarketingById",
+        data: formData,
+        contentType: false,
+        processData: false
+      });
+      if (response) {
+        // Handle success response
+        console.log(response);
+        alert("Marketing updated successfully!");
+        window.location.href = "eoViewAllMarketing.html"
+      }
+    } catch (error) {
+      // Handle error response
+      console.error(error);
+    }
+    /*$.ajax({
+      type: "POST",
+      url: categoryUrls[currentEnvironment]["marketing"] + "updateMarketingById",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+        console.log(response.code);
+        if (response.code === 200) {
+          alert("Marketing Updated successfully!");
+          window.location.href = "eoViewAllMarketing.html";
+          $("#message").text("Marketing data updated successfully.");
+        } else {
+          $("#message").text("Failed to update marketing data.");
+        }
+      },
+      error: function (xhr, status, error) {
+        // Handle AJAX request failure
+        console.error("Error updating marketing data:", error);
+
+        // You can provide more detailed error messages based on the error status
+        if (xhr.status === 400) {
+          $("#message").text("Bad request: The server did not accept the data.");
+        } else if (xhr.status === 404) {
+          $("#message").text("Resource not found on the server.");
+        } else if (xhr.status === 500) {
+          $("#message").text("Internal server error. Please try again later.");
+        } else {
+          $("#message").text("An unknown error occurred: " + error);
+        }
+      }
+    });*/
+  });
+
+</script>
+
 </html>
