@@ -174,11 +174,12 @@
   <script src="config.js"></script>
 
   <script>
-    var session = sessionStorage.getItem("user_type")
-    console.log(sessionStorage);
-    if (session !== "1" && session !== "2" && session !== "3") {
-      sessionStorage.setItem("user_type", "Unregistered");
-    }
+        var session = sessionStorage.getItem("user_type")
+        console.log(sessionStorage);
+        if (session !== null) {
+            sessionStorage.clear();
+            sessionStorage.setItem("user_type", "Unregistered");
+        }
 
     $(document).ready(function () {
       // Submit the login form
