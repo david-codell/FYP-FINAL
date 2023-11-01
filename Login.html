@@ -174,9 +174,9 @@
   <script src="config.js"></script>
 
   <script>
-    var session = sessionStorage.getItem("user_type")
-    console.log(sessionStorage);
-    if (session !== null) {
+        var session = sessionStorage.getItem("user_type")
+        console.log(sessionStorage);
+        if (session !== null) {
             sessionStorage.clear();
             sessionStorage.setItem("user_type", "Unregistered");
         }

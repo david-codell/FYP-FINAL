@@ -260,8 +260,8 @@
                                     url:"https://lit-savannah-80061-5f9c3cd96ad3.herokuapp.com/suspend?categoryId=" + categoryIdv,
                                     //url:"/fyp/category/suspend?categoryId=" + categoryIdv,
                                     dataType: "json",
-                                    success: function(response) {
-                                        if (response.code === 200) {
+                                    success: function(response, textStatus, jqXHR) {
+                                        if (jqXHR.code === 200) {
                                         // Handle success - for example, update the UI to reflect the status change
                                             alert("Category suspended successfully!");
                                         // You can add more UI updates here if needed

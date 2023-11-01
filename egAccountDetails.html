@@ -231,10 +231,10 @@
                       role="tabpanel" aria-labelledby="link-tab-14b7">
                       <div class="u-container-layout  u-container-layout-3">
                         <h4>Bookings</h4>
-                        <div style="width: 100%;"class="custom-expanded u-table u-table-responsive u-table-1">
+                        <div style="width: 100%;" class="custom-expanded u-table u-table-responsive u-table-1">
                           <table id="bookingHistoryTable" class="u-table-entity">
-                          
-                            <thead  class="u-black u-table-header u-table-header-1">
+
+                            <thead class="u-black u-table-header u-table-header-1">
                               <tr style="height: 45px;">
                                 <th class="u-border-1 u-border-black u-table-cell">Booking Id </th>
                                 <th class="u-border-1 u-border-black u-table-cell">Category </th>
@@ -253,6 +253,8 @@
                       aria-labelledby="link-tab-2917">
                       <div class="u-container-layout u-container-layout-4">
                         <h4 class="u-text u-text-default u-text-2">Be The First To Review This Product!</h4>
+                        <form id="preferenceForm"></form>
+                        <div id="selectedInterests"></div>
                         <p class="u-text u-text-default u-text-3">Sample text. Click to select the text box. Click again
                           or double click to start editing the text.</p>
                         <a href="" class="u-btn u-button-style u-btn-2">Update preferences</a>
@@ -297,45 +299,45 @@
     const urlParam = new URLSearchParams(queryString);
     const selectedId = sessionStorage.getItem("email");
     $.ajax({
-    type: "GET",
-    url: categoryUrls[currentEnvironment]["booking"] + "booking/getBookingByEmail1?email="+selectedId,
-    dataType: "json",
-    success: function (response) {
-      
-      if (response.code === 200) {
-        var bookingHistory = response.data;
+      type: "GET",
+      url: categoryUrls[currentEnvironment]["booking"] + "booking/getBookingByEmail1?email=" + selectedId,
+      dataType: "json",
+      success: function (response) {
 
-        // Loop through the user data and populate the table rows
-        var tableBody = $("#bookingHistoryTable tbody");
-        for (var i = 0; i < bookingHistory.length; i++) {
-          var bookingHistoryData = bookingHistory[i];
-          var row = $("<tr>");
-          row.append($("<td style='margin:0px; padding:0px;'>").text(bookingHistoryData.bookingId));
-          row.append($("<td style='margin:0px; padding:0px;'>").text(bookingHistoryData.eventId).hide());
-          row.append($("<td style='margin:0px; padding:0px;'>").text(bookingHistoryData.venueId).hide());
-          row.append($("<td style='margin:0px; padding:0px;'>").text(bookingHistoryData.cat));
-          row.append($("<td style='margin:0px; padding:0px;'>").text(bookingHistoryData.totalprice));
-          var button = $("<button style='margin:0px; width:100%;' class='u-btn u-button-style u-btn-1'>").text("S E L E C T");
-          button.on("click", function () {
+        if (response.code === 200) {
+          var bookingHistory = response.data;
 
-            var venuebookingId = $(this).closest("tr").find("td:eq(0)").text();
-            // Redirect to another page and pass the email as a query parameter
-            window.location.href = "viewBooking.html";
-          });
-          // Add more table cells for other user attributes
-          // Add a button to each row   
-          row.append($("<td style='margin:0px; padding:2px;'>").append(button));
-          tableBody.append(row);
+          // Loop through the user data and populate the table rows
+          var tableBody = $("#bookingHistoryTable tbody");
+          for (var i = 0; i < bookingHistory.length; i++) {
+            var bookingHistoryData = bookingHistory[i];
+            var row = $("<tr>");
+            row.append($("<td style='margin:0px; padding:0px;'>").text(bookingHistoryData.bookingId));
+            row.append($("<td style='margin:0px; padding:0px;'>").text(bookingHistoryData.eventId).hide());
+            row.append($("<td style='margin:0px; padding:0px;'>").text(bookingHistoryData.venueId).hide());
+            row.append($("<td style='margin:0px; padding:0px;'>").text(bookingHistoryData.cat));
+            row.append($("<td style='margin:0px; padding:0px;'>").text(bookingHistoryData.totalprice));
+            var button = $("<button style='margin:0px; width:100%;' class='u-btn u-button-style u-btn-1'>").text("S E L E C T");
+            button.on("click", function () {
+
+              var venuebookingId = $(this).closest("tr").find("td:eq(0)").text();
+              // Redirect to another page and pass the email as a query parameter
+              window.location.href = "viewBooking.html";
+            });
+            // Add more table cells for other user attributes
+            // Add a button to each row   
+            row.append($("<td style='margin:0px; padding:2px;'>").append(button));
+            tableBody.append(row);
+          }
+        } else {
+          // Handle error or empty response
+          console.error("Failed to fetch user data.");
         }
-      } else {
-        // Handle error or empty response
-        console.error("Failed to fetch user data.");
+      },
+      error: function (error) {
+        console.error("Error fetching user data:", error);
       }
-    },
-    error: function (error) {
-      console.error("Error fetching user data:", error);
-    }
-  });
+    });
     $.ajax({
       type: "GET",
       url: categoryUrls[currentEnvironment]["user"] + "getByEmail2?email=" + selectedId, // Send eventgoerId as a query parameter  
@@ -373,10 +375,173 @@
       }
     });
 
-  
-  
+    var eventGoerId = sessionStorage.getItem("eventgoerId");
+    var selectedInterestsDiv = $("#selectedInterests"); // Select the div for selected interests
+    var selectedInterestsArray = []; // Array to store selected checkbox values
+    var totalRequests = 0;
+    var successfulRequests = 0;
+    var userPreferencesExist = false; // Flag to track if user preferences exist
 
-});
+    populateCheckBox();
+    getUserPreference();
+
+
+
+    // Handle form submission
+    $("#preferenceForm").on('submit', function (e) {
+      e.preventDefault(); // Prevent the default form submission
+      // Iterate through selectedInterestsArray and perform AJAX requests
+
+      // Check if user preferences exist
+      if (userPreferencesExist) {
+        if (selectedInterestsArray.length == 0) {
+          deleteUserPreference();
+        } else {
+          deleteUserPreference(function () {
+            createNewPreferences();
+          });
+        }
+      } else {
+        createNewPreferences();
+      }
+
+    });
+
+    //Function to create checkbox based on Category
+    function populateCheckBox() {
+      // Send an ajax request to get the data for the checkboxes
+      $.get(categoryUrls[currentEnvironment]["category"] + "getAll", function (response) {
+        if (response.code === 200) {
+          var userData = response.data;
+          var prefForm = $("#preferenceForm");
+
+          userData.forEach(function (a) {
+            var catDiv = $("<div>").attr("id", a.categoryType);
+
+            if ($("#" + a.categoryType).length === 0) {
+              prefForm.append($("<h2>").text(a.categoryType)).append(catDiv);
+            }
+
+            var catDiv2 = $("#" + a.categoryType);
+            var checkbox = $("<input>").attr("type", "checkbox").attr("name", a.categoryName).attr("value", a.categoryId);
+            var label = $("<label>").text(a.categoryName);
+
+            // Attach a click event handler to the checkbox
+            checkbox.on('click', function () {
+              selectedInterestsArray = []; // Clear the array
+              // Find all checked checkboxes and collect their values
+              $('input[type="checkbox"]:checked').each(function () {
+                selectedInterestsArray.push($(this).val());
+              });
+              console.log("Array:" + selectedInterestsArray);
+              // Display the selected interests in the selectedInterestsDiv
+              selectedInterestsDiv.text("Selected Interests: " + selectedInterestsArray.join(', '));
+            });
+
+            catDiv2.append("&emsp;").append(checkbox).append(label);
+
+            if (userData.indexOf(a) % 2 === 1) {
+              catDiv2.append("<br>");
+            }
+          });
+
+          var button = $("<input>").attr("type", "submit").attr("value", "Update preferences").attr("class","u-btn u-button-style u-btn-2");
+          prefForm.append("<br><br>").append(button).append("<br>");
+
+          getUserPreference();
+
+        } else {
+          console.error("Failed to fetch user data.");
+        }
+      }).fail(function (error) {
+        console.error("Error fetching user data:", error);
+      });
+    }
+
+
+
+    function getUserPreference() {
+      $.get(categoryUrls[currentEnvironment]["preference"] + "getPreferenceByEventGoerId?eventGoerId=" + eventGoerId, function (response) {
+        if (response.code === 200) {
+          var preferences = response.data;
+          console.log(preferences);
+
+          // Set the flag based on whether preferences exist
+          userPreferencesExist = preferences.length > 0;
+          // Populate the selectedInterestsArray with the user's preferences
+          selectedInterestsArray = preferences.map(function (preference) {
+            return preference.categoryId;
+          });
+          console.log("1st Array: " + selectedInterestsArray);
+          // Iterate through the preferences and select checkboxes based on categoryId
+          preferences.forEach(function (preference) {
+            var categoryId = preference.categoryId;
+            $('input[type="checkbox"][value="' + categoryId + '"]').prop('checked', true);
+          });
+        }
+      });
+    }
+
+    function deleteUserPreference(callback) {
+      $.ajax({
+        type: "DELETE",
+        url: categoryUrls[currentEnvironment]["preference"] + "suspend?eventGoerId=" + eventGoerId,
+        dataType: "json",
+        success: function (response, textStatus, jqXHR) {
+          if (jqXHR.status === 200) {
+            console.log("Preferences deleted!");
+            if (callback) {
+              callback();
+            }
+          } else {
+            alert("Failed to suspend category. " + response.message);
+          }
+        },
+        error: function (error) {
+          alert("An error occurred while making the request: " + error.statusText);
+        }
+      });
+    }
+
+    function createNewPreferences() {
+      totalRequests = selectedInterestsArray.length; // Set the total number of requests
+      selectedInterestsArray.forEach(function (value) {
+
+        var formData = {
+          eventGoerId: eventGoerId,
+          categoryId: value
+        }
+        console.log(formData);
+
+
+        $.ajax({
+          type: "POST", // Change this to the appropriate HTTP method (POST or GET)
+          url: categoryUrls[currentEnvironment]["preference"] + "create", // Specify the correct URL for your API
+          data: JSON.stringify(formData), // Pass the value to your endpoint
+          contentType: "application/json",
+          success: function (response) {
+            successfulRequests++; // Increment the counter for successful requests
+            // Handle the success response
+            console.log("Successfully created: " + value);
+
+            // Redirect to login.html after all preferences are created
+            if (successfulRequests === totalRequests) {
+
+              window.alert("Preference updated successfully.");
+              location.reload();
+            }
+
+          },
+          error: function (error) {
+            // Handle any errors
+            console.error("Error creating: " + value, error);
+          }
+        });
+      });
+    }
+
+
+  });
   $("#edit").on("click", function () {
 
 
