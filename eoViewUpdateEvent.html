@@ -80,7 +80,7 @@
 
             <li class="u-nav-item"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                style="padding: 10px 20px;">Logout</a>
+                style="padding: 10px 20px;" href="Login.html">Logout</a>
             </li>
           </ul>
         </div>
@@ -108,7 +108,7 @@
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="eoViewAllMarketing.html">Marketing</a>
                 </li>
 
-                <li class="u-nav-item"><a class="u-button-style u-nav-link">Logout</a>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Login.html">Logout</a>
                 </li>
               </ul>
             </div>
@@ -203,11 +203,11 @@
           <img id="currentImg" src="" alt="Current Event Image" style="max-width: 400px; max-height: 400px;"><br><br>
           <img id="newImgPreview" src="" alt="New Image Preview" style="max-width: 400px; max-height: 400px;"><br><br>
           <br><br>
-
+          <button style="background-color: #478ac9;color: #ffffff; border: none;padding: 10px 30px;"
+          id="update">Update</button>
         </form>
       </div>
-      <button style="background-color: #478ac9;color: #ffffff; border: none;padding: 10px 30px;"
-        id="update">Update</button>
+      
       <button style="background-color: #478ac9;color: #ffffff; border: none;padding: 10px 30px;"
         id="delete">Suspend</button>
       <input type="text" id="emailtext" name="email" required hidden><br><br>
@@ -568,7 +568,37 @@
 
     //-------------------UPDATE--------------------------------
     // Handle the "Update Event" button click
-    $("#update").on("click", function () {
+    
+
+
+    
+  });
+  $("#delete").on("click", function () {
+      if (confirm("Are you sure you want to delete this event?")) {
+        var eventid = $("#eventId").text(); // Use .text() to get the content
+        $.ajax({
+          type: "DELETE",
+          url: categoryUrls[currentEnvironment]["event"] + "suspend?eventId=" + eventidfromURL, // Use eventidLabel.textContent
+          dataType: "json",
+          success: function (deleteResponse) {
+            if (deleteResponse.code === 200) {
+              // Handle success - for example, redirect to a different page or show a success message
+              alert("Event deleted successfully!");
+              window.location.href = "eoViewAllEvent.html";
+            } else {
+              // Handle other status codes or errors
+              alert("Failed to delete event. " + deleteResponse.message);
+            }
+          },
+          error: function (error) {
+            // Handle Ajax error
+            alert("An error occurred while making the request: " + error.statusText);
+          }
+        });
+      }
+    });
+  $("#eventForm").on("submit", async function (e) {
+    e.preventDefault();
       var updatedEventId = $("#eventId").val();
       var updatedEmail = $("#emailtext").val();
       var updatedVenueId = $("#venueId").val();
@@ -577,7 +607,7 @@
       var updatedEventDateTime = $("#eventDateTime").val();
       var updatedEventDescription = $("#eventDescription").val();
       var updatedEventLaunchedDate = $("#eventLaunchedDate").val();
-      var updatedImg = $("#img")[0].files[0] || currentImgFileName;
+      var updatedImg = $("#img")[0].files[0];
 
       var formattedEventDateTime = new Date(updatedEventDateTime).toISOString().slice(0, 19).replace('T', ' ');
       var formattedEventLaunchedDate = new Date(updatedEventLaunchedDate).toISOString().slice(0, 19).replace('T', ' ');
@@ -614,7 +644,25 @@
       formData.append("img", updatedImg);
 
       console.log(formData);
-      $.ajax({
+      try {
+      const response = await $.ajax({
+        type: "POST",
+        url: categoryUrls[currentEnvironment]["event"] + "updateEventById",
+        data: formData,
+        contentType: false,
+        processData: false
+      });
+      if (response) {
+        // Handle success response
+        console.log(response);
+        alert("Event updated successfully!");
+        window.location.href = "eoViewAllEvents.html"
+      }
+    } catch (error) {
+      // Handle error response
+      console.error(error);
+    }
+      /*$.ajax({
         type: "POST",
         url: categoryUrls[currentEnvironment]["event"] + "updateEventById",
         data: formData,
@@ -643,35 +691,8 @@
             $("#message").text("An unknown error occurred: " + error);
           }
         }
-      });
+      });*/
     });
-
-
-    $("#delete").on("click", function () {
-      if (confirm("Are you sure you want to delete this event?")) {
-        var eventid = $("#eventId").text(); // Use .text() to get the content
-        $.ajax({
-          type: "DELETE",
-          url: categoryUrls[currentEnvironment]["event"] + "suspend?eventId=" + eventidfromURL, // Use eventidLabel.textContent
-          dataType: "json",
-          success: function (deleteResponse) {
-            if (deleteResponse.code === 200) {
-              // Handle success - for example, redirect to a different page or show a success message
-              alert("Event deleted successfully!");
-              window.location.href = "eoViewAllEvent.html";
-            } else {
-              // Handle other status codes or errors
-              alert("Failed to delete event. " + deleteResponse.message);
-            }
-          },
-          error: function (error) {
-            // Handle Ajax error
-            alert("An error occurred while making the request: " + error.statusText);
-          }
-        });
-      }
-    });
-  });
 
 
 </script>
