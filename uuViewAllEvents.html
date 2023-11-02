@@ -151,7 +151,9 @@
                       </svg>
                     </span>
                   </button>
-                  <input class="u-search-input" type="search" name="search" value="" placeholder="Search">
+                  <!--input class="u-search-input" type="search" name="search" value="" placeholder="Search"-->
+                  <input type="text" id="search-input" placeholder="Search by Event Name">
+
                 </form>
                 <a href="https://nicepage.com/c/slider-html-templates" class="u-btn u-button-style u-btn-1">Search</a>
               </div>
@@ -166,7 +168,7 @@
       <h1 class="u-text u-text-1">Latest Events</h1>
       <div class="u-expanded-width u-layout-grid u-list u-list-1">
         <div class="u-repeater u-repeater-1">
-          
+
         </div>
         <div class="pagination">
           <button id="prevPageButton" class="page-button" disabled>Previous</button>
@@ -239,7 +241,7 @@
   <script>
     var today = new Date();
     today.setHours(0, 0, 0, 0); // Set the time to the beginning of the day for comparison.
-    
+
 
     $(document).ready(function () {
       // Get User Preference
@@ -284,7 +286,7 @@
         $.get(categoryUrls[currentEnvironment]["event"] + "getAll", function (response) {
           if (response.code === 200) {
             var events = JSON.parse(JSON.stringify(response.data));
-           eventlen = events.length;
+            eventlen = events.length;
             // Create an array to store the extracted venueIds
             var venueIds = [];
 
@@ -319,13 +321,15 @@
             //events.forEach(function (event) {
             for (let i = startIndex; i < Math.min(endIndex, events.length); i++) {
               const event = events[i];
+              console.log("Event Details for " + i + ":" + JSON.stringify(event));
               var venueId = event.venueId;
 
               // Call getVenueDetails for each venueId
               getVenueDetails(venueId, function (venue) {
                 var eventDate = new Date(event.eventDateTime);
                 // Call getMarketingPoster for each eventId
-
+                var eventLink = "egViewEvent.html?eventId=" + event.eventId + "&venueId=" + venueId + "&categoryId=" + event.categoryId;
+                console.log(eventLink);
                 const imageUrl = "https://firebasestorage.googleapis.com/v0/b/fyp2023-s3-03.appspot.com/o/events%2F" + event.img + "?alt=media";
                 // Check if the event is upcoming or current
                 if (eventDate > today) {
@@ -337,7 +341,7 @@
                                         <img src="${imageUrl}" alt="${event.eventName}" class="u-image u-image-default u-preserve-proportions u-image-1" data-image-width="626" data-image-height="626">
                                         <h2 class="u-text u-text-2">${event.eventName}</h2>
                                         <h5 class="u-custom-font u-font-pt-sans u-text u-text-3">${event.eventDateTime}</h5>
-                                        <a href="${event.link}" class="u-active-white u-border-none u-btn u-button-style u-hover-white u-palette-1-base u-text-active-palette-5-dark-3 u-text-body-alt-color u-text-hover-palette-5-dark-3 u-btn-1">more</a>
+                                        <a href="${eventLink}" class="u-active-white u-border-none u-btn u-button-style u-hover-white u-palette-1-base u-text-active-palette-5-dark-3 u-text-body-alt-color u-text-hover-palette-5-dark-3 u-btn-1">more</a>
                                       </div>
                                     </div>
                                     `;
@@ -352,7 +356,7 @@
                                         <img src="${imageUrl}" alt="${event.eventName}" class="u-image u-image-default u-preserve-proportions u-image-1" data-image-width="626" data-image-height="626">
                                         <h2 class="u-text u-text-2">${event.eventName}</h2>
                                         <h5 class="u-custom-font u-font-pt-sans u-text u-text-3">${event.eventDateTime}</h5>
-                                        <a href="${event.link}" class="u-active-white u-border-none u-btn u-button-style u-hover-white u-palette-1-base u-text-active-palette-5-dark-3 u-text-body-alt-color u-text-hover-palette-5-dark-3 u-btn-1">more</a>
+                                        <a href="${eventLink}" class="u-active-white u-border-none u-btn u-button-style u-hover-white u-palette-1-base u-text-active-palette-5-dark-3 u-text-body-alt-color u-text-hover-palette-5-dark-3 u-btn-1">more</a>
                                       </div>
                                     </div>
                                     `;
@@ -360,47 +364,38 @@
                   // You can create a separate container for current events in your HTML.
                   featuredEventsContainer.append(eventCard);
                 }
-                
+
               });
             };
-          
-
           } else {
             console.error("Failed to retrieve event data.");
           }
-
-
-         
-
         });
-
-
-
       }
 
 
-       // Function to handle page navigation
-       function navigateToPage(page) {
-            if (page >= 1 && page <= Math.ceil(eventlen / eventsPerPage)) {
-              currentPage = page;
-              populateFeaturedEvent(currentPage, eventsPerPage);
-            }
-          }
+      // Function to handle page navigation
+      function navigateToPage(page) {
+        if (page >= 1 && page <= Math.ceil(eventlen / eventsPerPage)) {
+          currentPage = page;
+          populateFeaturedEvent(currentPage, eventsPerPage);
+        }
+      }
 
-        // Example: You can add click event handlers for next and previous buttons
-        $("#nextPageButton").on("click", function () {
-            navigateToPage(currentPage + 1);
-            $("#prevPageButton").prop("disabled", false);
-            $("#currentPage").text("Page " + currentPage);
-          });
+      // Example: You can add click event handlers for next and previous buttons
+      $("#nextPageButton").on("click", function () {
+        navigateToPage(currentPage + 1);
+        $("#prevPageButton").prop("disabled", false);
+        $("#currentPage").text("Page " + currentPage);
+      });
 
-          $("#prevPageButton").on("click", function () {
-            navigateToPage(currentPage - 1);
-            $("#currentPage").text("Page " + currentPage);
-          });
+      $("#prevPageButton").on("click", function () {
+        navigateToPage(currentPage - 1);
+        $("#currentPage").text("Page " + currentPage);
+      });
 
       // Current page (initially set to 1)
-      let currentPage = 1;   
+      let currentPage = 1;
       // Number of events per page
       const eventsPerPage = 5;
 
@@ -454,6 +449,43 @@
         })
       }
 
+      // Function to filter and display events based on the search input
+  function searchEvents() {
+    const searchInput = document.querySelector('#search-input').value.toLowerCase();
+    const eventCards = document.querySelectorAll('.u-repeater-item');
+
+    eventCards.forEach(eventCard => {
+      const eventName = eventCard.querySelector('.u-text-2').textContent.toLowerCase();
+      if (eventName.includes(searchInput)) {
+        eventCard.style.display = 'block';
+      } else {
+        eventCard.style.display = 'none';
+      }
+    });
+  }
+
+  // Event listener for the search input field
+  const searchInputField = document.querySelector('#search-input');
+  searchInputField.addEventListener('input', searchEvents);
+
+  // Function to search events on all pages
+  function searchEventsOnAllPages() {
+  const allPages = Math.ceil(eventlen / eventsPerPage);
+  for (let page = 1; page <= allPages; page++) {
+    const eventCards = document.querySelectorAll(`.event-block`); // Use the class or data attribute you added
+    eventCards.forEach(eventCard => {
+      const eventName = eventCard.querySelector('.u-text-2').textContent.toLowerCase();
+      if (eventName.includes(searchInputField.value.toLowerCase())) {
+        eventCard.style.display = 'block';
+      } else {
+        eventCard.style.display = 'none';
+      }
+    });
+  }
+}
+
+// Event listener for searching events on all pages
+searchInputField.addEventListener('input', searchEventsOnAllPages);
 
 
 
