@@ -67,7 +67,7 @@
             </li>
             <li class="u-nav-item"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                href="About.html" style="padding: 10px 20px;">Events</a>
+                href="egViewAllEvents.html" style="padding: 10px 20px;">Events</a>
             </li>
             <li class="u-nav-item"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
@@ -91,7 +91,7 @@
               <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html">Home</a>
                 </li>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="About.html">Events</a>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="egViewAllEvents.html">Events</a>
                 </li>
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Contact.html">Contact</a>
                 </li>
@@ -310,7 +310,7 @@
               getVenueDetails(venueId, function (venue) {
                 var eventDate = new Date(event.eventDateTime);
                 // Call getMarketingPoster for each eventId
-
+                var eventLink = "egViewEvent.html?eventId=" + event.eventId + "&venueId=" + venueId + "&categoryId=" + event.categoryId;
                 const imageUrl = "https://firebasestorage.googleapis.com/v0/b/fyp2023-s3-03.appspot.com/o/events%2F" + event.img + "?alt=media";
                 // Check if the event is upcoming or current
                 if (eventDate > today) {
@@ -322,7 +322,7 @@
                                         <img src="${imageUrl}" alt="${event.eventName}" class="u-image u-image-default u-preserve-proportions u-image-1" data-image-width="626" data-image-height="626">
                                         <h2 class="u-text u-text-2">${event.eventName}</h2>
                                         <h5 class="u-custom-font u-font-pt-sans u-text u-text-3">${event.eventDateTime}</h5>
-                                        <a href="${event.link}" class="u-active-white u-border-none u-btn u-button-style u-hover-white u-palette-1-base u-text-active-palette-5-dark-3 u-text-body-alt-color u-text-hover-palette-5-dark-3 u-btn-1">more</a>
+                                        <a href="${eventLink}" class="u-active-white u-border-none u-btn u-button-style u-hover-white u-palette-1-base u-text-active-palette-5-dark-3 u-text-body-alt-color u-text-hover-palette-5-dark-3 u-btn-1">more</a>
                                       </div>
                                     </div>
                                     `;
@@ -337,7 +337,7 @@
                                         <img src="${imageUrl}" alt="${event.eventName}" class="u-image u-image-default u-preserve-proportions u-image-1" data-image-width="626" data-image-height="626">
                                         <h2 class="u-text u-text-2">${event.eventName}</h2>
                                         <h5 class="u-custom-font u-font-pt-sans u-text u-text-3">${event.eventDateTime}</h5>
-                                        <a href="${event.link}" class="u-active-white u-border-none u-btn u-button-style u-hover-white u-palette-1-base u-text-active-palette-5-dark-3 u-text-body-alt-color u-text-hover-palette-5-dark-3 u-btn-1">more</a>
+                                        <a href="${eventLink}" class="u-active-white u-border-none u-btn u-button-style u-hover-white u-palette-1-base u-text-active-palette-5-dark-3 u-text-body-alt-color u-text-hover-palette-5-dark-3 u-btn-1">more</a>
                                       </div>
                                     </div>
                                     `;

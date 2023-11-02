@@ -70,6 +70,10 @@
                 href="Home.html" style="padding: 10px 20px;">Home</a>
             </li>
             <li class="u-nav-item"><a
+              class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+              href="uuViewAllEvents.html" style="padding: 10px 20px;">Events</a>
+          </li>
+            <li class="u-nav-item"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
                 href="About.html" style="padding: 10px 20px;">About</a>
             </li>
@@ -101,6 +105,8 @@
               <div class="u-menu-close"></div>
               <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html">Home</a>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="uuViewAllEvents.html">Events</a>
                 </li>
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="About.html">About</a>
                 </li>
@@ -316,33 +322,159 @@
     </p>
     
   </section>
+  <script src="config.js"></script>
+  <!-- Include jQuery from a CDN (example) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-    fetch('https://peaceful-cove-73541-18e032f01a19.herokuapp.com/getAll')
-      .then(response => response.json())
-      .then(data => {
-        // Ensure that the data property exists and is an array
-        if (Array.isArray(data.data)) {
-          // Proceed to populate the events
-          populateEvents(data.data);
+    var today = new Date();
+    today.setHours(0, 0, 0, 0); // Set the time to the beginning of the day for comparison.
+
+    var sessionemail = sessionStorage.getItem("email")
+
+    function getUserDetails() {
+      return new Promise((resolve, reject) => {
+        fetch(categoryUrls[currentEnvironment]["user"] + "getByEmail2?email=" + sessionemail)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Request failed with status: ' + response.status);
+            }
+            return response.json();
+          })
+          .then(response => {
+            if (response.code === 200) {
+              var user_details = response.data[0];
+              console.log("EventGoer Details: " + JSON.stringify(user_details));
+              sessionStorage.setItem("eventGoerId", user_details.eventGoerId);
+              console.log("Event Goer Id: " + sessionStorage.getItem("eventGoerId"));
+              resolve();
+            } else {
+              console.error("Error: " + response.message);
+              reject(response.message);
+
+            }
+          })
+          .catch(error => {
+            console.error("Request failed: " + error);
+            reject(error);
+          });
+      });
+    }
+
+    function getUserPreference() {
+      getUserDetails().then(() => {
+        var eventGoerId = sessionStorage.getItem("eventGoerId");
+        $.get(categoryUrls[currentEnvironment]["preference"] + "getPreferenceByEventGoerId?eventGoerId=" + eventGoerId, function (response) {
+          if (response.code === 200) {
+            var preferences = response.data;
+            console.log("Preference: " + JSON.stringify(preferences));
+            var InterestArray = preferences.map(function (preference) {
+              return preference.categoryId;
+            });
+            console.log("Category Id: " + JSON.stringify(InterestArray));
+          }
+
+          // Call populateFeaturedEvent for each categoryId in InterestArray
+          InterestArray.forEach(function (categoryId) {
+            populateFeaturedEvent(categoryId);
+          });
+        });
+      });
+    }
+
+    // For Each preference, Get Event By Category
+    function populateFeaturedEvent(categoryId) {
+      $.get(categoryUrls[currentEnvironment]["event"] + "getAll", function (response) {
+        if (response.code === 200) {
+          var events = JSON.parse(JSON.stringify(response.data));
+         
+          // Create an array to store the extracted venueIds
+          var venueIds = [];
+
+          // Loop through each event and extract the venueId
+          events.forEach(function (event) {
+            if (event.venueId) {
+              venueIds.push(event.venueId);
+            }
+          });
+
+          // Now, the venueIds array contains all the venueIds from the events
+          console.log("Venue IDs: " + JSON.stringify(venueIds));
+
+          // Sort events by eventDateTime
+          events.sort(function (a, b) {
+            return new Date(a.eventDateTime) - new Date(b.eventDateTime);
+          });
+          console.log(events);
+
+          var eventContainer = document.getElementById("event-container");
+
+          // Loop through the events and create event cards
+          events.forEach(function (event) {
+            var venueId = event.venueId;
+
+            // Call getVenueDetails for each venueId
+            getVenueDetails(venueId, function (venue) {
+              var eventDate = new Date(event.eventDateTime);
+              // Call getMarketingPoster for each eventId
+              var eventLink = "View-Event.html?eventId=" + event.eventId + "&venueId=" + venueId + "&categoryId=" + event.categoryId;
+                
+              const imageUrl = "https://firebasestorage.googleapis.com/v0/b/fyp2023-s3-03.appspot.com/o/events%2F" + event.img + "?alt=media";
+
+
+              // Check if the event is upcoming or current
+              if (eventDate > today) {
+                // Event is upcoming
+                var eventHtml = `
+    <div class="u-container-style u-list-item u-repeater-item">
+        <div class="u-container-layout u-similar-container u-container-layout-1">
+          <img src="${imageUrl}" alt="" class="u-image u-image-default u-preserve-proportions u-image-1">
+          <h2 class="u-custom-font u-text u-text-2">${event.eventName}</h2>
+          <h5 class="u-custom-font u-font-pt-sans u-text u-text-3">${event.eventDateTime}</h5>
+          <h5 class="u-custom-font u-font-pt-sans u-text u-text-3">${venue.venueName}</h5>
+          <a href="${eventLink}" class="u-active-white u-border-none u-btn u-button-style u-hover-white u-palette-1-base u-text-active-palette-5-dark-3 u-text-body-alt-color u-text-hover-palette-5-dark-3 u-btn-1">more</a>
+        </div>
+      </div>
+    `;
+
+                eventContainer.innerHTML += eventHtml;
+              } else {
+                // Event is current
+                var eventHtml = `
+    <div class="u-container-style u-list-item u-repeater-item">
+        <div class="u-container-layout u-similar-container u-container-layout-1">
+          <img src="${imageUrl}" alt="" class="u-image u-image-default u-preserve-proportions u-image-1">
+          <h2 class="u-custom-font u-text u-text-2">${event.eventName}</h2>
+          <h5 class="u-custom-font u-font-pt-sans u-text u-text-3">${event.eventDateTime}</h5>
+          <h5 class="u-custom-font u-font-pt-sans u-text u-text-3">${venue.venueName}</h5>
+          <a href="${eventLink}" class="u-active-white u-border-none u-btn u-button-style u-hover-white u-palette-1-base u-text-active-palette-5-dark-3 u-text-body-alt-color u-text-hover-palette-5-dark-3 u-btn-1">more</a>
+        </div>
+      </div>
+    `;
+                // Append to a different container for current events
+                // Append the event HTML to the container
+                eventContainer.innerHTML += eventHtml;
+              }
+
+            });
+          });
         } else {
-          console.error('Events data is not in the expected format.');
+          console.error("Failed to retrieve event data.");
         }
-      })
-      .catch(error => console.error('Error fetching data:', error));
+
+      });
+    }
 
     function populateEvents(eventsData) {
       // Get the event container element
       var eventContainer = document.getElementById("event-container");
-      
+
       // Iterate through the first 4 events in the data and populate them
       for (let i = 0; i < Math.min(4, eventsData.length); i++) {
         var event = eventsData[i];
-        const imageUrl = "https://firebasestorage.googleapis.com/v0/b/fyp2023-s3-03.appspot.com/o/events%2F" + event.img + "?alt=media";
-
         var eventHtml = `
     <div class="u-container-style u-list-item u-repeater-item">
         <div class="u-container-layout u-similar-container u-container-layout-1">
-          <img src="${imageUrl}" alt="" class="u-image u-image-default u-preserve-proportions u-image-1">
+          <img src="${event.img}" alt="" class="u-image u-image-default u-preserve-proportions u-image-1">
           <h2 class="u-custom-font u-text u-text-2">${event.eventName}</h2>
           <h5 class="u-custom-font u-font-pt-sans u-text u-text-3">${event.eventDateTime}</h5>
           <a href="${event.link}" class="u-active-white u-border-none u-btn u-button-style u-hover-white u-palette-1-base u-text-active-palette-5-dark-3 u-text-body-alt-color u-text-hover-palette-5-dark-3 u-btn-1">more</a>
@@ -354,6 +486,59 @@
         eventContainer.innerHTML += eventHtml;
       }
     }
+
+    // For each event, get venue details using Venue Id
+    function getVenueDetails(venueId, callback) {
+      $.get(categoryUrls[currentEnvironment]["venue"] + "getVenueById?venueId=" + venueId, function (response) {
+        if (response.code === 200) {
+          var venue = response.data[0];
+          console.log("Venue details: " + JSON.stringify(venue));
+          console.log("Venue Name: " + venue.venueName);
+          // Call the callback function with the venue data
+          callback(venue);
+        }
+      });
+    }
+
+    function getMarketingPoster(eventId, callback) {
+      $.get(categoryUrls[currentEnvironment]["marketing"] + "getAllMarketingByEventId?eventId=" + eventId, function (response) {
+        if (response.code === 200) {
+          var marketingData = response.data[0];
+          console.log("Marketing data: " + JSON.stringify(marketingData));
+
+          if (marketingData) {
+            console.log("Marketing Poster Found!: " + marketingData.img);
+            // Call the callback function with the marketing data
+            callback(marketingData);
+          } else {
+            // If marketingData is null, provide pseudo data or defaults
+            var defaultMarketingData = {
+              img: "default.jpg",
+              someProperty: "Default Value"
+            };
+            console.log("Marketing Poster Not Found. Using default data.");
+            callback(defaultMarketingData);
+          }
+        } else if (response.code === 404) {
+          // Handle 404 (NOT FOUND) error here
+          console.error("Resource not found. Handling 404 error...");
+
+          // You can provide default data or take any other appropriate action
+          var defaultMarketingData = {
+            img: "default.jpg",
+            someProperty: "Default Value"
+          };
+          callback(defaultMarketingData);
+        } else {
+          // Handle other errors here
+          console.error("An error occurred:", response);
+        }
+      })
+    }
+
+
+
+    populateFeaturedEvent();
 
 
   </script>
