@@ -316,7 +316,9 @@
         data: JSON.stringify(formData),
         success: function (response) {
           // Handle success response
-
+          const bookingId = $("#bookingId").val();
+            window.location.href = "egPaymentDetails.html?bookingId=" + bookingId;
+            console.log(response);
           console.log(response);
 
         },
@@ -348,12 +350,7 @@
           $("#bookingId").val(getRandomInt(1, 1000000));
           // Add more code here to populate other form fields if needed
           // Handle the "View User" button click
-          $("#CheckOut").on("click", function () {
-            const bookingId = $("#bookingId").val();
-            window.location.href = "egPaymentDetails.html?bookingId=" + bookingId;
-            console.log(response);
-          });
-
+          
 
         } else {
           // Handle error or empty response
