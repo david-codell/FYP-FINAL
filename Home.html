@@ -396,7 +396,7 @@
             getVenueDetails(venueId, function (venue) {
               var eventDate = new Date(event.eventDateTime);
               // Call getMarketingPoster for each eventId
-              var eventLink = "View-Event.html?eventId=" + event.eventId + "&venueId=" + venueId + "&categoryId=" + event.categoryId;
+              var eventLink = "egViewEvent.html?eventId=" + event.eventId + "&venueId=" + venueId + "&categoryId=" + event.categoryId;
                 
               const imageUrl = "https://firebasestorage.googleapis.com/v0/b/fyp2023-s3-03.appspot.com/o/events%2F" + event.img + "?alt=media";
 

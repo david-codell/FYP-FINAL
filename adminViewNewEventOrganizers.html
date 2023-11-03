@@ -272,7 +272,9 @@
                                     success: function (response) {
                                         if (response.code === 200) {
                                             // Handle success - for example, update the UI to reflect the status change
+                                            
                                             alert("Event organizer approved successfully!");
+                                            window.location.href = "adminViewAllUsers.html";
                                             // You can add more UI updates here if needed
                                         } else {
                                             // Handle other status codes or errors

@@ -222,9 +222,11 @@
           $("#Pay").on("click", function () {
             var updatebookingId = $("#bookingId").val();
             var updatestatus = $("#status").val();
+            var updatedemail = $("#email").val();
             var formData = new FormData();
             formData.append("bookingId", updatebookingId);
             formData.append("status", updatestatus);
+            formData.append("email", updatedemail);
             $.ajax({
               type: "POST",
               url: categoryUrls[currentEnvironment]["booking"] + 'booking/updateByBookingID',
