@@ -106,9 +106,8 @@
   <section class="u-clearfix u-section-1" id="sec-457f">
     <div class="u-clearfix u-sheet u-sheet-1">
       <div >
-        <div >
-          <div>
-            
+        <div class="u-container-layout u-container-layout-1">
+          <div class="labels">
             <div style="align-items: center;">
               <div style="padding: 0;" class="u-container-layout u-container-layout-2">
                 <p
@@ -123,26 +122,35 @@
                 <a style="margin: 0;" id="venueName"></a><br><br>
                 <h4 style="margin: 0;">Categories Available</h4>
                 <p style="margin: 0;">Select from the list below</p>
-                <div class="custom-expanded u-table u-table-responsive">
-                  <table id="venuebookingTable" class="u-table-entity">
-
-                    <thead class="u-palette-4-base u-table-header u-table-header-1">
-                      <tr style="height: 46px;">
-                        <th class="u-border-1 u-border-palette-4-base u-table-cell">Category</th>
-                        <th class="u-border-1 u-border-palette-4-base u-table-cell">Price </th>
-                        <th class="u-border-1 u-border-palette-4-base u-table-cell">Capacity </th>
-                        <th class="u-border-1 u-border-palette-4-base u-table-cell">Status </th>
-                        <th class="u-border-1 u-border-palette-4-base u-table-cell">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody class="u-table-body">
-
-                    </tbody>
-                  </table>
-                </div>
+                
               </div>
             </div>
           </div>
+          
+          <!-- Div for image -->
+          <div class="image-container">
+            <img src="" id="currentImg" alt="Your Image" 
+            style="max-width: 600px; max-height: 600px;min-width: 600px; min-height: 600px;"/>
+          </div>
+          
+          
+        </div>
+        <div class="custom-expanded u-table u-table-responsive">
+          <table id="venuebookingTable" class="u-table-entity">
+
+            <thead class="u-palette-4-base u-table-header u-table-header-1">
+              <tr style="height: 46px;">
+                <th class="u-border-1 u-border-palette-4-base u-table-cell">Category</th>
+                <th class="u-border-1 u-border-palette-4-base u-table-cell">Price </th>
+                <th class="u-border-1 u-border-palette-4-base u-table-cell">Capacity </th>
+                <th class="u-border-1 u-border-palette-4-base u-table-cell">Status </th>
+                <th class="u-border-1 u-border-palette-4-base u-table-cell">Action</th>
+              </tr>
+            </thead>
+            <tbody class="u-table-body">
+
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -201,8 +209,7 @@
           $("#eventDateTime").text("Time and Date : "+formattedEventDateTime);
           $("#eventDescription").text(event.eventDescription);
           $("#eventLaunchedDate").val(formattedEventLaunchedDate);
-          const imageUrl = "/AWS_FYP_PYTHON/microservices/" + event.img;
-          $("#currentImg").attr("src", imageUrl);
+          
         } else {
           console.error("Failed to fetch event data.", response.message);
         }
@@ -228,7 +235,9 @@
           $("#capacity").val(selectedVenue.capacity);
           $("#postalcode").text("Postal Code: " + selectedVenue.postalcode);
           $("#address1").text("Address: " + selectedVenue.address1 + " " + selectedVenue.address2);
-
+          var currentImgFileName = selectedVenue.img;
+          const imageUrl = "https://firebasestorage.googleapis.com/v0/b/fyp2023-s3-03.appspot.com/o/venue%2F" + currentImgFileName + "?alt=media";
+          $("#currentImg").attr("src", imageUrl);
         } else {
           console.error("Failed to fetch selected venue data.", selectedVenueResponse.message);
         }
