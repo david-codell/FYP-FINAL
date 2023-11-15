@@ -120,37 +120,43 @@
       <h2 class="u-text u-text-default u-text-1">CREATE EVENT CATEGORIES</h2>
       <p class="u-text u-text-2">CREATE YOUR CATEGORY PRICING FOR YOUR SELECTED VENUE</p>
       <p class="u-align-left u-text u-text-3">Create Category For Selected Venue</p>
-      <div class="u-clearfix u-custom-html u-expanded-width u-custom-html-1">
-        <style></style>
-        <form id="createvenueCategory">
-          <label for="venueId">Venue: </label>
-          <input type="text" id="venueName" name="venueName" readonly>
-          <input type="text" id="venueId" name="venueId" required="" hidden>
-          <br>
-          <br>
-          <label for="eventId">Event:</label>
-          <input type="text" id="eventName" name="eventName" readonly>
-          <input type="text" id="eventId" name="eventId" required="" hidden>
-          <br>
-          <br>
-          <label for="cat">Category:</label>
-          <input type="cat" id="cat" name="cat" required="">
-          <br>
-          <br>
-          <label for="catPrice">Price:</label>
-          <input type="catPrice" id="catPrice" name="catPrice" required="">
-          <br>
-          <br>
-          <label for="capacity">Capacity For Category:</label>
-          <input type="capacity" id="capacity" name="capacity" required="">
-          <br>
-          <br><!-- Add an input field for user type (hidden) -->
-          <input type="hidden" id="status" name="status" value="Available">
-          <input class="u-btn u-button-style u-btn-1" type="submit" value="Create Category">
-          
-        </form>
+      <div class="u-container-layout u-container-layout-1">
+        <div class="u-clearfix u-custom-html u-expanded-width u-custom-html-1">
+          <style></style>
+          <form id="createvenueCategory">
+            <label for="venueId">Venue: </label>
+            <input type="text" id="venueName" name="venueName" readonly>
+            <input type="text" id="venueId" name="venueId" required="" hidden>
+            <br>
+            <br>
+            <label for="eventId">Event:</label>
+            <input type="text" id="eventName" name="eventName" readonly>
+            <input type="text" id="eventId" name="eventId" required="" hidden>
+            <br>
+            <br>
+            <label for="cat">Category:</label>
+            <input type="cat" id="cat" name="cat" required="">
+            <br>
+            <br>
+            <label for="catPrice">Price:</label>
+            <input type="catPrice" id="catPrice" name="catPrice" required="">
+            <br>
+            <br>
+            <label for="capacity">Capacity For Category:</label>
+            <input type="capacity" id="capacity" name="capacity" required="">
+            <br>
+            <br><!-- Add an input field for user type (hidden) -->
+            <input type="hidden" id="status" name="status" value="Available">
+            <input class="u-btn u-button-style u-btn-1" type="submit" value="Create Category">
+            
+          </form>
+        </div>
+        <!-- Div for image -->
+        <div class="image-container">
+          <img src="" id="currentImg" alt="Your Image" 
+          style="max-width: 500px; max-height: 500px;min-width: 500px; min-height: 500px;"/>
+        </div>
       </div>
-
     </div>
   </section>
   <section class="u-align-center u-clearfix u-section-2" id="sec-fcf4">
@@ -241,7 +247,9 @@
 
             // Populate the form fields with event data
             $("#venueName").val(venue.venueName);
-
+            var currentImgFileName = venue.img;
+            const imageUrl = "https://firebasestorage.googleapis.com/v0/b/fyp2023-s3-03.appspot.com/o/venue%2F" + currentImgFileName + "?alt=media";
+            $("#currentImg").attr("src", imageUrl);
           } else {
             console.error("Failed to fetch venue data.", response.message);
           }
