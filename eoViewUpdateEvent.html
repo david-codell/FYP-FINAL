@@ -122,94 +122,228 @@
     <div class="u-clearfix u-sheet u-sheet-1">
       <h2 class="u-text u-text-default u-text-1">View / UPDATE EVENT</h2>
       <p class="u-text u-text-2">UPDATE THE DETAILS FOR YOUR EVENT</p>
-      <p class="u-align-left u-text u-text-3">Event Details</p>
+     
       <div class="u-clearfix u-custom-html u-expanded-width u-custom-html-1">
-        <style></style>
+        <style>
+          table {
+            border-collapse: separate;
+            border-spacing: 10px;
+            /* Adjust the spacing value as needed */
+            width: 100%;
+          }
+
+          td,
+          th {
+
+            text-align: left;
+
+          }
+
+          input,
+          select {
+            width: 100%;
+            box-sizing: border-box;
+          }
+
+          .hidden-row {
+            display: none;
+          }
+          label{
+            font-weight: bold;
+          }
+        </style>
         <form id="eventForm" enctype="multipart/form-data">
-
-
-          <label for="eventId">Event Id:</label>
-          <input type="text" id="eventId" name="eventId" readonly><br><br>
-
-          <label for="eventName">Event Name:</label>
-          <input type="text" id="eventName" name="eventName"><br><br>
-
-          <label for="eventDateTime">Event Date Time:</label>
-          <input type="dateTime-local" id="eventDateTime" name="eventDateTime"><br><br>
-
-          <label for="eventDescription">Event Description:</label>
-          <input type="text" id="eventDescription" name="eventDescription"><br><br>
-
-          <label for="eventLaunchedDate">Event Launched Date:</label>
-          <input type="dateTime-local" id="eventLaunchedDate" name="eventLaunchedDate"><br><br>
-
-
-          <p class="u-align-left u-text u-text-4">Select Venue</p>
-
-
-          <label for="venueId">Venue ID NAME:</label>
-          <select id="venueIdDropdown" name="venueIdd" required>
-            <option value="">Select Venue Id</option>
-
-          </select>
-          <br><br>
-          <label for="venueId">Venue Id:</label>
-          <input type="text" id="venueId" name="venueId" readonly><br><br>
-
-
-          <label for="venueName">Venue Name:</label>
-          <input type="text" id="venueName" name="venueName"><br><br>
-
-          <label for="capacity">Capacity:</label>
-          <input type="text" id="capacity" name="capacity"><br><br>
-
-          <label for="postalcode">Postal Code:</label>
-          <input type="text" id="postalcode" name="postalcode"><br><br>
-
-          <label for="address1">Address1:</label>
-          <input type="text" id="address1" name="address1"><br><br>
-
-          <label for="address2">Address2:</label>
-          <input type="text" id="address2" name="address2"><br><br>
-
-          <p class="u-align-left u-text u-text-5">Select Category</p>
-
-
-          <label for="categoryId">Category Id:</label>
-          <input type="text" id="categoryIdInput" name="categoryId" readonly><br><br>
-
-
-          <label for="categoryType">Category Type:</label>
-          <input type="text" id="categoryTypeInput" name="categoryType">
-
-          <select id="categoryIdDropdown" name="categoryTypee" required>
-            <option value="">Select Category Type</option>
-          </select>
-          <br><br>
-
-
-          <label for="categoryName">Category Name:</label>
-          <input type="text" id="categoryNameInput" name="categoryName">
-
-          <select id="categoryIdDropdown1" name="categoryNamee" required>
-            <option value="">Select Category Name</option>
-          </select><br><br>
-
-          <label for="img">Upload New Image:</label>
-          <input type="file" id="img" name="img" accept="image/*"><br><br>
-
-
-          <!-- Display the current image -->
-          <img id="currentImg" src="" alt="Current Event Image" style="max-width: 400px; max-height: 400px;"><br><br>
-          <img id="newImgPreview" src="" alt="New Image Preview" style="max-width: 400px; max-height: 400px;"><br><br>
-          <br><br>
-          <button style="background-color: #478ac9;color: #ffffff; border: none;padding: 10px 30px;"
-          id="update">Update</button>
+          <table>
+            <tr>
+              <td>
+                <h3>Event Details</h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="eventId">Event Id:</label>
+              </td>
+              <td colspan="3">
+                <input type="text" id="eventId" name="eventId" readonly>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="eventName">Event Name:</label>
+              </td>
+              <td colspan="3">
+                <input type="text" id="eventName" name="eventName">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="eventDateTime">Event Date Time:</label>
+              </td>
+              <td colspan="3">
+                <input type="dateTime-local" id="eventDateTime" name="eventDateTime">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="eventDescription">Event Description:</label>
+              </td>
+              <td colspan="3">
+                <input type="text" id="eventDescription" name="eventDescription">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="eventLaunchedDate">Event Launched Date:</label>
+              </td>
+              <td colspan="3">
+                <input type="dateTime-local" id="eventLaunchedDate" name="eventLaunchedDate">
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <h3>Select Venue</h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="venueId">Venue:</label>
+              </td>
+              <td colspan="3">
+                <select id="venueIdDropdown" name="venueIdd" required>
+                  <option value="">Select Venue</option>
+      
+                </select>
+              </td>
+            </tr>
+            <tr class="hidden-row">
+              <td>
+                <label for="venueId">Venue Id:</label>
+              </td>
+              <td colspan="3">
+                <input type="text" id="venueId" name="venueId" readonly>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="venueName">Venue Name:</label>
+              </td>
+              <td colspan="3">
+                <input type="text" id="venueName" name="venueName">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="capacity">Capacity:</label>
+              </td>
+              <td colspan="3">
+                <input type="text" id="capacity" name="capacity">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="postalcode">Postal Code:</label>
+              </td>
+              <td colspan="3">
+                <input type="text" id="postalcode" name="postalcode">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="address1">Address1:</label>
+              </td>
+              <td colspan="3">
+                <input type="text" id="address1" name="address1">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="address2">Address2:</label>
+              </td>
+              <td colspan="3">
+                <input type="text" id="address2" name="address2">
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <h3>Select Category</h3>
+              </td>
+            </tr>
+            <tr class="hidden-row">
+              <td>
+                <label for="categoryId">Category Id:</label>
+              </td>
+              <td>
+                <input type="text" id="categoryIdInput" name="categoryId" readonly>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="categoryType">Category Type:</label>
+              </td>
+              <td >
+                <input type="text" id="categoryTypeInput" name="categoryType">
+              </td>
+              <td>
+                <select id="categoryIdDropdown" name="categoryTypee" required>
+                  <option value="">Select Category Type</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="categoryName">Category Name:</label>
+              </td>
+              <td >
+                <input type="text" id="categoryNameInput" name="categoryName">
+              </td>
+              <td>
+                <select id="categoryIdDropdown1" name="categoryNamee" required>
+                  <option value="">Select Category Name</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="img">Upload New Image:</label>
+              </td>
+              <td>
+                <input type="file" id="img" name="img" accept="image/*">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="currentImg">Current Image:</label>
+              </td>
+              <td>
+                <img id="currentImg" src="" alt="Current Event Image" style="max-width: 400px; max-height: 400px;">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="newImgPreview">New Image:</label>
+              </td>
+              <td>
+                <img id="newImgPreview" src="" alt="New Image Preview" style="max-width: 400px; max-height: 400px;">
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <button style="background-color: #478ac9;  color: #ffffff; border: none;padding: 10px 30px; width:100%"
+                id="update">UPDATE</button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <button style="background-color: #478ac9;color: #ffffff; border: none;padding: 10px 30px; width:100%"
+                id="delete">SUSPEND</button>
+              </td>
+            </tr>
+          </table>
+          
         </form>
       </div>
+
       
-      <button style="background-color: #478ac9;color: #ffffff; border: none;padding: 10px 30px;"
-        id="delete">Suspend</button>
       <input type="text" id="emailtext" name="email" required hidden><br><br>
     </div>
   </section>
@@ -219,19 +353,16 @@
 
   <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-209f">
     <div class="u-clearfix u-sheet u-sheet-1">
-      <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
+
     </div>
   </footer>
   <section class="u-backlink u-clearfix u-grey-80">
-    <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
-      <span>HTML Website Templates</span>
-    </a>
+
+
     <p class="u-text">
-      <span>created with</span>
+      <span>SellOut 2023 Copyright</span>
     </p>
-    <a class="u-link" href="" target="_blank">
-      <span>Web Design Software</span>
-    </a>.
+
   </section>
 
 </body>
@@ -300,7 +431,7 @@
           $("#eventDescription").val(event.eventDescription);
           $("#eventLaunchedDate").val(formattedEventLaunchedDate);
           var currentImgFileName = event.img;
-          const imageUrl =  "https://firebasestorage.googleapis.com/v0/b/fyp2023-s3-03.appspot.com/o/events%2F" + currentImgFileName +"?alt=media";
+          const imageUrl = "https://firebasestorage.googleapis.com/v0/b/fyp2023-s3-03.appspot.com/o/events%2F" + currentImgFileName + "?alt=media";
           $("#currentImg").attr("src", imageUrl);
           console.log("currentImg:", imageUrl);
         } else {
@@ -568,83 +699,85 @@
 
     //-------------------UPDATE--------------------------------
     // Handle the "Update Event" button click
-    
 
 
-    
+
+
   });
   $("#delete").on("click", function () {
-      if (confirm("Are you sure you want to delete this event?")) {
-        var eventid = $("#eventId").text(); // Use .text() to get the content
-        $.ajax({
-          type: "DELETE",
-          url: categoryUrls[currentEnvironment]["event"] + "suspend?eventId=" + eventidfromURL, // Use eventidLabel.textContent
-          dataType: "json",
-          success: function (deleteResponse) {
-            if (deleteResponse.code === 200) {
-              // Handle success - for example, redirect to a different page or show a success message
-              alert("Event deleted successfully!");
-              window.location.href = "eoViewAllEvent.html";
-            } else {
-              // Handle other status codes or errors
-              alert("Failed to delete event. " + deleteResponse.message);
-            }
-          },
-          error: function (error) {
-            // Handle Ajax error
-            alert("An error occurred while making the request: " + error.statusText);
+    if (confirm("Are you sure you want to delete this event?")) {
+      const queryParams = new URLSearchParams(window.location.search);
+      const eventidfromURL = queryParams.get("eventId");
+      var eventid = $("#eventId").text(); // Use .text() to get the content
+      $.ajax({
+        type: "DELETE",
+        url: categoryUrls[currentEnvironment]["event"] + "suspend?eventId=" + eventidfromURL, // Use eventidLabel.textContent
+        dataType: "json",
+        success: function (deleteResponse) {
+          if (deleteResponse.code === 200) {
+            // Handle success - for example, redirect to a different page or show a success message
+            alert("Event deleted successfully!");
+            window.location.href = "eoViewAllEvents.html";
+          } else {
+            // Handle other status codes or errors
+            alert("Failed to delete event. " + deleteResponse.message);
           }
-        });
-      }
-    });
+        },
+        error: function (error) {
+          // Handle Ajax error
+          alert("An error occurred while making the request: " + error.statusText);
+        }
+      });
+    }
+  });
   $("#eventForm").on("submit", async function (e) {
     e.preventDefault();
-      var updatedEventId = $("#eventId").val();
-      var updatedEmail = $("#emailtext").val();
-      var updatedVenueId = $("#venueId").val();
-      var updatedCategoryId = $("#categoryIdInput").val();
-      var updatedEventName = $("#eventName").val();
-      var updatedEventDateTime = $("#eventDateTime").val();
-      var updatedEventDescription = $("#eventDescription").val();
-      var updatedEventLaunchedDate = $("#eventLaunchedDate").val();
-      var updatedImg = $("#img")[0].files[0];
+    var updatedEventId = $("#eventId").val();
+    var updatedEmail = $("#emailtext").val();
+    var updatedVenueId = $("#venueId").val();
+    var updatedCategoryId = $("#categoryIdInput").val();
+    var updatedEventName = $("#eventName").val();
+    var updatedEventDateTime = $("#eventDateTime").val();
+    var updatedEventDescription = $("#eventDescription").val();
+    var updatedEventLaunchedDate = $("#eventLaunchedDate").val();
+    var updatedImg = $("#img")[0].files[0];
 
-      var formattedEventDateTime = new Date(updatedEventDateTime).toISOString().slice(0, 19).replace('T', ' ');
-      var formattedEventLaunchedDate = new Date(updatedEventLaunchedDate).toISOString().slice(0, 19).replace('T', ' ');
-      console.log("Event ID:", updatedEventId);
-      console.log("Email:", updatedEmail);
-      console.log("Venue ID:", updatedVenueId);
-      console.log("Category ID:", updatedCategoryId);
-      console.log("Event Name:", updatedEventName);
-      console.log("Event Date Time:", updatedEventDateTime);
-      console.log("Event DEscription:", updatedEventDescription);
-      console.log("Event Lauched Date:", updatedEventLaunchedDate);
-      console.log("Updated Image:", updatedImg);
-      /*
-      var updatedData = {
-          eventId: updatedEventId,
-          email: updatedEmail,
-          venueId: updatedVenueId,
-          categoryId: updatedCategoryId,
-          eventName: updatedEventName,
-          eventDateTime: formattedEventDateTime,
-          eventDescription: updatedEventDescription,
-          eventLaunchedDate: formattedEventLaunchedDate
-      };*/
+    var formattedEventDateTime = new Date(updatedEventDateTime).toISOString().slice(0, 19).replace('T', ' ');
+    var formattedEventLaunchedDate = new Date(updatedEventLaunchedDate).toISOString().slice(0, 19).replace('T', ' ');
+    console.log("Event ID:", updatedEventId);
+    console.log("Email:", updatedEmail);
+    console.log("Venue ID:", updatedVenueId);
+    console.log("Category ID:", updatedCategoryId);
+    console.log("Event Name:", updatedEventName);
+    console.log("Event Date Time:", updatedEventDateTime);
+    console.log("Event DEscription:", updatedEventDescription);
+    console.log("Event Lauched Date:", updatedEventLaunchedDate);
+    console.log("Updated Image:", updatedImg);
+    /*
+    var updatedData = {
+        eventId: updatedEventId,
+        email: updatedEmail,
+        venueId: updatedVenueId,
+        categoryId: updatedCategoryId,
+        eventName: updatedEventName,
+        eventDateTime: formattedEventDateTime,
+        eventDescription: updatedEventDescription,
+        eventLaunchedDate: formattedEventLaunchedDate
+    };*/
 
-      var formData = new FormData();
-      formData.append("eventId", updatedEventId);
-      formData.append("email", updatedEmail);
-      formData.append("venueId", updatedVenueId);
-      formData.append("categoryId", updatedCategoryId);
-      formData.append("eventName", updatedEventName);
-      formData.append("eventDateTime", formattedEventDateTime);
-      formData.append("eventDescription", updatedEventDescription);
-      formData.append("eventLaunchedDate", formattedEventLaunchedDate);
-      formData.append("img", updatedImg);
+    var formData = new FormData();
+    formData.append("eventId", updatedEventId);
+    formData.append("email", updatedEmail);
+    formData.append("venueId", updatedVenueId);
+    formData.append("categoryId", updatedCategoryId);
+    formData.append("eventName", updatedEventName);
+    formData.append("eventDateTime", formattedEventDateTime);
+    formData.append("eventDescription", updatedEventDescription);
+    formData.append("eventLaunchedDate", formattedEventLaunchedDate);
+    formData.append("img", updatedImg);
 
-      console.log(formData);
-      try {
+    console.log(formData);
+    try {
       const response = await $.ajax({
         type: "POST",
         url: categoryUrls[currentEnvironment]["event"] + "updateEventById",
@@ -662,37 +795,37 @@
       // Handle error response
       console.error(error);
     }
-      /*$.ajax({
-        type: "POST",
-        url: categoryUrls[currentEnvironment]["event"] + "updateEventById",
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function (response) {
-          console.log(response.code);
-          if (response.code === 200) {
-            $("#message").text("Event data updated successfully.");
-          } else {
-            $("#message").text("Failed to update venue data.");
-          }
-        },
-        error: function (xhr, status, error) {
-          // Handle AJAX request failure
-          console.error("Error updating event data:", error);
-
-          // You can provide more detailed error messages based on the error status
-          if (xhr.status === 400) {
-            $("#message").text("Bad request: The server did not accept the data.");
-          } else if (xhr.status === 404) {
-            $("#message").text("Resource not found on the server.");
-          } else if (xhr.status === 500) {
-            $("#message").text("Internal server error. Please try again later.");
-          } else {
-            $("#message").text("An unknown error occurred: " + error);
-          }
+    /*$.ajax({
+      type: "POST",
+      url: categoryUrls[currentEnvironment]["event"] + "updateEventById",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+        console.log(response.code);
+        if (response.code === 200) {
+          $("#message").text("Event data updated successfully.");
+        } else {
+          $("#message").text("Failed to update venue data.");
         }
-      });*/
-    });
+      },
+      error: function (xhr, status, error) {
+        // Handle AJAX request failure
+        console.error("Error updating event data:", error);
+
+        // You can provide more detailed error messages based on the error status
+        if (xhr.status === 400) {
+          $("#message").text("Bad request: The server did not accept the data.");
+        } else if (xhr.status === 404) {
+          $("#message").text("Resource not found on the server.");
+        } else if (xhr.status === 500) {
+          $("#message").text("Internal server error. Please try again later.");
+        } else {
+          $("#message").text("An unknown error occurred: " + error);
+        }
+      }
+    });*/
+  });
 
 
 </script>

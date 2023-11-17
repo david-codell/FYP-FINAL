@@ -143,6 +143,7 @@
                 <th class="u-border-1 u-border-palette-4-base u-table-cell">Category</th>
                 <th class="u-border-1 u-border-palette-4-base u-table-cell">Price </th>
                 <th class="u-border-1 u-border-palette-4-base u-table-cell">Capacity </th>
+                <th class="u-border-1 u-border-palette-4-base u-table-cell">Seats Available </th>
                 <th class="u-border-1 u-border-palette-4-base u-table-cell">Status </th>
                 <th class="u-border-1 u-border-palette-4-base u-table-cell">Action</th>
               </tr>
@@ -161,20 +162,17 @@
 
   <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-209f">
     <div class="u-clearfix u-sheet u-sheet-1">
-      <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
+
     </div>
   </footer>
   <section class="u-backlink u-clearfix u-grey-80">
-    <a class="u-link" href="https://nicepage.com/website-design" target="_blank">
-      <span>Website Design</span>
-    </a>
+
+
     <p class="u-text">
-      <span>created with</span>
+      <span>SellOut 2023 Copyright</span>
     </p>
-    <a class="u-link" href="https://nicepage.studio" target="_blank">
-      <span>Best Free Website Builder</span>
-    </a>.
   </section>
+
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -263,8 +261,15 @@
             row.append($("<td style='padding:0px;'>").text(venuebookingData.cat));
             row.append($("<td style='padding:0px;'>").text("$" + venuebookingData.catPrice));
             row.append($("<td style='padding:0px;'>").text(venuebookingData.capacity));
+            row.append($("<td style='padding:0px;'>").text(venuebookingData.allocation));
             row.append($("<td >").text(venuebookingData.status));
             var button = $("<button style='width:100%;  margin:0px;' class='u-btn u-button-style u-btn-1'>").text("SELECT");
+
+            if (venuebookingData.status === "Unavailable") {
+              button.text("SOLD OUT");
+              button.prop("disabled", true);
+            }
+
             button.on("click", function () {
 
               var venuebookingId = $(this).closest("tr").find("td:eq(0)").text();

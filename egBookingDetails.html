@@ -115,34 +115,103 @@
                     <h2 class="u-align-center u-text u-text-body-alt-color u-text-default u-text-1">BOOKING DETAILS</h2>
                     <div class="custom-expanded u-clearfix u-custom-html u-custom-html-1">
                       <form id="bookingForm">
-                        <label style="color:white;" for="email">Email :</label>
-                        <input type="text" id="email" name="email" readonly="">
-                        <br>
-
-
-                        <label style="color:white;" for="cat">Category:</label>
-                        <input type="text" id="cat" name="cat" readonly="">
-                        <br>
-                        <label style="color:white;" for="catPrice">Category Price:</label>
-                        <input type="text" id="catPrice" name="catPrice" readonly="">
-                        <br>
-                        <label style="color:white;" for="quantity">Quantity:</label>
-                        <input type="text" id="quantity" name="quantity">
-                        <br>
-                        <input type="radio" name="seatPreference" id="sideBySide" value="sideBySide">
-                        <label style="color:white;" for="sideBySide">Find Seats Side by Side</label>
-                        <input type="radio" name="seatPreference" id="randomAllocated" value="randomAllocated">
-                        <label style="color:white;" for="randomAllocated">Random Allocated Seats</label>
-                        <br>
-                        <label style="color:white;" for="allocatedSeats">Seats:</label>
-                        <input type="text" id="allocatedSeats" readonly="">
-                        <br>
-                        <label style="color:white;" for="totalprice">Total Price:</label>
-                        <input type="text" id="totalprice" name="totalprice" readonly="">
-                        <br>
+                        <style>
+                          table {
+                            border-collapse: separate;
+                            border-spacing: 10px;
+                            /* Adjust the spacing value as needed */
+                            width: 100%;
+                          }
+                
+                          td,
+                          th {
+                
+                            text-align: left;
+                
+                          }
+                
+                          input,
+                          select {
+                            width: 100%;
+                            box-sizing: border-box;
+                          }
+                
+                          .hidden-row {
+                            display: none;
+                          }
+                          label{
+                            font-weight: bold;
+                          }
+                        </style>
+                        <table>
+                          <tr>
+                            <td>
+                              <label style="color:white;" for="email">Email :</label>
+                            </td>
+                            <td colspan="3">
+                              <input type="text" id="email" name="email" readonly="">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label style="color:white;" for="cat">Category:</label>
+                            </td>
+                            <td colspan="3">
+                              <input type="text" id="cat" name="cat" readonly="">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label style="color:white;" for="catPrice">Category Price:</label>
+                            </td>
+                            <td colspan="3">
+                              <input type="text" id="catPrice" name="catPrice" readonly="">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label style="color:white;" for="quantity">Quantity:</label>
+                            </td>
+                            <td colspan="3">
+                              <input type="text" id="quantity" name="quantity">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label style="color:white;" for="selectseats">Choose One: </label>
+                            </td>
+                            <td style="text-align: center;">
+                              <input type="radio" name="seatPreference" id="sideBySide" value="sideBySide">
+                              <label style="color:white;" for="sideBySide">Find Seats Side by Side</label>
+                            </td>
+                            <td style="text-align: center;">
+                              <input type="radio" name="seatPreference" id="randomAllocated" value="randomAllocated">
+                              <label style="color:white;" for="randomAllocated">Random Allocated Seats</label>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label style="color:white;" for="allocatedSeats">Seats:</label>
+                            </td>
+                            <td colspan="3">
+                              <input type="text" id="allocatedSeats" readonly="">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label style="color:white;" for="totalprice">Total Price:</label>
+                            </td>
+                            <td colspan="3">
+                              <input type="text" id="totalprice" name="totalprice" readonly="">
+                            </td>
+                          </tr>
+                        </table>
+                   
                         <input type="text" id="status" name="status" value="Pending Payment" hidden="">
                         <br>
                         <input type="text" id="bookingId" name="bookingId" hidden="">
+                        <input type="text" id="allocation" name="allocation" hidden>
+                        <input type="text" id="venuebookingId" name="venuebookingId" hidden>
                         <input type="text" id="venueId" name="venueId" hidden>
                         <input type="text" id="eventId" name="eventId" hidden>
                         <button
@@ -167,19 +236,15 @@
 
   <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-209f">
     <div class="u-clearfix u-sheet u-sheet-1">
-      <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
+
     </div>
   </footer>
   <section class="u-backlink u-clearfix u-grey-80">
-    <a class="u-link" href="https://nicepage.com/website-design" target="_blank">
-      <span>Website Design</span>
-    </a>
+
+
     <p class="u-text">
-      <span>created with</span>
+      <span>SellOut 2023 Copyright</span>
     </p>
-    <a class="u-link" href="https://nicepage.studio" target="_blank">
-      <span>Best Free Website Builder</span>
-    </a>.
   </section>
 
 </body>
@@ -188,182 +253,278 @@
 
 <script>
 
-  const sideBySideRadio = document.getElementById("sideBySide");
-  const randomAllocatedRadio = document.getElementById("randomAllocated");
-  const seatPoolSize = 100000; // Change this to the size of your seat pool
-  const seatPool = Array(seatPoolSize).fill(0); // 0 represents an available seat
-  sideBySideRadio.addEventListener("change", function () {
-    if (sideBySideRadio.checked) {
-      const quantityInput = document.getElementById("quantity");
-      const totalprice = document.getElementById("totalprice");
-      const catPrice = parseFloat(document.getElementById("catPrice").value);
-      const allocatedSeatsInput = document.getElementById("allocatedSeats");
-      const quantity = parseInt(quantityInput.value);
+  // Global variables
+  let seatPoolSize = 0;
+  let seatPool = [];
+  // Function to get random integer
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+  // Function to handle form submission
+  function handleFormSubmission(e) {
+    e.preventDefault();
+    const formData = {
+      bookingId: $("#bookingId").val(),
+      venuebookingId: $("#venuebookingId").val(),
+      venueId: $("#venueId").val(),
+      eventId: $("#eventId").val(),
+      seats: $("#allocatedSeats").val(),
+      cat: $("#cat").val(),
+      totalprice: $("#totalprice").val(),
+      email: $("#email").val(),
+      status: $("#status").val()
+    };
+    sendAjaxRequest(formData);
 
-      if (quantity <= 0 || quantity > seatPoolSize) {
-        alert("Invalid quantity. Please enter a valid number of seats.");
-        return;
+    var allocation = parseInt($("#allocation").val(), 10); // Convert to integer
+    var quantity = parseInt($("#quantity").val(), 10); // Convert to integer
+    var newAllocation = allocation - quantity
+  
+    // Set status based on newAllocation
+    var status = (newAllocation === 0) ? "Unavailable" : "Available";
+
+    console.log(newAllocation);
+    const formData1 = {
+      venuebookingId: $("#venuebookingId").val(),
+      venueId: $("#venueId").val(),
+      eventId: $("#eventId").val(),
+      cat: $("#cat").val(),
+      catPrice: $("#catPrice").val(),
+      capacity: $("#capacity").val(),
+      allocation: newAllocation,
+      status: status
+    };
+    sendAjaxRequest1(formData1);
+  }
+  // Function to send AJAX request
+  function sendAjaxRequest(formData) {
+    $.ajax({
+      type: "POST",
+      url: categoryUrls[currentEnvironment]["booking"] + "booking/create",
+      contentType: "application/json",
+      data: JSON.stringify(formData),
+      success: function (response) {
+        const bookingId = $("#bookingId").val();
+        window.location.href = "egPaymentDetails.html?bookingId=" + bookingId;
+        console.log(response);
+      },
+      error: function (error) {
+        console.error(error);
       }
-
-      const allocatedSeats = allocateSeatsSideBySide(quantity);
-      allocatedSeatsInput.value = allocatedSeats;
-      totalprice.value = catPrice * quantity;
-
-
-    }
-    function allocateSeatsSideBySide(quantity) {
-      const allocatedSeats = [];
-      let consecutiveEmptySeats = 0;
-
-      for (let i = 0; i < seatPoolSize; i++) {
-        if (consecutiveEmptySeats >= quantity) {
-          break;
-        }
-
-        if (seatPool[i] === 0) {
-          consecutiveEmptySeats++;
-          if (consecutiveEmptySeats === quantity) {
-            for (let j = i - quantity + 1; j <= i; j++) {
-              seatPool[j] = 1; // Mark seats as allocated (1)
-              allocatedSeats.push(j);
-            }
-          }
-        } else {
-          consecutiveEmptySeats = 0;
-        }
-      }
-
-      return allocatedSeats.join(", ");
-    }
-  });
-
-  randomAllocatedRadio.addEventListener("change", function () {
-    if (randomAllocatedRadio.checked) {
-      const quantityInput = document.getElementById("quantity");
-      const totalprice = document.getElementById("totalprice");
-      const catPrice = parseFloat(document.getElementById("catPrice").value);
-      const allocatedSeatsInput = document.getElementById("allocatedSeats");
-      const quantity = parseInt(quantityInput.value);
-
-
-      if (quantity <= 0 || quantity > seatPoolSize) {
-        alert("Invalid quantity. Please enter a valid number of seats.");
-        return;
-      }
-
-      const allocatedSeats = allocateSeats(quantity);
-      allocatedSeatsInput.value = allocatedSeats;
-      totalprice.value = catPrice * quantity;
-    }
-    function allocateSeats(quantity) {
-      const allocatedSeats = [];
-      let remainingSeats = quantity;
-
-      while (remainingSeats > 0) {
-        const randomSeatIndex = Math.floor(Math.random() * seatPoolSize);
-
-        if (seatPool[randomSeatIndex] === 0) {
-          seatPool[randomSeatIndex] = 1; // Mark the seat as allocated (1)
-          allocatedSeats.push(randomSeatIndex);
-          remainingSeats--;
-        }
-      }
-
-      return allocatedSeats.join(", ");
-    }
-
-
-  });
-  // JavaScript code here
-  $(document).ready(function () {
-
-    // Fetch the user type from the session
-    //var userType = sessionStorage.getItem("user_type");
-    //console.log(userType)
-    var sessionemail = sessionStorage.getItem("email");
-    console.log(email);
-    $("#email").val(sessionemail);
-    //if (userType !== "2") {
-    // User is not logged in, redirect to another page or show an error message
-    //window.location.href = "/accessdenied.html"; // Replace with your access denied page
-    //} else {
-
-    function getRandomInt(min, max) {
-      min = Math.ceil(min);   // Round up the minimum value
-      max = Math.floor(max);  // Round down the maximum value
-      return Math.floor(Math.random() * (max - min) + min);
-    }
-    $("#bookingForm").submit(function (e) {
-      e.preventDefault();
-
-      // Get form data
-      var formData = {
-        bookingId: $("#bookingId").val(),
-        venueId: $("#venueId").val(),
-        eventId: $("#eventId").val(),
-        seats: $("#allocatedSeats").val(),
-        cat: $("#cat").val(),
-        totalprice: $("#totalprice").val(),
-        email: $("#email").val(),
-        status: $("#status").val()
-      };
-
-      // Send AJAX POST request with JSON data
-      $.ajax({
-        type: "POST",
-        url: categoryUrls[currentEnvironment]["booking"] + "booking/create",
-        contentType: "application/json", // Set Content-Type header
-        data: JSON.stringify(formData),
-        success: function (response) {
-          // Handle success response
-          const bookingId = $("#bookingId").val();
-            window.location.href = "egPaymentDetails.html?bookingId=" + bookingId;
-            console.log(response);
-          console.log(response);
-
-        },
-        error: function (error) {
-          // Handle error response
-          console.error(error);
-        }
-      });
     });
+  }
+  // Function to send AJAX request
+  function sendAjaxRequest1(formData) {
+    const queryParams1 = new URLSearchParams(window.location.search);
+    const venuebookingIdfromUrl1 = queryParams1.get("venuebookingId");
+    console.log(venuebookingIdfromUrl1);
+    console.log("Form Data:" + JSON.stringify(formData));
+    $.ajax({
+      type: "POST",
+      url: categoryUrls[currentEnvironment]["booking"] + "venuebooking/updateByVenueBookingID?venuebookingId=" + venuebookingIdfromUrl1,
+      contentType: "application/json",
+      data: JSON.stringify(formData),
+      success: function (response) {
+        
+        console.log(response);
+      },
+      error: function (error) {
+        console.error(error);
+      }
+    });
+  }
+
+  // Function to fetch venue data
+  function fetchVenueBookingData() {
     const queryParams = new URLSearchParams(window.location.search);
     const venuebookingIdfromUrl = queryParams.get("venuebookingId");
     console.log(venuebookingIdfromUrl);
-    var urllink = categoryUrls[currentEnvironment]["booking"] + "venuebooking/getVenueCatByVenueBookingId?venuebookingId=" + venuebookingIdfromUrl;
-    // Fetch user data and populate the table
+    const urllink =
+      categoryUrls[currentEnvironment]["booking"] +
+      "venuebooking/getVenueCatByVenueBookingId?venuebookingId=" +
+      venuebookingIdfromUrl;
     $.ajax({
       type: "GET",
       url: urllink,
       dataType: "json",
       success: function (response) {
         if (response.code === 200) {
-          var venuebooking = response.data[0]; // Assuming there is only one user in the response
-
-          // Populate the form fields with user data
+          const venuebooking = response.data[0];
           $("#venueId").val(venuebooking.venueId);
           $("#eventId").val(venuebooking.eventId);
           $("#cat").val(venuebooking.cat);
           $("#catPrice").val(venuebooking.catPrice);
+          $("#capacity").val(venuebooking.capacity);
+          $("#allocation").val(venuebooking.allocation);
+          $("#venuebookingId").val(venuebookingIdfromUrl);
 
+          seatPoolSize = venuebooking.capacity;
+          seatPool = Array(seatPoolSize).fill(0);
+          fetchAllBookingDetails(seatPoolSize,seatPool);
+          console.log("Capacity: " + seatPoolSize)
+          //Change this to populate based on the latest booking Id
           $("#bookingId").val(getRandomInt(1, 1000000));
-          // Add more code here to populate other form fields if needed
-          // Handle the "View User" button click
-          
 
+          
         } else {
-          // Handle error or empty response
-          console.error("Failed to fetch user data.");
+          console.error("Failed to fetch venue data.");
         }
       },
       error: function (error) {
-        console.error("Error fetching user data:", error);
+        console.error("Error fetching venue data:", error);
       }
     });
+  }
+  //Get all seats as an Array
+  function fetchAllBookingDetails(seatPoolSize,seatPool) {
+    const queryParams = new URLSearchParams(window.location.search);
+    const venuebookingIdfromUrl = queryParams.get("venuebookingId");
+    $.ajax({
+      type: "GET",
+      url: categoryUrls[currentEnvironment]["booking"] + 
+      "booking/getBookingByvenuebookingId?venuebookingId="  +
+      venuebookingIdfromUrl,
+      dataType: "json",
+      success: function (response) {
+        if (response.code === 200) {
+          var bookingData = response.data;
+          console.log(bookingData);
+          var seatsArray= [];
+          // Assuming bookingData is an array of booking objects
+          for (var i = 0; i < bookingData.length; i++) {
+            var booking = bookingData[i];
+            var bookingId = booking.bookingId;
+            var venuebookingId = booking.venuebookingId;
+            var venueId = booking.venueId;
+            var eventId = booking.eventId;
+            // Convert seats string to an array of numbers
+            var currentSeatsArray = booking.seats.split(',').map(function (seat) {
+                    return parseInt(seat.trim(), 10);
+                });
+            seatsArray = seatsArray.concat(currentSeatsArray);
+            //seatsArray.push(currentSeatsArray);
+            var cat = booking.cat;
+            var totalprice = booking.totalprice;
+            var email = booking.email;
+            var status = booking.status;
+          }  
 
-    //}
+           // Update seatPool array based on seatsArray
+          for (var j = 0; j < seatsArray.length; j++) {
+            var seatIndex = seatsArray[j];
+            if (seatIndex >= 0 && seatIndex < seatPoolSize) {
+              seatPool[seatIndex] = 1;
+            }
+          }
+
+          console.log("Seat Array: " + seatsArray);
+          console.log("Total seatPool: " + seatPool.length);
+          console.log("Updated seatPool Array: " + seatPool);
+
+        } else {
+          console.error("Failed to fetch venue data.");
+          console.error(response); // Log the entire response for debugging
+        }
+      },
+      error: function (error) {
+        console.error("Error fetching venue data", error);
+      }
+    });
+  }
+  // Event listener for sideBySideRadio
+  function onSideBySideRadioChange() {
+    const quantityInput = document.getElementById("quantity");
+    const totalprice = document.getElementById("totalprice");
+    const catPrice = parseFloat(document.getElementById("catPrice").value);
+    const allocatedSeatsInput = document.getElementById("allocatedSeats");
+    const quantity = parseInt(quantityInput.value);
+    if (validateQuantity(quantity)) {
+      const allocatedSeats = allocateSeatsSideBySide(quantity);
+      updateFormFields(allocatedSeats, catPrice, quantity, allocatedSeatsInput, totalprice);
+    }
+  }
+  // Event listener for randomAllocatedRadio
+  function onRandomAllocatedRadioChange() {
+    const quantityInput = document.getElementById("quantity");
+    const totalprice = document.getElementById("totalprice");
+    const catPrice = parseFloat(document.getElementById("catPrice").value);
+    const allocatedSeatsInput = document.getElementById("allocatedSeats");
+    const quantity = parseInt(quantityInput.value);
+    if (validateQuantity(quantity)) {
+      const allocatedSeats = allocateSeats(quantity);
+      updateFormFields(allocatedSeats, catPrice, quantity, allocatedSeatsInput, totalprice);
+    }
+  }
+  // Function to validate quantity
+  function validateQuantity(quantity) {
+    if (quantity <= 0 || quantity > seatPoolSize) {
+      alert("Invalid quantity. Please enter a valid number of seats.");
+      return false;
+    }
+    return true;
+  }
+  // Function to allocate seats side by side
+  function allocateSeatsSideBySide(quantity) {
+    const allocatedSeats = [];
+    let consecutiveEmptySeats = 0;
+    for (let i = 0; i < seatPoolSize; i++) {
+      if (consecutiveEmptySeats >= quantity) {
+        break;
+      }
+      if (seatPool[i] === 0) {
+        consecutiveEmptySeats++;
+        if (consecutiveEmptySeats === quantity) {
+          for (let j = i - quantity + 1; j <= i; j++) {
+            seatPool[j] = 1;
+            allocatedSeats.push(j);
+          }
+        }
+      } else {
+        consecutiveEmptySeats = 0;
+      }
+    }
+    return allocatedSeats.join(", ");
+  }
+  // Function to allocate random seats
+  function allocateSeats(quantity) {
+    const allocatedSeats = [];
+    let remainingSeats = quantity;
+    while (remainingSeats > 0) {
+      const randomSeatIndex = Math.floor(Math.random() * seatPoolSize);
+      if (seatPool[randomSeatIndex] === 0) {
+        seatPool[randomSeatIndex] = 1;
+        allocatedSeats.push(randomSeatIndex);
+        remainingSeats--;
+      }
+    }
+    return allocatedSeats.join(", ");
+  }
+  // Function to update form fields
+  function updateFormFields(allocatedSeats, catPrice, quantity, allocatedSeatsInput, totalprice) {
+    allocatedSeatsInput.value = allocatedSeats;
+    totalprice.value = catPrice * quantity;
+  }
+  // Document ready function
+  $(document).ready(function () {
+    // Fetch user type and populate email field
+    var sessionemail = sessionStorage.getItem("email");
+    console.log(email);
+    $("#email").val(sessionemail);
+    // Add event listeners
+    const sideBySideRadio = document.getElementById("sideBySide");
+    const randomAllocatedRadio = document.getElementById("randomAllocated");
+    sideBySideRadio.addEventListener("change", onSideBySideRadioChange);
+    randomAllocatedRadio.addEventListener("change", onRandomAllocatedRadioChange);
+    
+ 
+    // Fetch venue data
+    fetchVenueBookingData();
+    // Submit form on submit button click
+    $("#bookingForm").submit(handleFormSubmission);
   });
+
 </script>
 
 </html>

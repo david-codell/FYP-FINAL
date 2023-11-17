@@ -165,23 +165,72 @@
                   <div class="u-container-layout u-container-layout-1">
                     <h2 style="color:white; " class="u-align-left u-text u-text-1">Update Category Details</h2>
                     <div class="u-clearfix u-custom-html u-custom-html-1">
-                      
+                      <style>
+                        table {
+                          border-collapse: separate;
+                          border-spacing: 10px;
+                          /* Adjust the spacing value as needed */
+                          width: 100%;
+                        }
+          
+                        td,
+                        th {
+          
+                          text-align: left;
+          
+                        }
+          
+                        input,
+                        select {
+                          width: 100%;
+                          box-sizing: border-box;
+                        }
+          
+                        .hidden-row {
+                          display: none;
+                        }
+                      </style>
                       <form style="text-align:left;" id="userForm">
+                        <table>
+                          <tr>
+                            <td>
+                              <label style="text-align: left; font-weight: bold;color:white;" for="categoryType">Category Type:</label>
+                            </td>
+                            <td>
+                              <input type="text" style="width:100%" id="categoryType" name="categoryType" required="">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label style="text-align: left; font-weight: bold;color:white;" for="categoryName">Category Name:</label>
+                            </td>
+                            <td>
+                              <input type="text" style="width:100%" id="categoryName" name="categoryName" required="">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="2">
+                              <a id="message"></a><br>
+                              <button class="u-btn u-button-style u-btn-1"  style="width:100%" id="update">UPDATE</button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="2">
+                              <button class="u-btn u-button-style u-btn-1" style="width:100%" id="suspend">SUSPEND</button>
+                            </td>
+                          </tr>
+                          </table>
                         
                         
                         
-                        <label style="color:white; " for="categoryType">Category Type:</label>
-                        <input type="text" id="categoryType" name="categoryType"><br>
         
-                        <label style="color:white; " for="categoryName">Category Name:</label>
-                        <input type="text" id="categoryName" name="categoryName"><br>
+    
         
         
         
                         <!-- Add more input fields for other user attributes -->
-                        <a id="message"></a><br>
-                        <button class="u-btn u-button-style u-btn-1"  id="update">Update</button>
-                        <button class="u-btn u-button-style u-btn-1" id="suspend">Suspend</button>
+                        
+                       
                         <input  type="text" id="categoryId" name="categoryId" hidden><br>
                     </form>
                     </div>
@@ -200,19 +249,16 @@
 
   <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-209f">
     <div class="u-clearfix u-sheet u-sheet-1">
-      <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
+
     </div>
   </footer>
   <section class="u-backlink u-clearfix u-grey-80">
-    <a class="u-link" href="https://nicepage.com/templates" target="_blank">
-      <span>Templates</span>
-    </a>
+
+
     <p class="u-text">
-      <span>created with</span>
+      <span>SellOut 2023 Copyright</span>
     </p>
-    <a class="u-link" href="" target="_blank">
-      <span>Offline Website Builder</span>
-    </a>.
+
   </section>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>

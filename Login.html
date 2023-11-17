@@ -134,20 +134,60 @@
             </div>
             <div class="u-align-left u-container-style u-layout-cell u-size-30 u-layout-cell-2">
               <div class="u-container-layout u-container-layout-2">
-                <h1 class="u-text u-title u-text-1">Login</h1>
+                <h2 class="u-text u-title u-text-1">LOGIN</h2>
                 <div class="custom-expanded u-clearfix u-custom-html u-custom-html-1">
-                  <style></style>
+                  <style>
+                    table {
+                      border-collapse: separate;
+                      border-spacing: 10px;
+                      /* Adjust the spacing value as needed */
+                      width: 100%;
+                    }
+      
+                    td,
+                    th {
+      
+                      text-align: left;
+      
+                    }
+      
+                    input,
+                    select {
+                      width: 100%;
+                      box-sizing: border-box;
+                    }
+      
+                    .hidden-row {
+                      display: none;
+                    }
+                  </style>
                   <form id="loginForm">
+                    <table>
+                      <tr>
+                        <td style="text-align: left; font-weight: bold;">
+                          <label for="email">Email:</label>
+                        </td>
+                        <td>
+                          <input type="email" class="form-control" id="email" name="email" required>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="text-align: left; font-weight: bold;">
+                          <label for="password">Password:</label>
+                        </td>
+                        <td>
+                          <input type="password" class="form-control" id="password" name="password" required>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" style="text-align: right;">
+                          <button style="width:100%" type="submit" class="u-btn u-button-style u-btn-1">LOGIN</button>
+                        </td>
+                      </tr>
+                    </table>
+                    
                     <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email" name="email" required><br><br>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password" name="password" required><br><br>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="u-btn u-button-style u-btn-1">Login</button>
+                       
                     </div>
                 </form>
                 </div>

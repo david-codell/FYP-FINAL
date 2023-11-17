@@ -60,22 +60,24 @@
                 href="eoDashboard.html" style="padding: 10px 20px;">Home</a>
             </li>
             <li class="u-nav-item"><a
-              class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-              style="padding: 10px 20px;" href="eoViewAllEvents.html">Events</a>
-            <div class="u-nav-popup">
-              <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
-                <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoCreateEvent.html">Create Events</a>
-                </li>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoViewAllEvents.html">View All Events</a>
-                </li>
-              </ul>
-            </div>
-          </li>
+                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                style="padding: 10px 20px;" href="eoViewAllEvents.html">Events</a>
+              <div class="u-nav-popup">
+                <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoCreateEvent.html">Create
+                      Events</a>
+                  </li>
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoViewAllEvents.html">View
+                      All Events</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
             <li class="u-nav-item"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
                 href="eoViewAllMarketing.html" style="padding: 10px 20px;">Marketing</a>
             </li>
-            
+
             <li class="u-nav-item"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
                 style="padding: 10px 20px;" href="Login.html">Logout</a>
@@ -90,20 +92,22 @@
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="eoDashboard.html">Home</a>
                 </li>
                 <li class="u-nav-item"><a
-                  class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                  style="padding: 10px 20px;" href="eoViewAllEvents.html">Events</a>
-                <div class="u-nav-popup">
-                  <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
-                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoCreateEvent.html">Create Events</a>
-                    </li>
-                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoViewAllEvents.html">View All Events</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
+                    class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                    style="padding: 10px 20px;" href="eoViewAllEvents.html">Events</a>
+                  <div class="u-nav-popup">
+                    <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
+                      <li class="u-nav-item"><a class="u-button-style u-nav-link u-white"
+                          href="eoCreateEvent.html">Create Events</a>
+                      </li>
+                      <li class="u-nav-item"><a class="u-button-style u-nav-link u-white"
+                          href="eoViewAllEvents.html">View All Events</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="eoViewAllMarketing.html">Marketing</a>
                 </li>
-               
+
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Login.html">Logout</a>
                 </li>
               </ul>
@@ -118,80 +122,188 @@
     <div class="u-clearfix u-sheet u-sheet-1">
       <h2 class="u-text u-text-default u-text-1">CREATE EVENT</h2>
       <p class="u-text u-text-2">FILL IN THE DETAILS FOR YOUR EVENT</p>
-      <p class="u-align-left u-text u-text-3">Event Details</p>
+      
       <div class="u-clearfix u-custom-html u-expanded-width u-custom-html-1">
-        <style></style>
+        <style>
+          table {
+            border-collapse: separate;
+            border-spacing: 10px;
+            /* Adjust the spacing value as needed */
+            width: 100%;
+          }
+
+          td,
+          th {
+
+            text-align: left;
+
+          }
+
+          input,
+          select {
+            width: 100%;
+            box-sizing: border-box;
+          }
+
+          .hidden-row {
+            display: none;
+          }
+        </style>
         <form id="createEventForm">
-          
-          
-          <label for="eventName">Event Name:</label>
-          <input type="text" id="eventName" name="eventName" required><br><br>
+          <table>
+            <tr>
+              <td colspan="2">
+                <h3>Event Details</h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="eventName">Event Name:</label>
+              </td>
+              <td>
+                <input type="text" id="eventName" name="eventName" required>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="eventDateTime">Event Date and Time:</label>
+              </td>
+              <td>
+                <input type="datetime-local" id="eventDateTime" name="eventDateTime" required>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="eventDescription">Event Description:</label>
+              </td>
+              <td>
+                <input type="text" id="eventDescription" name="eventDescription" required>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="eventLaunchedDate">Event Launch Date:</label>
+              </td>
+              <td>
+                <input type="datetime-local" id="eventLaunchedDate" name="eventLaunchedDate" required>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <h3>Select Venue</h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="venueId">Venue Name:</label>
+              </td>
+              <td>
+                <select id="venueIdDropdown" name="venueId" required>
+                  <option value="">Select Venue Id</option>
 
-          <label for="eventDateTime">Event Date and Time:</label>
-          <input type="datetime-local" id="eventDateTime" name="eventDateTime" required><br><br>
+                  <!-- Add more venue options as needed -->
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="capacity">Capacity:</label>
 
-          <label for="eventDescription">Event Description:</label>
-          <input type="text" id="eventDescription" name="eventDescription" required><br><br>
+              </td>
+              <td>
+                <input type="text" id="capacity" name="capacity" readonly>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="postalcode">Postal Code:</label>
+              </td>
+              <td>
+                <input type="text" id="postalcode" name="postalcode" readonly>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="address1">Address1:</label>
+              </td>
+              <td>
+                <input type="text" id="address1" name="address1" readonly>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="address2">Address2:</label>
+              </td>
+              <td>
+                <input type="text" id="address2" name="address2" readonly>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <h3>Upload Event Poster</h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="img">Upload Image</label>
+              </td>
+              <td>
+                <input type="file" id="img" name="img" accept="image/*" required>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div id="imagePreviewContainer">
+                  <label for="imagePreview">Image Preview:</label>
 
-          <label for="eventLaunchedDate">Event Launch Date:</label>
-          <input type="datetime-local" id="eventLaunchedDate" name="eventLaunchedDate" required><br><br>
-
-
-          <p class="u-align-left u-text u-text-4">Select Venue</p>
-
-          <label for="venueId">Venue Name:</label>
-          <select id="venueIdDropdown" name="venueId" required>
-            <option value="">Select Venue Id</option>
-
-            <!-- Add more venue options as needed -->
-          </select>
-
-          <input type="text" id="venueName" name="venueName" hidden readonly><br><br>
-
-          <label for="capacity">Capacity:</label>
-          <input type="text" id="capacity" name="capacity" readonly><br><br>
-
-          <label for="postalcode">Postal Code:</label>
-          <input type="text" id="postalcode" name="postalcode" readonly><br><br>
-
-          <label for="address1">Address1:</label>
-          <input type="text" id="address1" name="address1" readonly><br><br>
-
-          <label for="address2">Address2:</label>
-          <input type="text" id="address2" name="address2" readonly><br><br>
-
-          <p class="u-align-left u-text u-text-5">Upload Event Poster</p>
-          <label for="img">Upload Image</label>
-          <input type="file" id="img" name="img" accept="image/*" required><br><br>
-          <div id="imagePreviewContainer">
-            <label for="imagePreview">Image Preview:</label>
-            <img id="imagePreview" src="" alt="Image Preview" style="max-width: 400px; max-height: 400px;">
-          </div>
-
-          <p class="u-align-left u-text u-text-5">Select Category</p>
-          <input type="text" id="categoryIdInput" name="categoryId" hidden><br><br>
+              </td>
+              <td>
+                <img id="imagePreview" src="" alt="Image Preview" style="max-width: 400px; max-height: 400px;">
+      </div>
+      </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <h3>Select Category</h3>
+        </td>
+      </tr>
+      <tr>
+        <td>
           <label for="categoryId">Category Type:</label>
+        </td>
+        <td>
           <select id="categoryIdDropdown" name="categoryId" required>
             <option value="">Select Category Type</option>
           </select>
-          <br>
-
+        </td>
+      </tr>
+      <tr>
+        <td>
           <label for="categoryName">Category Name:</label>
+        </td>
+        <td>
           <select id="categoryIdDropdown1" name="categoryName" required>
             <option value="">Select Category Name</option>
           </select>
-          <br>
-          
-          
-          <input type="text" id="emailtext" name="email" required hidden><br><br>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input class="u-btn u-button-style u-btn-1" type="submit" value="Next">
+        </td>
+      </tr>
+      </table>
+      <input type="text" id="venueName" name="venueName" hidden readonly>
+      <input type="text" id="categoryIdInput" name="categoryId" hidden><br><br>
+      <input type="text" id="emailtext" name="email" required hidden><br><br>
 
 
 
 
 
-          <br>
-      </div>
-      <input class="u-btn u-button-style u-btn-1" type="submit" value="Next">
+      <br>
+    </div>
+
 
     </div>
     </form>
@@ -202,19 +314,16 @@
 
   <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-209f">
     <div class="u-clearfix u-sheet u-sheet-1">
-      <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
+
     </div>
   </footer>
   <section class="u-backlink u-clearfix u-grey-80">
-    <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
-      <span>HTML Website Templates</span>
-    </a>
+
+
     <p class="u-text">
-      <span>created with</span>
+      <span>SellOut 2023 Copyright</span>
     </p>
-    <a class="u-link" href="" target="_blank">
-      <span>Web Design Software</span>
-    </a>.
+
   </section>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="config.js"></script>

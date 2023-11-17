@@ -147,19 +147,16 @@
 
   <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-209f">
     <div class="u-clearfix u-sheet u-sheet-1">
-      <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
+
     </div>
   </footer>
   <section class="u-backlink u-clearfix u-grey-80">
-    <a class="u-link" href="https://nicepage.com/templates" target="_blank">
-      <span>Templates</span>
-    </a>
+
+
     <p class="u-text">
-      <span>created with</span>
+      <span>SellOut 2023 Copyright</span>
     </p>
-    <a class="u-link" href="" target="_blank">
-      <span>Offline Website Builder</span>
-    </a>.
+
   </section>
 
 </body>
@@ -211,9 +208,9 @@
               row.append($("<td>").text(event.eventDescription));
               row.append($("<td>").text(event.eventLaunchedDate));
 
-              const button = $("<button class='u-btn u-button-style u-btn-1'>").text("View Event");
-              const button1 = $("<button class='u-btn u-button-style u-btn-1'>").text("View Venue Categories");
-              const button2 = $("<button class='u-btn u-button-style u-btn-1'>").text("Create Marketing");
+              const button = $("<button style='width:100%'class='u-btn u-button-style u-btn-1'>").text("View Event");
+              const button1 = $("<button style='width:100%' class='u-btn u-button-style u-btn-1'>").text("View Venue Categories");
+              const button2 = $("<button style='width:100%' class='u-btn u-button-style u-btn-1'>").text("Create Marketing");
               button.on("click", function () {
                 const eventv = $(this).closest("tr").find("td:eq(0)").text();
                 const venuev = $(this).closest("tr").find("td:eq(1)").text();

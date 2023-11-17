@@ -60,22 +60,24 @@
                 href="eoDashboard.html" style="padding: 10px 20px;">Home</a>
             </li>
             <li class="u-nav-item"><a
-              class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-              style="padding: 10px 20px;" href="eoViewAllEvents.html">Events</a>
-            <div class="u-nav-popup">
-              <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
-                <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoCreateEvent.html">Create Events</a>
-                </li>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoViewAllEvents.html">View All Events</a>
-                </li>
-              </ul>
-            </div>
-          </li>
+                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                style="padding: 10px 20px;" href="eoViewAllEvents.html">Events</a>
+              <div class="u-nav-popup">
+                <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoCreateEvent.html">Create
+                      Events</a>
+                  </li>
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoViewAllEvents.html">View
+                      All Events</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
             <li class="u-nav-item"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
                 href="eoViewAllMarketing.html" style="padding: 10px 20px;">Marketing</a>
             </li>
-            
+
             <li class="u-nav-item"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
                 style="padding: 10px 20px;" href="Login.html">Logout</a>
@@ -90,20 +92,22 @@
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="eoDashboard.html">Home</a>
                 </li>
                 <li class="u-nav-item"><a
-                  class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                  style="padding: 10px 20px;" href="eoViewAllEvents.html">Events</a>
-                <div class="u-nav-popup">
-                  <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
-                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoCreateEvent.html">Create Events</a>
-                    </li>
-                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="eoViewAllEvents.html">View All Events</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
+                    class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                    style="padding: 10px 20px;" href="eoViewAllEvents.html">Events</a>
+                  <div class="u-nav-popup">
+                    <ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10">
+                      <li class="u-nav-item"><a class="u-button-style u-nav-link u-white"
+                          href="eoCreateEvent.html">Create Events</a>
+                      </li>
+                      <li class="u-nav-item"><a class="u-button-style u-nav-link u-white"
+                          href="eoViewAllEvents.html">View All Events</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="eoViewAllMarketing.html">Marketing</a>
                 </li>
-               
+
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Login.html">Logout</a>
                 </li>
               </ul>
@@ -118,59 +122,126 @@
     <div class="u-clearfix u-sheet u-sheet-1">
       <h2 class="u-text u-text-default u-text-1">CREATE MARKETING CAMPAIGN</h2>
       <p class="u-text u-text-2">ADD MARKETING CAMPAIGN FOR YOUR EVENTS</p>
-      <p class="u-align-left u-text u-text-3">Marketing Details</p>
+      
       <div class="u-clearfix u-custom-html u-expanded-width u-custom-html-1">
+        <style>
+          table {
+            border-collapse: separate;
+            border-spacing: 10px;
+            /* Adjust the spacing value as needed */
+            width: 100%;
+          }
+
+          td,
+          th {
+
+            text-align: left;
+
+          }
+
+          input,
+          select {
+            width: 100%;
+            box-sizing: border-box;
+          }
+
+          .hidden-row {
+            display: none;
+          }
+        </style>
         <form id="createMarketingForm" enctype="multipart/form-data">
-          <div class="formcontainer">
-            <div class="container">
-              <div class="form-group">
+
+          <table>
+            <tr>
+              <td colspan="2">
+                <h3>Marketing Details</h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
                 <label for="eventId">Event Id:</label>
+              </td>
+              <td>
                 <input type="text" id="eventId" name="eventId" readonly required>
-
-              </div>
-              <div class="form-group">
+              </td>
+            </tr>
+            <tr>
+              <td>
                 <label for="eventName">Event Name:</label>
+              </td>
+              <td>
                 <input type="text" id="eventName" name="eventName" required>
-
-              </div>
-              <div class="form-group">
+              </td>
+            </tr>
+            <tr>
+              <td>
                 <label for="eventDateTime">Event Date and Time:</label>
-                <input type="text" id="eventDateTime" name="eventDateTime" required><br><br>
-              </div>
-
-              <div class="form-group">
-
+              </td>
+              <td>
+                <input type="text" id="eventDateTime" name="eventDateTime" required>
+              </td>
+            </tr>
+            <tr>
+              <td>
                 <label for="marketingName">Maketing Name:</label>
-                <input type="text" id="marketingName" name="marketingName" required><br><br>
-
-              </div>
-
-              <div class="form-group">
+              </td>
+              <td>
+                <input type="text" id="marketingName" name="marketingName" required>
+              </td>
+            </tr>
+            <tr>
+              <td>
                 <label for="dateStart">Date Start:</label>
-                <input type="date" id="dateStart" name="dateStart" required><br><br>
-              </div>
-
-              <div class="form-group">
+              </td>
+              <td>
+                <input type="date" id="dateStart" name="dateStart" required>
+              </td>
+            </tr>
+            <tr>
+              <td>
                 <label for="dateEnd">Date End:</label>
-                <input type="date" id="dateEnd" name="dateEnd" required><br><br>
-              </div>
-
-              <p class="u-align-left u-text u-text-4">Marketing Poster</p>
-              <div class="form-group">
+              </td>
+              <td>
+                <input type="date" id="dateEnd" name="dateEnd" required>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <h3>Marketing Poster</h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
                 <label for="img">Upload Image</label>
-                <input type="file" id="img" name="img" accept="image/*" required><br><br>
-
-              </div>
-
-              <div class="form-group">
+              </td>
+              <td>
+                <input type="file" id="img" name="img" accept="image/*" required>
+              </td>
+            </tr>
+            <tr>
+              <td>
                 <label for="imagePreview">Image Preview:</label>
+              </td>
+              <td>
                 <img id="imagePreview" src="" alt="Image Preview" style="max-width: 400px; max-height: 400px;">
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <button type="submit" style="width: 100%;" class="u-btn u-button-style u-btn-1">Submit</button>
+              </td>
+            </tr>
+          </table>
+        </form>
 
-              </div>
 
-            </div>
-            <button type="submit" class="u-btn u-button-style u-btn-1">Submit</button>
-          </div>
+
+
+
+      </div>
+
+    </div>
+
   </section>
 
 
@@ -178,19 +249,16 @@
 
   <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-209f">
     <div class="u-clearfix u-sheet u-sheet-1">
-      <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
+
     </div>
   </footer>
   <section class="u-backlink u-clearfix u-grey-80">
-    <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
-      <span>HTML Website Templates</span>
-    </a>
+
+
     <p class="u-text">
-      <span>created with</span>
+      <span>SellOut 2023 Copyright</span>
     </p>
-    <a class="u-link" href="" target="_blank">
-      <span>Web Design Software</span>
-    </a>.
+
   </section>
 
 </body>
@@ -244,12 +312,12 @@
 
     $("#createMarketingForm").submit(function (e) {
       e.preventDefault();
-      
+
 
       var formData = new FormData();
       formData.append("eventId", $("#eventId").val());
       formData.append("eventName", $("#eventName").val());
-      formData.append("email",sessionStorage.getItem("email"));
+      formData.append("email", sessionStorage.getItem("email"));
       formData.append("marketingName", $("#marketingName").val());
       formData.append("dateStart", $("#dateStart").val());
       formData.append("dateEnd", $("#dateEnd").val());

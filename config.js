@@ -8,6 +8,7 @@ var categoryUrls = {
         "user": "/fyp/user/",
         "vendor": "/fyp/vendor/",
         "venue": "/fyp/venue/",
+        "booking": "/fyp1/",
         "preference": "/fyp/preference/"
     },
     "production": {

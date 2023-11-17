@@ -122,32 +122,84 @@
       <p class="u-align-left u-text u-text-3">Create Category For Selected Venue</p>
       <div class="u-container-layout u-container-layout-1">
         <div class="u-clearfix u-custom-html u-expanded-width u-custom-html-1">
-          <style></style>
+          <style>
+            table {
+              border-collapse: separate;
+              border-spacing: 10px;
+              /* Adjust the spacing value as needed */
+              width: 100%;
+            }
+  
+            td,
+            th {
+  
+              text-align: left;
+  
+            }
+  
+            input,
+            select {
+              width: 100%;
+              box-sizing: border-box;
+            }
+  
+            .hidden-row {
+              display: none;
+            }
+          </style>
           <form id="createvenueCategory">
-            <label for="venueId">Venue: </label>
-            <input type="text" id="venueName" name="venueName" readonly>
+            <table>
+              <tr>
+                <td>
+                  <label for="venueId">Venue: </label>
+                </td>
+                <td>
+                  <input type="text" id="venueName" name="venueName" readonly>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="eventId">Event Name:</label>
+                </td>
+                <td>
+                  <input type="text" id="eventName" name="eventName" readonly>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="cat">Category:</label>
+                </td>
+                <td>
+                  <input type="cat" id="cat" name="cat" required="">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="catPrice">Price:</label>
+                </td>
+                <td>
+                  <input type="catPrice" id="catPrice" name="catPrice" required="">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="capacity">Capacity For Category:</label>
+                </td>
+                <td>
+                  <input type="capacity" id="capacity" name="capacity" required="">
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <input class="u-btn u-button-style u-btn-1" type="submit" value="CREATE CATEGORY">
+                </td>
+              </tr>
+            </table>
+            
             <input type="text" id="venueId" name="venueId" required="" hidden>
-            <br>
-            <br>
-            <label for="eventId">Event:</label>
-            <input type="text" id="eventName" name="eventName" readonly>
             <input type="text" id="eventId" name="eventId" required="" hidden>
-            <br>
-            <br>
-            <label for="cat">Category:</label>
-            <input type="cat" id="cat" name="cat" required="">
-            <br>
-            <br>
-            <label for="catPrice">Price:</label>
-            <input type="catPrice" id="catPrice" name="catPrice" required="">
-            <br>
-            <br>
-            <label for="capacity">Capacity For Category:</label>
-            <input type="capacity" id="capacity" name="capacity" required="">
-            <br>
-            <br><!-- Add an input field for user type (hidden) -->
             <input type="hidden" id="status" name="status" value="Available">
-            <input class="u-btn u-button-style u-btn-1" type="submit" value="Create Category">
+           
             
           </form>
         </div>
@@ -190,19 +242,16 @@
 
   <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-209f">
     <div class="u-clearfix u-sheet u-sheet-1">
-      <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
+
     </div>
   </footer>
   <section class="u-backlink u-clearfix u-grey-80">
-    <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
-      <span>HTML Website Templates</span>
-    </a>
+
+
     <p class="u-text">
-      <span>created with</span>
+      <span>SellOut 2023 Copyright</span>
     </p>
-    <a class="u-link" href="" target="_blank">
-      <span>Web Design Software</span>
-    </a>.
+
   </section>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="config.js"></script>
@@ -311,6 +360,7 @@
           success: function (response) {
             // Handle success response
             console.log(response);
+            window.location.href = "eoCreateCatForVenue.html?eventId=" + $("#eventId").val() + "&venueId=" + $("#venueId").val();
 
           },
           error: function (error) {

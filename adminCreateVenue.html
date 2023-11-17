@@ -165,39 +165,105 @@
                   <div class="u-container-layout u-container-layout-1">
                     <h2 style="color:white; " class="u-align-left u-text u-text-1">Add A New Venue</h2>
                     <div class="u-clearfix u-custom-html u-custom-html-1">
-                      <style></style>
+                      <style>
+                        table {
+                          border-collapse: separate;
+                          border-spacing: 10px;
+                          /* Adjust the spacing value as needed */
+                          width: 100%;
+                        }
+          
+                        td,
+                        th {
+          
+                          text-align: left;
+          
+                        }
+          
+                        input,
+                        select {
+                          width: 100%;
+                          box-sizing: border-box;
+                        }
+          
+                        .hidden-row {
+                          display: none;
+                        }
+                      </style>
                       <form style="text-align:left;" action="/create" id="createVenueForm"
                         enctype="multipart/form-data">
-                        <label style="color:white; " for="venueName">Venue Name:</label>
-                        <input type="text" id="venueName" name="venueName" required="">
-                        <br>
-                        <br>
-                        <label style="color:white; " for="capacity">Capacity:</label>
-                        <input type="text" id="capacity" name="capacity" required="">
-                        <br>
-                        <br>
-                        <label style="color:white; " for="postalcode">Postal Code:</label>
-                        <input type="text" id="postalcode" name="postalcode" required="">
-                        <br>
-                        <br>
-                        <label style="color:white; " for="address1">Address1:</label>
-                        <input type="text" id="address1" name="address1" required="">
-                        <br>
-                        <br>
-                        <label style="color:white; " for="address2">Address2:</label>
-                        <input type="text" id="address2" name="address2" required="">
-                        <br>
-                        <br>
-                        <label style="color:white; " for="img">Upload Image</label>
-                        <input type="file" id="img" name="img" accept="image/*" required="">
-                        <br>
-                        <br>
-                        <div id="imagePreviewContainer">
-                          <label for="imagePreview">Image Preview:</label>
-                          <img id="imagePreview" src="" alt="Image Preview"
-                            style="max-width: 400px; max-height: 400px;">
-                        </div><!-- Add an input field for user type (hidden) -->
-                        <input type="submit" class="u-btn u-button-style u-btn-1" value="Create Venue">
+                        <table>
+                          <tr>
+                            <td>
+                              <label style="text-align: left; font-weight: bold;color:white;" for="venueName">Venue Name:</label>
+                            </td>
+                            <td>
+                              <input type="text" id="venueName" name="venueName" required="">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label style="text-align: left; font-weight: bold;color:white;" for="capacity">Capacity:</label>
+                            </td>
+                            <td>
+                              <input type="text" id="capacity" name="capacity" required="">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label style="text-align: left; font-weight: bold;color:white;" for="postalcode">Postal Code:</label>
+                            </td>
+                            <td>
+                              <input type="text" id="postalcode" name="postalcode" required="">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label style="text-align: left; font-weight: bold;color:white;" for="address1">Address1:</label>
+                            </td>
+                            <td>
+                              <input type="text" id="address1" name="address1" required="">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label style="text-align: left; font-weight: bold;color:white;" for="address2">Address2:</label>
+                            </td>
+                            <td>
+                              <input type="text" id="address2" name="address2" required="">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label style="text-align: left; font-weight: bold;color:white;" for="img">Upload Seat Map:</label>
+                            </td>
+                            <td>
+                              <input type="file" id="img" name="img" accept="image/*" required="">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label style="text-align: left; font-weight: bold;color:white;" for="imagePreview">Image Preview:</label>
+                            </td>
+                            <td>
+                              <div id="imagePreviewContainer">
+                          
+                                <img id="imagePreview" src="" alt="Image Preview"
+                                  style="max-width: 400px; max-height: 400px;">
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="2">
+                              <input type="submit" class="u-btn u-button-style u-btn-1" value="CREATE VENUE">
+                            </td>
+                          </tr>
+                        </table>
+                        
+                        
+                      
+                        <!-- Add an input field for user type (hidden) -->
+                        
                       </form>
                     </div>
                   </div>
@@ -215,19 +281,16 @@
 
   <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-209f">
     <div class="u-clearfix u-sheet u-sheet-1">
-      <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
+
     </div>
   </footer>
   <section class="u-backlink u-clearfix u-grey-80">
-    <a class="u-link" href="https://nicepage.com/templates" target="_blank">
-      <span>Templates</span>
-    </a>
+
+
     <p class="u-text">
-      <span>created with</span>
+      <span>SellOut 2023 Copyright</span>
     </p>
-    <a class="u-link" href="" target="_blank">
-      <span>Offline Website Builder</span>
-    </a>.
+
   </section>
 
 </body>

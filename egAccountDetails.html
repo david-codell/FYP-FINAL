@@ -161,68 +161,138 @@
                         <div class="u-clearfix u-custom-html u-expanded-width u-custom-html-1">
                           <style></style>
                           <form id="registrationForm">
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" required="">
-                            <br>
-                            <br><!-- Event Goer Specific Fields -->
-                            <div id="eventGoerFields">
-                              <label for="fname">First Name:</label>
-                              <input type="text" id="fname" name="fname" required="">
-                              <br>
-                              <br>
-                              <label for="lname">Last Name:</label>
-                              <input type="text" id="lname" name="lname" required="">
-                              <br>
-                              <br>
-                              <label for="dob">Date Of Birth:</label>
-                              <input type="date" id="dob" name="dob" required="">
-                              <br>
-                              <br>
-                              <label for="phone">Phone Number:</label>
-                              <input type="text" id="phone" name="phone" required="">
-                              <br>
-                              <br>
-                              <label for="country">Country:</label>
-                              <select name="country" id="country">
-                                <option value="0" label="Select a country ... ">Select a country ... </option>
-                                <optgroup id="country-optgroup-Asia" label="Asia">
-                                  <option value="Brunei" label="Brunei">Brunei</option>
-                                  <option value="Cambodia" label="Cambodia">Cambodia</option>
-                                  <option value="China" label="China">China</option>
-                                  <option value="Hong Kong SAR China" label="Hong Kong SAR China">Hong Kong SAR China
-                                  </option>
-                                  <option value="India" label="India">India</option>
-                                  <option value="Indonesia" label="Indonesia">Indonesia</option>
-                                  <option value="Japan" label="Japan">Japan</option>
-                                  <option value="Laos" label="Laos">Laos</option>
-                                  <option value="Malaysia" label="Malaysia">Malaysia</option>
-                                  <option value="Myanmar [Burma]" label="Myanmar [Burma]">Myanmar [Burma]</option>
-                                  <option value="Philippines" label="Philippines">Philippines</option>
-                                  <option value="Singapore" label="Singapore" selected="selected">Singapore</option>
-                                  <option value="South Korea" label="South Korea">South Korea</option>
-                                  <option value="Sri Lanka" label="Sri Lanka">Sri Lanka</option>
-                                  <option value="Taiwan" label="Taiwan">Taiwan</option>
-                                  <option value="Thailand" label="Thailand">Thailand</option>
-                                  <option value="Timor-Leste" label="Timor-Leste">Timor-Leste</option>
-                                  <option value="Vietnam" label="Vietnam">Vietnam</option>
-                                </optgroup>
-                              </select>
-                              <br>
-                              <br>
-                              <label for="postal_code">Postal Code:</label>
-                              <input type="text" id="postal_code" name="postal_code" required="">
-                              <br>
-                              <br>
-                              <label for="address1">Address1:</label>
-                              <input type="text" id="address1" name="address1" required="">
-                              <br>
-                              <br>
-                              <label for="address2">Address2:</label>
-                              <input type="text" id="address2" name="address2" required="">
-                              <br>
-                              <br>
-                            </div>
-                            <input type="button" id="edit" class="u-btn u-btn-1 u-button-style" value="UPDATE DETAILS">
+                            <style>
+                              table {
+                                border-collapse: separate;
+                                border-spacing: 10px;
+                                /* Adjust the spacing value as needed */
+                                width: 100%;
+                              }
+                    
+                              td,
+                              th {
+                    
+                                text-align: left;
+                    
+                              }
+                    
+                              input,
+                              select {
+                                width: 100%;
+                                box-sizing: border-box;
+                              }
+                    
+                              .hidden-row {
+                                display: none;
+                              }
+                              label{
+                                font-weight: bold;
+                              }
+                            </style>
+                            <table>
+                              
+                              <tr>
+                                <td>
+                                  <label for="fname">First Name:</label>
+                                </td>
+                                <td>
+                                  <input type="text" id="fname" name="fname" required="">
+                                </td>
+                                <td>
+                                  <label for="lname">Last Name:</label>
+                                </td>
+                                <td>
+                                  <input type="text" id="lname" name="lname" required="">
+                                </td>
+                              </tr>
+                              
+                              <tr>
+                                <td>
+                                  <label for="email">Email:</label>
+                                </td>
+                                <td colspan="3">
+                                  <input type="email" id="email" name="email" required="">
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <label for="dob">Date Of Birth:</label>
+                                </td>
+                                <td colspan="3">
+                                  <input type="date" id="dob" name="dob" required="">
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="3">
+                                  <label for="phone">Phone Number:</label>
+                                </td>
+                                <td>
+                                  <input type="text" id="phone" name="phone" required="">
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <label for="country">Country:</label>
+                                </td>
+                                <td>
+                                  <select name="country" id="country">
+                                    <option value="0" label="Select a country ... ">Select a country ... </option>
+                                    <optgroup id="country-optgroup-Asia" label="Asia">
+                                      <option value="Brunei" label="Brunei">Brunei</option>
+                                      <option value="Cambodia" label="Cambodia">Cambodia</option>
+                                      <option value="China" label="China">China</option>
+                                      <option value="Hong Kong SAR China" label="Hong Kong SAR China">Hong Kong SAR China
+                                      </option>
+                                      <option value="India" label="India">India</option>
+                                      <option value="Indonesia" label="Indonesia">Indonesia</option>
+                                      <option value="Japan" label="Japan">Japan</option>
+                                      <option value="Laos" label="Laos">Laos</option>
+                                      <option value="Malaysia" label="Malaysia">Malaysia</option>
+                                      <option value="Myanmar [Burma]" label="Myanmar [Burma]">Myanmar [Burma]</option>
+                                      <option value="Philippines" label="Philippines">Philippines</option>
+                                      <option value="Singapore" label="Singapore" selected="selected">Singapore</option>
+                                      <option value="South Korea" label="South Korea">South Korea</option>
+                                      <option value="Sri Lanka" label="Sri Lanka">Sri Lanka</option>
+                                      <option value="Taiwan" label="Taiwan">Taiwan</option>
+                                      <option value="Thailand" label="Thailand">Thailand</option>
+                                      <option value="Timor-Leste" label="Timor-Leste">Timor-Leste</option>
+                                      <option value="Vietnam" label="Vietnam">Vietnam</option>
+                                    </optgroup>
+                                  </select>
+                                  </td>
+                                  <td>
+                                    <label for="postal_code">Postal Code:</label>
+                                  </td>
+                                  <td>
+                                    <input type="text" id="postal_code" name="postal_code" required="">
+                                  </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <label for="address1">Address1:</label>
+                                </td>
+                                <td colspan="3">
+                                  <input type="text" id="address1" name="address1" required="">
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <label for="address2">Address2:</label>
+                                </td>
+                                <td colspan="3">
+                                  <input type="text" id="address2" name="address2" required="">
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="4">
+                                  <input type="button" id="edit" class="u-btn u-btn-1 u-button-style" value="UPDATE DETAILS">
+                                </td>
+                              </tr>
+                            </table>
+                            
+                            
+                            
+                            
                           </form>
                         </div>
                       </div>
@@ -282,8 +352,8 @@
     <p class="u-text">
       <span>SellOut 2023 Copyright</span>
     </p>
-
   </section>
+
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
